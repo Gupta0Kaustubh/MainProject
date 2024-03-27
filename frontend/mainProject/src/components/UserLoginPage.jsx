@@ -33,6 +33,7 @@ function UserLoginPage({onSubmit}) {
     e.preventDefault();
     // Here you can perform any actions with the form data, such as submitting it to a backend API
     onSubmit(formData)
+    
   };
 
   return (
@@ -75,8 +76,7 @@ function UserLoginPage({onSubmit}) {
                   />
               </div>
               <MDBBtn className="mb-4 px-5" color='dark' size='lg' onClick={handleSubmit}>Login</MDBBtn>
-              <Link to="/user-forgot" style={{color: '#393f81'}}>Change your password</Link>
-              <p className="mb-5 pb-lg-2" style={{color: '#393f81'}}>Don't have an account? <Link to="/user-creation" style={{color: '#393f81'}}>Register here</Link></p>
+              
               <div className='d-flex flex-row justify-content-start'>
                 <a href="#!" className="small text-muted me-1">Terms of use.</a>
                 <a href="#!" className="small text-muted">Privacy policy</a>

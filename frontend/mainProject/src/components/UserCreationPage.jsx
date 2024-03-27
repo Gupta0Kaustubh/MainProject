@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -36,10 +36,10 @@ function UserCreationPage({onSubmit}) {
     city: '',
     state: '',
     subscribeNewsletter: false,
-    passwords: []
+    passwords: [generateRandomPassword()]
   });
 
-  const [emailExists, setEmailExists] = useState(false);
+  const [UserDetails, setUserDetails] = useState([]);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -50,30 +50,53 @@ function UserCreationPage({onSubmit}) {
     }));
   };
 
+  useEffect(() => {
+    // Getting UserData
+    fetch("http://localhost:3001/getAllUserData")
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then(function (data) {
+        setUserDetails(data);
+      })
+      .catch(function (error) {
+        if (error instanceof SyntaxError) {
+          console.error("Empty or invalid JSON response");
+        } else {
+          console.error("Error fetching user data:", error);
+        }
+        throw error;
+      });
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Check if email already exists
-    try {
-      const response = await axios.get(`http://localhost:3001/checkEmail?email=${userData.email}`);
-      if (response.data.exists) {
-        setEmailExists(true);
-        
-        return;
-      }
-    } catch (error) {
-      console.error('Error checking email:', error);
-    }
 
-    setEmailExists(false);
     onSubmit(userData);
-    
-    axios.post('http://localhost:3001/submitUserData', userData)
+    console.log("User Deatils : ",UserDetails);
+
+    console.log(userData.email);
+    if (UserDetails.allUserData.length > 1) {
+      const isUser = UserDetails.allUserData.find(user => user.email === userData.email);
+    console.log(isUser);
+    if (isUser) {
+      alert("User Already present with the same EmailID !!!");
+    }
+    else {
+      axios.post('http://localhost:3001/submitUserData', userData)
       .then(response => {
         console.log('User data submitted successfully:', response.data);
       })
       .catch(error => {
         console.error('Error submitting user data:', error);
       });
+    }
+    }
+    
+    
   };
 
   return (

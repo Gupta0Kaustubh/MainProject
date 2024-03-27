@@ -36,16 +36,6 @@ const userDataSchema = new mongoose.Schema({
 // Create a Mongoose model based on the schema
 const UserData = mongoose.model('UserData', userDataSchema);
 
-function generateRandomPassword() {
-    // Function to generate a random alphanumeric password
-    const length = 8; // You can adjust the length of the password
-    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+';
-    let result = '';
-    for (let i = 0; i < length; i++) {
-      result += characters.charAt(Math.floor(Math.random() * characters.length));
-    }
-    return result;
-  }
 
 async function sendEmail(email, temporaryPassword) {
     // Configure nodemailer transporter (replace with your email service configuration)
@@ -74,23 +64,60 @@ async function sendEmail(email, temporaryPassword) {
 // Route to handle user data submission
 app.post('/submitUserData', async (req, res) => {
     try {
-        // Create a new UserData document based on the request body
-        
-        const temporaryPassword = generateRandomPassword();
+        // Extract user data from the request body
+        const { firstName, lastName, email, phoneNumber, gender, dob, city, state, subscribeNewsletter, passwords } = req.body;
 
-        const { email } = req.body;
-        console.log("email");
 
-        const newUser = new UserData(req.body);
-        newUser.passwords.push(temporaryPassword);
+        // Create a new UserData document
+        const newUser = new UserData({
+            firstName,
+            lastName,
+            email,
+            phoneNumber,
+            gender,
+            dob,
+            city,
+            state,
+            subscribeNewsletter,
+            passwords
+        });
+
         // Save the new user data to the database
-        await newUser.save();
-        await sendEmail(email, temporaryPassword);
+      await newUser.save();
+      
+      console.log("Password  ",passwords[0]);
+
+        // Send email with the temporary password
+        await sendEmail(email, passwords[0]);
+
+        // Respond with a success message
         res.status(201).json({ message: 'User data submitted successfully' });
     } catch (error) {
+        // Handle errors if saving user data or sending email fails
         res.status(500).json({ message: 'Failed to submit user data', error: error.message });
     }
 });
+
+
+// Route to fetch all user data
+app.get('/getAllUserData', async (req, res) => {
+    try {
+        // Retrieve all user data from the database
+        const allUserData = await UserData.find();
+
+        // If no user data is found, return a 404 status and message
+        if (!allUserData || allUserData.length === 0) {
+            return res.status(404).json({ message: 'No user data found' });
+        }
+
+        // If user data is found, return it in the response
+        res.status(200).json({ allUserData });
+    } catch (error) {
+        // If an error occurs, return a 500 status and error message
+        res.status(500).json({ message: 'Failed to fetch user data', error: error.message });
+    }
+});
+
 
 // Setting up the server to listen on a specified port or defaulting to 3001
 const port = 3001;
