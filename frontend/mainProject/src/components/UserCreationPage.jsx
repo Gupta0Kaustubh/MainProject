@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from 'react-router-dom';
+
 import axios from 'axios';
 import {
   MDBBtn,
@@ -36,7 +38,7 @@ function UserCreationPage({onSubmit}) {
     city: '',
     state: '',
     subscribeNewsletter: false,
-    passwords: [generateRandomPassword()]
+    passwords: generateRandomPassword()
   });
 
   const [UserDetails, setUserDetails] = useState([]);
@@ -79,21 +81,26 @@ function UserCreationPage({onSubmit}) {
     console.log("User Deatils : ",UserDetails);
 
     console.log(userData.email);
-    if (UserDetails.allUserData.length > 1) {
       const isUser = UserDetails.allUserData.find(user => user.email === userData.email);
     console.log(isUser);
     if (isUser) {
-      alert("User Already present with the same EmailID !!!");
+      toast.error('User with the same email already exist !!');
     }
     else {
       axios.post('http://localhost:3001/submitUserData', userData)
       .then(response => {
         console.log('User data submitted successfully:', response.data);
+        
+        
       })
       .catch(error => {
         console.error('Error submitting user data:', error);
       });
-    }
+      toast.success('User data submitted successfully');
+        setTimeout(() => {
+          window.location.reload();
+      }, 6000);
+      
     }
     
     
@@ -101,11 +108,24 @@ function UserCreationPage({onSubmit}) {
 
   return (
     <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'auto'}}>
+      {/* ToastContainer for displaying notifications */}
+    <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="dark"
+                />
       <MDBRow className="h-100 justify-content-center align-items-center">
         <MDBCol md='6' className='text-center text-md-start d-flex flex-column justify-content-center'>
           <h1 className="my-3 display-3 fw-bold ls-tight px-3">
             <br />
-            <span className="text-primary">User Registration</span>
+            <span className="text-primary">User Creation</span>
           </h1>
           <h1 className="my-5 display-3 fw-bold ls-tight px-3">
             The best offer <br />
@@ -170,27 +190,8 @@ function UserCreationPage({onSubmit}) {
                 </div>
                 <MDBBtn type="submit" className='w-100 mb-2' size='md'>Sign up</MDBBtn>
               </form>
-              <div className="text-center">
-                <p>Or</p>
-                <Link to='/user-login'><MDBBtn type="submit" className='w-100 mt-2 mb-4' size='md'>Log In</MDBBtn></Link>
-                </div>
-              <div className="text-center">
-                <p>or sign up with:</p>
-                <div className='d-flex justify-content-center'>
-                  <MDBBtn tag='a' color='none' className='mx-3' style={{ color: '#1266f1' }}>
-                    <MDBIcon fab icon='facebook-f' size="sm" />
-                  </MDBBtn>
-                  <MDBBtn tag='a' color='none' className='mx-3' style={{ color: '#1266f1' }}>
-                    <MDBIcon fab icon='twitter' size="sm" />
-                  </MDBBtn>
-                  <MDBBtn tag='a' color='none' className='mx-3' style={{ color: '#1266f1' }}>
-                    <MDBIcon fab icon='google' size="sm" />
-                  </MDBBtn>
-                  <MDBBtn tag='a' color='none' className='mx-3' style={{ color: '#1266f1' }}>
-                    <MDBIcon fab icon='github' size="sm" />
-                  </MDBBtn>
-                </div>
-              </div>
+              
+
             </MDBCardBody>
           </MDBCard>
         </MDBCol>

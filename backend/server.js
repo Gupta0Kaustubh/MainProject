@@ -3,6 +3,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
+const mailgen = require('mailgen')
+
 
 // Creating an instance of the Express app
 const app = express();
@@ -30,36 +32,14 @@ const userDataSchema = new mongoose.Schema({
     city: String,
     state: String,
     subscribeNewsletter: Boolean,
-    passwords: [String]
+    passwords: String
 });
 
 // Create a Mongoose model based on the schema
 const UserData = mongoose.model('UserData', userDataSchema);
 
 
-async function sendEmail(email, temporaryPassword) {
-    // Configure nodemailer transporter (replace with your email service configuration)
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: 'kaustubhgupta9860@gmail.com', // Replace with your Gmail email address
-        pass: 'kaustubh12345' // Replace with your Gmail password
-      }
-    });
-  
-    // Define email options
-    const mailOptions = {
-      from: 'kaustubhgupta9860@gmail.com', // Replace with your Gmail email address
-      to: email,
-      subject: 'Welcome to Our Platform',
-      html: `<p>Hi,</p>
-             <p>Welcome to our platform! Your temporary password is: ${temporaryPassword}</p>
-             <p>Please use the following link to change your password: http://localhost:5173/user-forgot`
-    };
-  
-    // Send email
-    await transporter.sendMail(mailOptions);
-  }
+
 
 // Route to handle user data submission
 app.post('/submitUserData', async (req, res) => {
@@ -84,11 +64,46 @@ app.post('/submitUserData', async (req, res) => {
 
         // Save the new user data to the database
       await newUser.save();
-      
-      console.log("Password  ",passwords[0]);
 
         // Send email with the temporary password
-        await sendEmail(email, passwords[0]);
+        // await sendEmail(email, passwords);
+
+        let testAccount = await nodemailer.createTestAccount();
+
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+              user: "kaustubhgupta9860@gmail.com",
+              pass: "bkzcfjagemaqjtvx",
+            },
+          });
+
+          let mailgenerator = new mailgen({
+            theme: "default",
+            product: {
+                name: 'Mailgen',
+                link: 'https://mailgen.js/'
+            }
+          })
+
+
+          let message = {
+            from: 'kaustubhgupta9860@gmail.com', // sender address
+            to: email, // list of receivers
+            subject: "Welcome to Our Platform", // Subject line
+            text: `Hi,
+            Welcome to our platform! Your temporary password is: ${passwords}
+            Please use the following link to change your password: http://localhost:5173/user-forgot`,
+            html: `<p>Hi,</p>
+            <p>Welcome to our platform! Your temporary password is: ${passwords}</p>
+            <p>Please use the following link to change your password: http://localhost:5173/user-forgot`
+          }
+
+          transporter.sendMail(message).then(() =>{
+            return res.status(201).json({msg: "You should recieve an email"})
+          }).catch(error => {
+            return res.status(500).json({error})
+          })
 
         // Respond with a success message
         res.status(201).json({ message: 'User data submitted successfully' });
@@ -117,6 +132,33 @@ app.get('/getAllUserData', async (req, res) => {
         res.status(500).json({ message: 'Failed to fetch user data', error: error.message });
     }
 });
+
+// Route to handle changing user password
+app.post('/changePassword', async (req, res) => {
+    try {
+        // Extract email and new password from the request body
+        const { email, newPassword } = req.body;
+
+        // Find the user by email in the database
+        const user = await UserData.findOne({ email });
+
+        // If user not found, return a 404 status and message
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Update the user's password with the new password
+        user.passwords = newPassword;
+        await user.save();
+
+        // Respond with a success message
+        res.status(200).json({ message: 'Password updated successfully' });
+    } catch (error) {
+        // If an error occurs, return a 500 status and error message
+        res.status(500).json({ message: 'Failed to update password', error: error.message });
+    }
+});
+
 
 
 // Setting up the server to listen on a specified port or defaulting to 3001

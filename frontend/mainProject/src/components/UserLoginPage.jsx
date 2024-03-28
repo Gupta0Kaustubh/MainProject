@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
-import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from 'react-router-dom';
 import BackImage from '../assets/back.jpg';
 import {
     MDBBtn,
@@ -15,6 +17,8 @@ import {
   from 'mdb-react-ui-kit';
 
 function UserLoginPage({onSubmit}) {
+
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     email: '',
@@ -33,11 +37,29 @@ function UserLoginPage({onSubmit}) {
     e.preventDefault();
     // Here you can perform any actions with the form data, such as submitting it to a backend API
     onSubmit(formData)
-    
+    if(formData.email == 'kaustubhgupta@jmangroup.com' && formData.password == '600113') {
+      navigate('/user-creation')
+    }
+    else {
+      toast.error('Invalid username or password');
+    }
   };
 
   return (
     <MDBContainer className="my-5">
+    {/* ToastContainer for displaying notifications */}
+    <ToastContainer
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="dark"
+                />
       <MDBCard>
         <MDBRow className='g-0'>
           <MDBCol md='6'>
