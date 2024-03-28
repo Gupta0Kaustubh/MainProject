@@ -4,7 +4,11 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const mailgen = require('mailgen')
+const UserData = require('./models/User');
+const dotenv = require('dotenv');
 
+// Load environment variables from .env file
+dotenv.config();
 
 // Creating an instance of the Express app
 const app = express();
@@ -13,33 +17,13 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// MongoDB connection URI (replace <username>, <password>, and <dbname> with your credentials)
-const mongoURI = 'mongodb+srv://kaustubhgupta9860:kaustubh12345@cluster0.9erybbp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
+
+const mongoURI = process.env.mongoURI
 
 // Connect to MongoDB cluster
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.error('Error connecting to MongoDB:', err));
-
-// Define a Mongoose schema for your data
-const userDataSchema = new mongoose.Schema({
-    firstName: String,
-    lastName: String,
-    email: String,
-    phoneNumber: String,
-    gender: String,
-    dob: Date,
-    city: String,
-    state: String,
-    userType: String,
-    subscribeNewsletter: Boolean,
-    passwords: String
-});
-
-// Create a Mongoose model based on the schema
-const UserData = mongoose.model('UserData', userDataSchema);
-
-
 
 
 // Route to handle user data submission
@@ -76,7 +60,7 @@ app.post('/submitUserData', async (req, res) => {
             service: 'gmail',
             auth: {
               user: "kaustubhgupta9860@gmail.com",
-              pass: "bkzcfjagemaqjtvx",
+              pass: process.env.password,
             },
           });
 
