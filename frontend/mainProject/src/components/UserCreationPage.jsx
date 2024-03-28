@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {Link} from 'react-router-dom'
 
 import axios from 'axios';
 import {
@@ -16,32 +17,19 @@ import {
   MDBIcon
 } from 'mdb-react-ui-kit';
 
-function generateRandomPassword() {
-  // Function to generate a random alphanumeric password
-  const length = 8; // You can adjust the length of the password
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+';
-  let result = '';
-  for (let i = 0; i < length; i++) {
-    result += characters.charAt(Math.floor(Math.random() * characters.length));
-  }
-  return result;
-}
-
-function UserCreationPage({onSubmit}) {
+function UserCreationPage({ onSubmit }) {
   const [userData, setUserData] = useState({
     firstName: '',
     lastName: '',
     email: '',
     phoneNumber: '',
-    gender: '',
+    gender: '', // Modified to store gender as string instead of boolean
     dob: '',
     city: '',
     state: '',
+    userType: '',
     subscribeNewsletter: false,
-    passwords: generateRandomPassword()
   });
-
-  const [UserDetails, setUserDetails] = useState([]);
 
   const handleInputChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -52,75 +40,52 @@ function UserCreationPage({onSubmit}) {
     }));
   };
 
-  useEffect(() => {
-    // Getting UserData
-    fetch("http://localhost:3001/getAllUserData")
-      .then(function (response) {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then(function (data) {
-        setUserDetails(data);
-      })
-      .catch(function (error) {
-        if (error instanceof SyntaxError) {
-          console.error("Empty or invalid JSON response");
-        } else {
-          console.error("Error fetching user data:", error);
-        }
-        throw error;
-      });
-  }, []);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    onSubmit(userData);
-    console.log("User Deatils : ",UserDetails);
+    // Generate random password
+    const password = generateRandomPassword();
 
-    console.log(userData.email);
-      const isUser = UserDetails.allUserData.find(user => user.email === userData.email);
-    console.log(isUser);
-    if (isUser) {
-      toast.error('User with the same email already exist !!');
+    // Update user data with the generated password
+    const updatedUserData = { ...userData, passwords: password };
+    onSubmit(updatedUserData);
+
+    // Perform form validation
+    if (!userData.email || !userData.gender) {
+      toast.error('Please fill in all required fields.');
+      return;
     }
-    else {
-      axios.post('http://localhost:3001/submitUserData', userData)
+
+    // Submit user data
+    axios.post('http://localhost:3001/submitUserData', updatedUserData)
       .then(response => {
         console.log('User data submitted successfully:', response.data);
-        
-        
+        toast.success('User data submitted successfully');
+        setTimeout(() => {
+          window.location.reload();
+        }, 6000);
       })
       .catch(error => {
         console.error('Error submitting user data:', error);
+        toast.error('Failed to submit user data. Please try again.');
       });
-      toast.success('User data submitted successfully');
-        setTimeout(() => {
-          window.location.reload();
-      }, 6000);
-      
-    }
-    
-    
   };
 
   return (
     <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'auto'}}>
       {/* ToastContainer for displaying notifications */}
-    <ToastContainer
-                    position="top-right"
-                    autoClose={5000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnFocusLoss
-                    draggable
-                    pauseOnHover
-                    theme="dark"
-                />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <MDBRow className="h-100 justify-content-center align-items-center">
         <MDBCol md='6' className='text-center text-md-start d-flex flex-column justify-content-center'>
           <h1 className="my-3 display-3 fw-bold ls-tight px-3">
@@ -160,12 +125,27 @@ function UserCreationPage({onSubmit}) {
                   </MDBCol>
                 </MDBRow>
                 <MDBRow className="mb-3">
-                  <MDBCol md='12'>
+                <MDBCol col='6'>
+                    <label className='form-label mb-1'>Gender</label>
                     <div className="d-flex">
-                      <label htmlFor='gender' className='form-label mb-1'>Gender</label>
-                      <MDBCheckbox name='gender' value='male' id='male' label='Male' className='ms-2 me-2' onChange={handleInputChange} checked={userData.gender === 'male'} />
-                      <MDBCheckbox name='gender' value='female' id='female' label='Female' className='ms-2 me-2' onChange={handleInputChange} checked={userData.gender === 'female'} />
-                      <MDBCheckbox name='gender' value='other' id='other' label='Other' className='ms-2 me-2' onChange={handleInputChange} checked={userData.gender === 'other'} />
+                      <div className="form-check ms-4 me-4">
+                        <input className="form-check-input" type="radio" name="gender" id="male" value="male" onChange={handleInputChange} checked={userData.gender === 'male'} />
+                        <label className="form-check-label" htmlFor="male">
+                          Male
+                        </label>
+                      </div>
+                      <div className="form-check ms-4 me-4">
+                        <input className="form-check-input" type="radio" name="gender" id="female" value="female" onChange={handleInputChange} checked={userData.gender === 'female'} />
+                        <label className="form-check-label" htmlFor="female">
+                          Female
+                        </label>
+                      </div>
+                      <div className="form-check ms-4 me-2">
+                        <input className="form-check-input" type="radio" name="gender" id="other" value="other" onChange={handleInputChange} checked={userData.gender === 'other'} />
+                        <label className="form-check-label" htmlFor="other">
+                          Other
+                        </label>
+                      </div>
                     </div>
                   </MDBCol>
                 </MDBRow>
@@ -180,24 +160,46 @@ function UserCreationPage({onSubmit}) {
                   </MDBCol>
                 </MDBRow>
                 <MDBRow>
-                  <MDBCol col='12'>
+                  <MDBCol col='6'>
                     <label htmlFor='state' className='form-label mb-1'>State</label>
                     <MDBInput id='state' type='text' wrapperClass='mb-4' name='state' onChange={handleInputChange} value={userData.state} />
+                  </MDBCol>
+                  <MDBCol col='6'>
+                    <label htmlFor='userType' className='form-label mb-1'>User Type</label>
+                    <select className="form-select mb-4" id="userType" name="userType" onChange={handleInputChange} value={userData.userType}>
+                      <option value="">Select User Type</option>
+                      <option value="admin">Admin</option>
+                      <option value="intern">Intern</option>
+                      <option value="employee">Employee</option>
+                    </select>
                   </MDBCol>
                 </MDBRow>
                 <div className='d-flex justify-content-center mb-4'>
                   <MDBCheckbox name='subscribeNewsletter' id='flexCheckDefault' label='Subscribe to our newsletter' onChange={handleInputChange} checked={userData.subscribeNewsletter} />
                 </div>
-                <MDBBtn type="submit" className='w-100 mb-2' size='md'>Sign up</MDBBtn>
+                <button type="submit" className='btn btn-secondary w-100 mb-2' size='md'>Sign up</button>
               </form>
-              
-
+              {/* Logout Button */}
+              <Link to='/user-login'><button className='btn btn-primary w-30 mb-2 ms-auto' size='md'>Logout</button></Link>
             </MDBCardBody>
+            
           </MDBCard>
+          
         </MDBCol>
       </MDBRow>
     </MDBContainer>
   )
+}
+
+// Function to generate a random alphanumeric password
+function generateRandomPassword() {
+  const length = 4;
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+';
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return result;
 }
 
 export default UserCreationPage;

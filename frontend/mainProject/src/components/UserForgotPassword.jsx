@@ -64,7 +64,10 @@ function UserForgotPassword() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(passChange.newpassword != passChange.newpasswordagain) {
+    if (passChange.newpassword.length < 8) {
+      toast.error('New password must be at least 8 characters long');
+    }
+    else if(passChange.newpassword != passChange.newpasswordagain) {
       toast.error('Enter the new password in both the fields same !!');
       // navigate('/user-creation')
     }
@@ -172,7 +175,7 @@ function UserForgotPassword() {
                 </MDBCol>
 
                 <Link to="/user-login">
-                <MDBBtn className="mb-4 w-100" onClick={handleSubmit}>Save</MDBBtn>
+                <button className="btn btn-primary mb-4 w-100" onClick={handleSubmit}>Save</button>
               </Link>
 
             </MDBCardBody>

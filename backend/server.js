@@ -31,6 +31,7 @@ const userDataSchema = new mongoose.Schema({
     dob: Date,
     city: String,
     state: String,
+    userType: String,
     subscribeNewsletter: Boolean,
     passwords: String
 });
@@ -45,7 +46,7 @@ const UserData = mongoose.model('UserData', userDataSchema);
 app.post('/submitUserData', async (req, res) => {
     try {
         // Extract user data from the request body
-        const { firstName, lastName, email, phoneNumber, gender, dob, city, state, subscribeNewsletter, passwords } = req.body;
+        const { firstName, lastName, email, phoneNumber, gender, dob, city, state, userType, subscribeNewsletter, passwords } = req.body;
 
 
         // Create a new UserData document
@@ -58,6 +59,7 @@ app.post('/submitUserData', async (req, res) => {
             dob,
             city,
             state,
+            userType,
             subscribeNewsletter,
             passwords
         });
