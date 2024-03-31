@@ -82,7 +82,7 @@ function UserForgotPassword() {
         console.log('User data modified successfully:', response.data);
         toast.success('User password modified successfully !!');
         setTimeout(() => {
-          navigate('/');
+          navigate('/admin-login');
       }, 4000);
         
       })

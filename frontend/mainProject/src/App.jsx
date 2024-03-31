@@ -5,9 +5,14 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
 
 import Home from './components/Home.jsx';
+import EmployeeDashboard from './components/dashboards/EmployeeDashboard'
+import AdminDashboard from './components/dashboards/AdminDashboard'
 import UserLoginPage from './components/UserLoginPage.jsx';
 import UserCreationPage from './components/UserCreationPage.jsx';
+import TrainerCreationPage from './components/TrainerCreationPage.jsx';
 import UserForgotPassword from './components/UserForgotPassword.jsx';
+import TrainingCreationPage from './components/TrainingCreationPage'
+import QuizCreationPage from './components/QuizCreationPage.jsx'
 
 function App() {
 
@@ -27,13 +32,23 @@ function App() {
           {/* Routes setup */}
           <Routes>
             {/* Home route */}
-            <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home />} />
+            {/* Employee Dashboard route */}
+            <Route path="/emp-dashboard" element={<EmployeeDashboard />} />
+            {/* Admin Dashboard route */}
+            <Route path="/admin-dashboard" element={<AdminDashboard />} />
             {/* User Creation route */}
             <Route path="/user-creation" element={<UserCreationPage onSubmit={handleRegistration} />} />
             {/* User Login route */}
-            <Route path="/user-login" element={<UserLoginPage onSubmit={handleLogin} />} />
+            <Route path="/admin-login" element={<UserLoginPage onSubmit={handleLogin} />} />
             {/* User Forget Password route */}
             <Route path="/user-forgot" element={<UserForgotPassword />} />
+            {/* Trainer Creation route */}
+            <Route path="/trainer-creation" element={<TrainerCreationPage />} />
+            {/* Training Creation route */}
+            <Route path="/training-creation" element={<TrainingCreationPage />} />
+            {/* Quiz Creation route */}
+            <Route path="/quiz-creation" element={<QuizCreationPage />} />
           </Routes>
       </Router>
     </>

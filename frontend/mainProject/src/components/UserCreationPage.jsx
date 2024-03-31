@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {Link} from 'react-router-dom'
+import Navbar from './Navbar';
 
 import axios from 'axios';
 import {
-  MDBBtn,
   MDBContainer,
   MDBRow,
   MDBCol,
@@ -14,19 +13,24 @@ import {
   MDBCardBody,
   MDBInput,
   MDBCheckbox,
-  MDBIcon
 } from 'mdb-react-ui-kit';
 
 function UserCreationPage({ onSubmit }) {
+  
   const [userData, setUserData] = useState({
+    userId:'',
     firstName: '',
+    middleName:'',
     lastName: '',
     email: '',
     phoneNumber: '',
     gender: '', // Modified to store gender as string instead of boolean
+    doj: '',
+    specializations:'',
     dob: '',
     city: '',
     state: '',
+    experience:'',
     userType: '',
     subscribeNewsletter: false,
   });
@@ -51,8 +55,8 @@ function UserCreationPage({ onSubmit }) {
     onSubmit(updatedUserData);
 
     // Perform form validation
-    if (!userData.email || !userData.gender) {
-      toast.error('Please fill in all required fields.');
+    if (!userData.userId || !userData.firstName || !userData.lastName || !userData.email || !userData.phoneNumber || !userData.gender || !userData.doj || !userData.specializations || !userData.dob || !userData.state || !userData.experience || !userData.userType) {
+      toast.error('Please fill in all the required fields.');
       return;
     }
 
@@ -72,7 +76,8 @@ function UserCreationPage({ onSubmit }) {
   };
 
   return (
-    <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'auto'}}>
+    <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'auto' }}>
+      <Navbar />
       {/* ToastContainer for displaying notifications */}
       <ToastContainer
         position="top-right"
@@ -101,46 +106,51 @@ function UserCreationPage({ onSubmit }) {
           </p>
         </MDBCol>
         <MDBCol md='6'>
-          <MDBCard className='my-5' style={{backgroundColor:'#ffc8dd'}}>
+          <MDBCard className='my-5 bg-primary-subtle'>
             <MDBCardBody className='p-5'>
               <form onSubmit={handleSubmit}>
                 <MDBRow>
                   <MDBCol col='6'>
-                    <label htmlFor='firstName' className='form-label mb-1'>First name</label>
+                    <label htmlFor='userId' className='form-label mb-1'>User Id</label><span className='ms-1' style={{ color: 'red' }}>*</span>
+                    <MDBInput id='userId' type='text' wrapperClass='mb-4' name='userId' onChange={handleInputChange} value={userData.userId} />
+                  </MDBCol>
+                  
+                  <MDBCol col='6'>
+                    <label htmlFor='email' className='form-label mb-1'>Email</label><span className='ms-1' style={{ color: 'red' }}>*</span>
+                    <MDBInput id='email' type='email' wrapperClass='mb-4' name='email' onChange={handleInputChange} value={userData.email} />
+                  </MDBCol>
+                </MDBRow>
+                <MDBRow>
+                  <MDBCol col='4'>
+                    <label htmlFor='firstName' className='form-label mb-1'>First name</label><span className='ms-1' style={{ color: 'red' }}>*</span>
                     <MDBInput id='firstName' type='text' wrapperClass='mb-4' name='firstName' onChange={handleInputChange} value={userData.firstName} />
                   </MDBCol>
-                  <MDBCol col='6'>
-                    <label htmlFor='lastName' className='form-label mb-1'>Last name</label>
+                  <MDBCol col='4'>
+                    <label htmlFor='middleName' className='form-label mb-1'>Middle name</label>
+                    <MDBInput id='middleName' type='text' wrapperClass='mb-4' name='middleName' onChange={handleInputChange} value={userData.middleName} />
+                  </MDBCol>
+                  <MDBCol col='4'>
+                    <label htmlFor='lastName' className='form-label mb-1'>Last name</label><span className='ms-1' style={{ color: 'red' }}>*</span>
                     <MDBInput id='lastName' type='text' wrapperClass='mb-4' name='lastName' onChange={handleInputChange} value={userData.lastName} />
                   </MDBCol>
                 </MDBRow>
                 <MDBRow>
                   <MDBCol col='6'>
-                    <label htmlFor='email' className='form-label mb-1'>Email</label>
-                    <MDBInput id='email' type='email' wrapperClass='mb-4' name='email' onChange={handleInputChange} value={userData.email} />
-                  </MDBCol>
-                  <MDBCol col='6'>
-                    <label htmlFor='phoneNumber' className='form-label mb-1'>Phone Number</label>
-                    <MDBInput id='phoneNumber' type='tel' wrapperClass='mb-4' name='phoneNumber' onChange={handleInputChange} value={userData.phoneNumber} />
-                  </MDBCol>
-                </MDBRow>
-                <MDBRow className="mb-3">
-                <MDBCol col='6'>
-                    <label className='form-label mb-1'>Gender</label>
+                    <label className='form-label mb-1'>Gender</label><span className='ms-1' style={{ color: 'red' }}>*</span>
                     <div className="d-flex">
-                      <div className="form-check ms-4 me-4">
+                      <div className="form-check me-4">
                         <input className="form-check-input" type="radio" name="gender" id="male" value="male" onChange={handleInputChange} checked={userData.gender === 'male'} />
                         <label className="form-check-label" htmlFor="male">
                           Male
                         </label>
                       </div>
-                      <div className="form-check ms-4 me-4">
+                      <div className="form-check me-4">
                         <input className="form-check-input" type="radio" name="gender" id="female" value="female" onChange={handleInputChange} checked={userData.gender === 'female'} />
                         <label className="form-check-label" htmlFor="female">
                           Female
                         </label>
                       </div>
-                      <div className="form-check ms-4 me-2">
+                      <div className="form-check ">
                         <input className="form-check-input" type="radio" name="gender" id="other" value="other" onChange={handleInputChange} checked={userData.gender === 'other'} />
                         <label className="form-check-label" htmlFor="other">
                           Other
@@ -148,11 +158,25 @@ function UserCreationPage({ onSubmit }) {
                       </div>
                     </div>
                   </MDBCol>
+                  <MDBCol col='6'>
+                    <label htmlFor='phoneNumber' className='form-label mb-1'>Phone Number</label><span className='ms-1' style={{ color: 'red' }}>*</span>
+                    <MDBInput id='phoneNumber' type='tel' wrapperClass='mb-4' name='phoneNumber' onChange={handleInputChange} value={userData.phoneNumber} />
+                  </MDBCol>
+                </MDBRow>
+                <MDBRow className="mb-3">
+                <MDBCol col='6'>
+                    <label htmlFor='dob' className='form-label mb-1'>Date of Birth</label><span className='ms-1' style={{ color: 'red' }}>*</span>
+                    <MDBInput id='dob' type='date' wrapperClass='mb-4' name='dob' onChange={handleInputChange} value={userData.dob} />
+                  </MDBCol>
+                  <MDBCol col='6'>
+                    <label htmlFor='doj' className='form-label mb-1'>Date of Joining</label><span className='ms-1' style={{ color: 'red' }}>*</span>
+                    <MDBInput id='doj' type='date' wrapperClass='mb-4' name='doj' onChange={handleInputChange} value={userData.doj} />
+                  </MDBCol>
                 </MDBRow>
                 <MDBRow>
                   <MDBCol col='6'>
-                    <label htmlFor='dob' className='form-label mb-1'>Date of Birth</label>
-                    <MDBInput id='dob' type='date' wrapperClass='mb-4' name='dob' onChange={handleInputChange} value={userData.dob} />
+                    <label htmlFor='state' className='form-label mb-1'>State</label><span className='ms-1' style={{ color: 'red' }}>*</span>
+                    <MDBInput id='state' type='text' wrapperClass='mb-4' name='state' onChange={handleInputChange} value={userData.state} />
                   </MDBCol>
                   <MDBCol col='6'>
                     <label htmlFor='city' className='form-label mb-1'>City</label>
@@ -160,27 +184,31 @@ function UserCreationPage({ onSubmit }) {
                   </MDBCol>
                 </MDBRow>
                 <MDBRow>
+                  <MDBCol col='12'>
+                    <label htmlFor='specializations' className='form-label mb-1'>Specializations (use comma, if more than 1)</label><span className='ms-1' style={{ color: 'red' }}>*</span>
+                    <MDBInput id='specializations' type='text' wrapperClass='mb-4' name='specializations' onChange={handleInputChange} value={userData.specializations} />
+                  </MDBCol>
+                  
+                </MDBRow>
+                <MDBRow>
                   <MDBCol col='6'>
-                    <label htmlFor='state' className='form-label mb-1'>State</label>
-                    <MDBInput id='state' type='text' wrapperClass='mb-4' name='state' onChange={handleInputChange} value={userData.state} />
+                    <label htmlFor='experience' className='form-label mb-1'>Experience (in years)</label><span className='ms-1' style={{ color: 'red' }}>*</span>
+                    <MDBInput id='experience' type='number' wrapperClass='mb-4' name='experience' onChange={handleInputChange} value={userData.experience} min={0} />
                   </MDBCol>
                   <MDBCol col='6'>
-                    <label htmlFor='userType' className='form-label mb-1'>User Type</label>
+                    <label htmlFor='userType' className='form-label mb-1'>User Type</label><span className='ms-1' style={{ color: 'red' }}>*</span>
                     <select className="form-select mb-4" id="userType" name="userType" onChange={handleInputChange} value={userData.userType}>
                       <option value="">Select User Type</option>
                       <option value="admin">Admin</option>
-                      <option value="intern">Intern</option>
                       <option value="employee">Employee</option>
                     </select>
                   </MDBCol>
                 </MDBRow>
                 <div className='d-flex justify-content-center mb-4'>
-                  <MDBCheckbox name='subscribeNewsletter' id='flexCheckDefault' label='Subscribe to our newsletter' onChange={handleInputChange} checked={userData.subscribeNewsletter} />
+                  <MDBCheckbox name='subscribeNewsletter' id='flexCheckDefault' label="Subscription required for the company's newsletter" onChange={handleInputChange} checked={userData.subscribeNewsletter} />
                 </div>
-                <button type="submit" className='btn btn-secondary w-100 mb-2' size='md'>Sign up</button>
+                <button type="submit" className='btn btn-secondary w-100 mb-2' size='md'>Save</button>
               </form>
-              {/* Logout Button */}
-              <Link to='/user-login'><button className='btn btn-primary w-30 mb-2 ms-auto' size='md'>Logout</button></Link>
             </MDBCardBody>
             
           </MDBCard>

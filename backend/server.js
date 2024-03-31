@@ -4,7 +4,10 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const mailgen = require('mailgen')
-const UserData = require('./models/User');
+const UserData = require('./models/User').UserData;
+const Trainer = require('./models/User').Trainer;
+const Training = require('./models/User').Training;
+const QuizData = require('./models/User').QuizData;
 const dotenv = require('dotenv');
 
 // Load environment variables from .env file
@@ -26,23 +29,29 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .catch(err => console.error('Error connecting to MongoDB:', err));
 
 
+
 // Route to handle user data submission
 app.post('/submitUserData', async (req, res) => {
     try {
         // Extract user data from the request body
-        const { firstName, lastName, email, phoneNumber, gender, dob, city, state, userType, subscribeNewsletter, passwords } = req.body;
+        const { userId, firstName, middleName, lastName, email, phoneNumber, gender, doj, specializations, dob, city, state, experience, userType, subscribeNewsletter, passwords } = req.body;
 
 
         // Create a new UserData document
         const newUser = new UserData({
+            userId,
             firstName,
+            middleName,
             lastName,
             email,
             phoneNumber,
             gender,
+            doj,
+            specializations,
             dob,
             city,
             state,
+            experience,
             userType,
             subscribeNewsletter,
             passwords
@@ -99,7 +108,6 @@ app.post('/submitUserData', async (req, res) => {
     }
 });
 
-
 // Route to fetch all user data
 app.get('/getAllUserData', async (req, res) => {
     try {
@@ -142,6 +150,89 @@ app.post('/changePassword', async (req, res) => {
     } catch (error) {
         // If an error occurs, return a 500 status and error message
         res.status(500).json({ message: 'Failed to update password', error: error.message });
+    }
+});
+
+// Route to handle trainer data submission
+app.post('/submitTrainerData', async (req, res) => {
+    try {
+        // Extract trainer data from the request body
+        const { userId, trainerName, trainerDesignation, trainerRating, trainerSpecialization } = req.body;
+
+        // Create a new Trainer document
+        const newTrainer = new Trainer({
+            userId,
+            trainerName,
+            trainerDesignation,
+            trainerRating,
+            trainerSpecialization
+        });
+
+        // Save the new trainer data to the database
+        await newTrainer.save();
+
+        // Respond with a success message
+        res.status(201).json({ message: 'Trainer data submitted successfully' });
+    } catch (error) {
+        // Handle errors if saving trainer data fails
+        res.status(500).json({ message: 'Failed to submit trainer data', error: error.message });
+    }
+});
+
+// Route to handle training data submission
+app.post('/submitTrainingData', async (req, res) => {
+    try {
+        // Extract training data from the request body
+        const { trainingId, trainingName, trainingDescription, trainerId, trainerName, startDate, endDate, optimizedDuration } = req.body;
+
+        // Create a new Training document
+        const newTraining = new Training({
+            trainingId,
+            trainingName,
+            trainingDescription,
+            trainerId,
+            trainerName,
+            startDate,
+            endDate,
+            optimizedDuration
+        });
+
+        // Save the new training data to the database
+        await newTraining.save();
+
+        // Respond with a success message
+        res.status(201).json({ message: 'Training data submitted successfully' });
+    } catch (error) {
+        // Handle errors if saving training data fails
+        res.status(500).json({ message: 'Failed to submit training data', error: error.message });
+    }
+});
+
+// Route to handle QuizScore data submission
+app.post('/submitQuizData', async (req, res) => {
+    try {
+        // Extract quiz data from the request body
+        const {quizName, trainingId, trainingName, questionFile, maxScores, minScores, difficultyLevel } = req.body;
+
+        // Create a new QuizScore document
+        const newQuizScore = new QuizData({
+            quizName,
+            trainingId,
+            trainingName,
+            questionFile,
+            maxScores,
+            minScores,
+            difficultyLevel
+        });
+
+        // Save the new quiz data to the database
+        await newQuizScore.save();
+
+        // Respond with a success message
+        res.status(201).json({ message: 'Quiz data submitted successfully' });
+    } catch (error) {
+        // Handle errors if saving quiz data fails
+        res.status(500).json({ message: 'Failed to submit quiz data', error: error.message });
     }
 });
 

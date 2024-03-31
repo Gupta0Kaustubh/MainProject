@@ -3,6 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from 'react-router-dom';
 import BackImage from '../assets/back.jpg';
+  
 import {
     MDBBtn,
     MDBContainer,
@@ -73,15 +74,15 @@ function UserLoginPage({onSubmit}) {
         
       }
       else if(isAdmin) {
-        toast.success('Redirecting to the User Creation Page');
+        toast.success('Redirecting to the Admin Dashboard');
         setTimeout(() => {
-          navigate('/user-creation');
+          navigate('/admin-dashboard');
       }, 2000);
       }
       else  {
-        toast.error('Only Admin can Login, redirecting you to home page !!');
+        toast.error('Redirecting to the Employee Dashboard');
         setTimeout(() => {
-          navigate('/');
+          navigate('/emp-dashboard');
       }, 4000);
       }
     }
