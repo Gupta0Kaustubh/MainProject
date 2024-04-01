@@ -154,7 +154,7 @@ function UserLoginPage({onSubmit}) {
               
             </MDBCol>
             <MDBCol col='3'>
-              <button className="btn btn-secondary mb-4 w-100 mt-4" onClick={() => navigate('/user-forgot')}>Forgot Password ?</button>
+              <button className="btn btn-secondary mb-4 w-100 mt-4" onClick={() => navigate('/forgot-password')}>Forgot Password ?</button>
             </MDBCol>
         </MDBRow>
               <div className='d-flex flex-row justify-content-start'>
@@ -167,6 +167,17 @@ function UserLoginPage({onSubmit}) {
       </MDBCard>
     </MDBContainer>
   )
+}
+
+// Function to generate a random alphanumeric password
+function generateRandomPassword() {
+  const length = 4;
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()-_=+';
+  let result = '';
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return result;
 }
 
 export default UserLoginPage;

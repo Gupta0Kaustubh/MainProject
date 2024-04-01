@@ -51,7 +51,7 @@ function UserCreationPage({ onSubmit }) {
     const password = generateRandomPassword();
 
     // Update user data with the generated password
-    const updatedUserData = { ...userData, passwords: password };
+    const password = generateRandomPassword();
     onSubmit(updatedUserData);
 
     // Perform form validation

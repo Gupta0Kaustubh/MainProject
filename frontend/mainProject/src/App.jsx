@@ -13,6 +13,7 @@ import TrainerCreationPage from './components/TrainerCreationPage.jsx';
 import UserForgotPassword from './components/UserForgotPassword.jsx';
 import TrainingCreationPage from './components/TrainingCreationPage'
 import QuizCreationPage from './components/QuizCreationPage.jsx'
+import ForgotPassword from './components/ForgotPassword.jsx'
 
 function App() {
 
@@ -39,8 +40,10 @@ function App() {
             <Route path="/admin-dashboard" element={<AdminDashboard />} />
             {/* User Creation route */}
             <Route path="/user-creation" element={<UserCreationPage onSubmit={handleRegistration} />} />
-            {/* User Forget Password route */}
+            {/* User Default Password route */}
             <Route path="/user-forgot" element={<UserForgotPassword />} />
+            {/* User Default Password route */}
+            <Route path="/forgot-password" element={<ForgotPassword />} />
             {/* Trainer Creation route */}
             <Route path="/trainer-creation" element={<TrainerCreationPage />} />
             {/* Training Creation route */}

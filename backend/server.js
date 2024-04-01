@@ -30,6 +30,69 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
 
 
 
+// Route to handle forgot password submission
+app.post('/forgotPassword', async (req, res) => {
+    try {
+        // Extract user data from the request body
+        const { email, password } = req.body;
+
+
+        // Create a new UserData document
+        const newUser = new UserData({
+            email,
+            password
+        });
+
+        // Save the new user data to the database
+      await newUser.save();
+
+        // Send email with the temporary password
+        // await sendEmail(email, passwords);
+
+        let testAccount = await nodemailer.createTestAccount();
+
+        const transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+              user: "kaustubhgupta9860@gmail.com",
+              pass: process.env.password,
+            },
+          });
+
+          let mailgenerator = new mailgen({
+            theme: "default",
+            product: {
+                name: 'Mailgen',
+                link: 'https://mailgen.js/'
+            }
+          })
+
+
+          let message = {
+            from: 'kaustubhgupta9860@gmail.com', // sender address
+            to: email, // list of receivers
+            subject: "Welcome to Our Platform", // Subject line
+            text: `Hi,
+            Welcome to our platform! Your temporary password is: ${password}
+            Please use the following link to change your password: http://localhost:5173/user-forgot`,
+            html: `<p>Hi,</p>
+            <p>Welcome to our platform! Your temporary password is: ${password}</p>
+            <p>Please use the following link to change your password: http://localhost:5173/user-forgot`
+          }
+
+          transporter.sendMail(message).then(() =>{
+            return res.status(201).json({msg: "You should recieve an email"})
+          }).catch(error => {
+            return res.status(500).json({error})
+          })
+
+        // Respond with a success message
+        res.status(201).json({ message: 'User data submitted successfully' });
+    } catch (error) {
+        // Handle errors if saving user data or sending email fails
+        res.status(500).json({ message: 'Failed to submit user data', error: error.message });
+    }
+});
 // Route to handle user data submission
 app.post('/submitUserData', async (req, res) => {
     try {
