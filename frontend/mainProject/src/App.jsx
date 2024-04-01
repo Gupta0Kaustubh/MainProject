@@ -32,15 +32,13 @@ function App() {
           {/* Routes setup */}
           <Routes>
             {/* Home route */}
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<UserLoginPage onSubmit={handleLogin} />} />
             {/* Employee Dashboard route */}
             <Route path="/emp-dashboard" element={<EmployeeDashboard />} />
             {/* Admin Dashboard route */}
             <Route path="/admin-dashboard" element={<AdminDashboard />} />
             {/* User Creation route */}
             <Route path="/user-creation" element={<UserCreationPage onSubmit={handleRegistration} />} />
-            {/* User Login route */}
-            <Route path="/admin-login" element={<UserLoginPage onSubmit={handleLogin} />} />
             {/* User Forget Password route */}
             <Route path="/user-forgot" element={<UserForgotPassword />} />
             {/* Trainer Creation route */}

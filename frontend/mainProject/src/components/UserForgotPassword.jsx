@@ -16,7 +16,7 @@ import {
   MDBCheckbox
 }
 from 'mdb-react-ui-kit';
-import ForgotPassword from '../assets/forgotpassword.jpg'
+import ForgotPassword from '../assets/login_back.jpg'
 
 function UserForgotPassword() {
 
@@ -100,6 +100,11 @@ function UserForgotPassword() {
 
   return (
     <MDBContainer className='my-5'>
+      <nav className="navbar bg-tertiary mb-3 ms-3">
+      <div className="container-fluid">
+        <h1 className='text-light'>TrainTrack </h1>
+      </div>
+    </nav>
       {/* ToastContainer for displaying notifications */}
     <ToastContainer
                     position="top-right"
@@ -115,18 +120,18 @@ function UserForgotPassword() {
                 />
       <MDBCard>
 
-        <MDBRow className='g-0 d-flex align-items-center'>
+        <MDBRow className='g-0 d-flex align-items-center bg-primary-subtle'>
 
-          <MDBCol md='4'>
-            <MDBCardImage src={ForgotPassword} alt='phone' className='rounded-t-5 rounded-tr-lg-0' fluid />
+          <MDBCol md='6'>
+            <MDBCardImage src={ForgotPassword} alt='phone' className='rounded-t-5 rounded-tr-lg-0 ms-3' fluid />
           </MDBCol>
 
-          <MDBCol md='8'>
+          <MDBCol md='6'>
 
             <MDBCardBody>
 
               <MDBCol col='6'>
-                  <label htmlFor='password' className='form-label mb-1'>Enter your Email ID</label>
+                  <label htmlFor='password' className='form-label mb-1'>Email Id</label><span className='ms-1' style={{ color: 'red' }}>*</span>
                   <input 
                     type="email" 
                     id="email" 
@@ -138,7 +143,7 @@ function UserForgotPassword() {
                   />
               </MDBCol>
               <MDBCol col='6'>
-                  <label htmlFor='password' className='form-label mb-1'>Enter your default Password</label>
+                  <label htmlFor='password' className='form-label mb-1'>Default password</label><span className='ms-1' style={{ color: 'red' }}>*</span>
                   <input 
                     type="password" 
                     id="password1" 
@@ -150,7 +155,7 @@ function UserForgotPassword() {
                   />
               </MDBCol>
               <MDBCol col='6'>
-                  <label htmlFor='password' className='form-label mb-1'>Enter your new Password</label>
+                  <label htmlFor='password' className='form-label mb-1'>New password</label><span className='ms-1' style={{ color: 'red' }}>*</span>
                   <input 
                     type="password" 
                     id="password2" 
@@ -162,7 +167,7 @@ function UserForgotPassword() {
                   />
               </MDBCol>
               <MDBCol col='6'>
-                  <label htmlFor='password' className='form-label mb-1'>Re-Enter your new Password</label>
+                  <label htmlFor='password' className='form-label mb-1'>Re-enter password</label><span className='ms-1' style={{ color: 'red' }}>*</span>
                   <input 
                     type="password" 
                     id="password3" 
@@ -173,10 +178,20 @@ function UserForgotPassword() {
                     required 
                   />
                 </MDBCol>
-
+                <MDBCol col='6'>
+        <MDBRow>
+            <MDBCol col='3'>
                 <Link to="/user-login">
-                <button className="btn btn-primary mb-4 w-100" onClick={handleSubmit}>Save</button>
-              </Link>
+                    <button className="btn btn-primary mb-4 w-100 mt-4" onClick={handleSubmit}>Save</button>
+                </Link>
+            </MDBCol>
+            <MDBCol col='3'>
+                <Link to="/user-login">
+                    <button className="btn btn-secondary mb-4 w-100 mt-4" onClick={handleSubmit}>Cancel</button>
+                </Link>
+            </MDBCol>
+        </MDBRow>
+    </MDBCol>
 
             </MDBCardBody>
 

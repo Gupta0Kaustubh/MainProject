@@ -80,7 +80,7 @@ function UserLoginPage({onSubmit}) {
       }, 2000);
       }
       else  {
-        toast.error('Redirecting to the Employee Dashboard');
+        toast.success('Redirecting to the Employee Dashboard');
         setTimeout(() => {
           navigate('/emp-dashboard');
       }, 4000);
@@ -93,6 +93,11 @@ function UserLoginPage({onSubmit}) {
 
   return (
     <MDBContainer className="my-5">
+      <nav className="navbar bg-tertiary mb-3 ms-3">
+      <div className="container-fluid">
+        <h1 className='text-light'>TrainTrack </h1>
+      </div>
+    </nav>
     {/* ToastContainer for displaying notifications */}
     <ToastContainer
                     position="top-right"
@@ -115,11 +120,11 @@ function UserLoginPage({onSubmit}) {
             <MDBCardBody className='d-flex flex-column'>
               <div className='d-flex flex-row mt-2'>
                 <MDBIcon fas icon="cubes fa-3x me-3" style={{ color: '#ff6219' }}/>
-                <span className="h1 fw-bold mb-0">Login Module</span>
+                <span className="h1 fw-bold mb-0">USER LOGIN</span>
               </div>
               <h5 className="fw-normal my-4 pb-3" style={{letterSpacing: '1px'}}>Sign into your account</h5>
               <div className="mb-4">
-                <label htmlFor="email" className="form-label">Email address</label>
+                <label htmlFor="email" className="form-label">Email address</label><span className='ms-1' style={{ color: 'red' }}>*</span>
             
                 <input 
                     type="email" 
@@ -132,7 +137,7 @@ function UserLoginPage({onSubmit}) {
                   />
               </div>
               <div className="mb-4">
-                <label htmlFor="password" className="form-label">Password</label>
+                <label htmlFor="password" className="form-label">Password</label><span className='ms-1' style={{ color: 'red' }}>*</span>
                 <input 
                     type="password" 
                     id="password" 

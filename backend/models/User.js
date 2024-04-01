@@ -58,9 +58,9 @@ const quizDataSchema = new mongoose.Schema({
 const QuizData = mongoose.model('QuizData', quizDataSchema);
 
 const trackerSchema = new mongoose.Schema({
-    email: { type: mongoose.Schema.Types.ObjectId, ref: 'UserData', required: true },
-    trainingName: { type: mongoose.Schema.Types.ObjectId, ref: 'Training', required: true },
-    trainerName:{ type: mongoose.Schema.Types.ObjectId, ref: 'Trainer', required: true },
+    userId: {type: String, required: true},
+    trainingId: {type: String, required: true},
+    trainerId: {type: String, required: true},
     trainingStatus: { type: String, enum: ['pending', 'in_progress', 'completed'], default: 'pending' }, // Training status (enum with default value)
     assessment_percentage_done: { type: Number, min: 0, max: 100, default: 0 }, // Percentage of assessment done
     assessment_completion_time_in_hours: { type: Number, default: 0 },
