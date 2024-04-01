@@ -148,8 +148,15 @@ function UserLoginPage({onSubmit}) {
                     required 
                   />
               </div>
-              <button className="btn btn-secondary mb-4 px-5" color='dark' size='lg' onClick={handleSubmit}>Login</button>
+              <MDBRow>
+            <MDBCol col='3'>  
+                    <button className="btn btn-primary mb-4 w-100 mt-4" onClick={handleSubmit}>Login</button>
               
+            </MDBCol>
+            <MDBCol col='3'>
+              <button className="btn btn-secondary mb-4 w-100 mt-4" onClick={() => navigate('/user-forgot')}>Forgot Password ?</button>
+            </MDBCol>
+        </MDBRow>
               <div className='d-flex flex-row justify-content-start'>
                 <a href="#!" className="small text-muted me-1">Terms of use.</a>
                 <a href="#!" className="small text-muted">Privacy policy</a>

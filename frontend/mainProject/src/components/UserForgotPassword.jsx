@@ -186,9 +186,7 @@ function UserForgotPassword() {
                 </Link>
             </MDBCol>
             <MDBCol col='3'>
-                <Link to="/user-login">
-                    <button className="btn btn-secondary mb-4 w-100 mt-4" onClick={handleSubmit}>Cancel</button>
-                </Link>
+              <button className="btn btn-secondary mb-4 w-100 mt-4" onClick={() => navigate('/')}>Cancel</button>
             </MDBCol>
         </MDBRow>
     </MDBCol>

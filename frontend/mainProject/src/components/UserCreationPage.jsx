@@ -207,7 +207,15 @@ function UserCreationPage({ onSubmit }) {
                 <div className='d-flex justify-content-center mb-4'>
                   <MDBCheckbox name='subscribeNewsletter' id='flexCheckDefault' label="Subscription required for the company's newsletter" onChange={handleInputChange} checked={userData.subscribeNewsletter} />
                 </div>
-                <button type="submit" className='btn btn-secondary w-100 mb-2' size='md'>Save</button>
+                <MDBRow>
+            <MDBCol col='3'>  
+                    <button className="btn btn-primary mb-4 w-100 mt-4" onClick={handleSubmit}>Save</button>
+              
+            </MDBCol>
+            <MDBCol col='3'>
+              <button className="btn btn-secondary mb-4 w-100 mt-4" onClick={() => window.location.reload()}>Cancel</button>
+            </MDBCol>
+        </MDBRow>
               </form>
             </MDBCardBody>
             

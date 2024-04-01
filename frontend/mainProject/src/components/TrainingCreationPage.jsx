@@ -139,10 +139,15 @@ function TrainingCreationPage() {
                     <MDBInput id='optimizedDuration' type='number' wrapperClass='mb-4' name='optimizedDuration' onChange={handleInputChange} value={trainingData.optimizedDuration} min={1} />
                   </MDBCol>
                 </MDBRow>               
-                
-                <button type='submit' className='btn btn-secondary w-100 mb-2' size='md'>
-                  Save
-                </button>
+                <MDBRow>
+            <MDBCol col='3'>  
+                    <button className="btn btn-primary mb-4 w-100 mt-4" onClick={handleSubmit}>Save</button>
+              
+            </MDBCol>
+            <MDBCol col='3'>
+              <button className="btn btn-secondary mb-4 w-100 mt-4" onClick={() => window.location.reload()}>Cancel</button>
+            </MDBCol>
+        </MDBRow>
               </form>
     
             </MDBCardBody>
