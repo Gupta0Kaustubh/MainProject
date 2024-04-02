@@ -14,6 +14,7 @@ import UserForgotPassword from './components/UserForgotPassword.jsx';
 import TrainingCreationPage from './components/TrainingCreationPage'
 import QuizCreationPage from './components/QuizCreationPage.jsx'
 import ForgotPassword from './components/ForgotPassword.jsx'
+import AdminUserView from './components/AdminUserView.jsx';
 
 function App() {
 
@@ -50,6 +51,8 @@ function App() {
             <Route path="/training-creation" element={<TrainingCreationPage />} />
             {/* Quiz Creation route */}
             <Route path="/quiz-creation" element={<QuizCreationPage />} />
+            {/* Admin Viewing User route */}
+            <Route path="/admin-unique-user" element={<AdminUserView />} />
           </Routes>
       </Router>
     </>

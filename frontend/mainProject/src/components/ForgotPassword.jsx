@@ -42,9 +42,9 @@ function UserForgotPassword() {
     axios.post('http://localhost:3001/forgotPassword', updatedFormData)
       .then(response => {
         console.log('Default Password sent to the mail successfully:', response.data);
-        toast.success('Default Password sent to the mail successfully');
+        toast.success('Default Password sent to the mail successfully, redirecting to the change password page !!');
         setTimeout(() => {
-          navigate('/')
+          navigate('/user-forgot')
         }, 6000);
       })
       .catch(error => {

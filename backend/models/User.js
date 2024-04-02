@@ -69,6 +69,27 @@ const trackerSchema = new mongoose.Schema({
     ratingGivenByTrainer: { type: Number, min: 1, max: 5 } // Assuming rating ranges from 1 to 5
 });
 
-const Tracker = mongoose.model('Tracker', trackerSchema);
+const AdminUserViewSchema = new mongoose.Schema({
+    userId: {type: String, required: true},
+    Name: {type: String, required: true},
+    email: String,
+    gender: String,
+    specializations: String,
+    doj:String,
+    state:String,
+    experience:String,
+    trainingName:String,
+    trainerName:String,
+    optimizedDuration:String,
+    trainingStatus:String,
+    assessment_percentage_done:String,
+    assessment_completion_time_in_hours:String,
+    scoreAchievedInQuiz:String,
+    quizPassedOrFailed:String,
+    ratingGivenByTrainer:String
+})
 
-module.exports = { UserData, Trainer, Training, QuizData, Tracker };
+const Tracker = mongoose.model('Tracker', trackerSchema);
+const AdminUserView = mongoose.model('AdminUserView', AdminUserViewSchema);
+
+module.exports = { UserData, Trainer, Training, QuizData, Tracker, AdminUserView };

@@ -8,6 +8,7 @@ const UserData = require('./models/User').UserData;
 const Trainer = require('./models/User').Trainer;
 const Training = require('./models/User').Training;
 const QuizData = require('./models/User').QuizData;
+const AdminUserView = require('./models/User').AdminUserView;
 const dotenv = require('dotenv');
 
 // Load environment variables from .env file
@@ -176,6 +177,25 @@ app.get('/getAllUserData', async (req, res) => {
     try {
         // Retrieve all user data from the database
         const allUserData = await UserData.find();
+
+        // If no user data is found, return a 404 status and message
+        if (!allUserData || allUserData.length === 0) {
+            return res.status(404).json({ message: 'No user data found' });
+        }
+
+        // If user data is found, return it in the response
+        res.status(200).json({ allUserData });
+    } catch (error) {
+        // If an error occurs, return a 500 status and error message
+        res.status(500).json({ message: 'Failed to fetch user data', error: error.message });
+    }
+});
+// Route to fetch all admin user data
+app.get('/getAllAdminUserData', async (req, res) => {
+
+    try {
+        // Retrieve all user data from the database
+        const allUserData = await AdminUserView.find();
 
         // If no user data is found, return a 404 status and message
         if (!allUserData || allUserData.length === 0) {
