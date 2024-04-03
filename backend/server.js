@@ -11,6 +11,8 @@ const QuizData = require('./models/User').QuizData;
 const AdminUserView = require('./models/User').AdminUserView;
 const dotenv = require('dotenv');
 
+const { spawn } = require('child_process');
+
 // Load environment variables from .env file
 dotenv.config();
 
@@ -319,6 +321,24 @@ app.post('/submitQuizData', async (req, res) => {
     }
 });
 
+// Endpoint to execute the Python script
+app.post('/execute-python-script', (req, res) => {
+    // Execute the Python script
+    const pythonProcess = spawn('python', ['C:/Users/KaustubhGupta/Desktop/KG/Main Project/MainProject/ConversionAndRetrieval/Retrieval.py']);
+  
+    // Handle script output
+    pythonProcess.stdout.on('data', (data) => {
+      console.log(`Python script output: ${data}`);
+    });
+  
+    // Handle script errors
+    pythonProcess.stderr.on('data', (data) => {
+      console.error(`Error executing Python script: ${data}`);
+    });
+  
+    // Send response
+    res.send('Python script execution initiated');
+  });
 
 
 // Setting up the server to listen on a specified port or defaulting to 3001

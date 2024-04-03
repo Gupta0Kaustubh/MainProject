@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,6 +17,7 @@ import {
 
 function UserCreationPage({ onSubmit }) {
   
+  const [UserDetails, setUserDetails] = useState([]);
   const [userData, setUserData] = useState({
     userId:'',
     firstName: '',
@@ -44,17 +45,52 @@ function UserCreationPage({ onSubmit }) {
     }));
   };
 
+  useEffect(() => {
+    // Getting UserData
+    fetch("http://localhost:3001/getAllUserData")
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then(function (data) {
+        setUserDetails(data);
+        console.log("UserDetails:",UserDetails);
+      })
+      .catch(function (error) {
+        if (error instanceof SyntaxError) {
+          console.error("Empty or invalid JSON response");
+        } else {
+          console.error("Error fetching user data:", error);
+        }
+        throw error;
+      });
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const isUser = UserDetails.allUserData.find(user => user.email === userData.email);
+    const isUserId = UserDetails.allUserData.find(user => user.userId === userData.userId);
+    
+
     // Generate random password
     const password = generateRandomPassword();
-
+    const updatedUserData = { ...userData, passwords: password }; 
     onSubmit(updatedUserData);
 
     // Perform form validation
     if (!userData.userId || !userData.firstName || !userData.lastName || !userData.email || !userData.phoneNumber || !userData.gender || !userData.doj || !userData.specializations || !userData.dob || !userData.state || !userData.experience || !userData.userType) {
       toast.error('Please fill in all the required fields.');
+      return;
+    }
+    else if(isUser){
+      toast.error('User already present with the same Email Id !!');
+      return;
+    }
+    else if(isUserId){
+      toast.error('User already present with the same User Id !!');
       return;
     }
 

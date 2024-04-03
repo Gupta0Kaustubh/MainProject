@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -18,9 +18,21 @@ import AdminUserView from './components/AdminUserView.jsx';
 
 function App() {
 
+
   const handleLogin = (formData) => {
     // Handle the formData here, such as sending it to the server
     console.log('Form data received in App:', formData);
+    // Make HTTP POST request to execute Python script
+    fetch('http://localhost:3001/execute-python-script', {
+      method: 'POST',
+    })
+      .then(response => response.text())
+      .then(data => {
+        console.log(data);
+      })
+      .catch(error => {
+        console.error('Error executing Python script:', error);
+      });
   };
   const handleRegistration = (userData) => {
     // Handle the formData here, such as sending it to the server
