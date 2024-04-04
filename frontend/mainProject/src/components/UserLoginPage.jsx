@@ -59,6 +59,7 @@ function UserLoginPage({onSubmit}) {
   }, []);
 
   const handleSubmit = (e) => {
+
     e.preventDefault();
     // Here you can perform any actions with the form data, such as submitting it to a backend API
     onSubmit(formData)
@@ -81,6 +82,7 @@ function UserLoginPage({onSubmit}) {
       }
       else  {
         toast.success('Redirecting to the Employee Dashboard');
+        localStorage.setItem('email',formData.email)
         setTimeout(() => {
           navigate('/emp-dashboard');
       }, 4000);

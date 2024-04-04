@@ -15,12 +15,15 @@ import TrainingCreationPage from './components/TrainingCreationPage'
 import QuizCreationPage from './components/QuizCreationPage.jsx'
 import ForgotPassword from './components/ForgotPassword.jsx'
 import AdminUserView from './components/AdminUserView.jsx';
+import UserProfile from './components/UserProfile.jsx';
 
 function App() {
 
+  const [userEmail, setUserEmail] = useState([])
 
   const handleLogin = (formData) => {
     // Handle the formData here, such as sending it to the server
+    setUserEmail(formData)
     console.log('Form data received in App:', formData);
     // Make HTTP POST request to execute Python script
     fetch('http://localhost:3001/execute-python-script', {
@@ -49,6 +52,8 @@ function App() {
           <Route path="/" element={<UserLoginPage onSubmit={handleLogin} />} />
             {/* Employee Dashboard route */}
             <Route path="/emp-dashboard" element={<EmployeeDashboard />} />
+            {/* Employee Profile route */}
+            <Route path="/user-profile" element={<UserProfile matchedUserEmail={userEmail} />} />
             {/* Admin Dashboard route */}
             <Route path="/admin-dashboard" element={<AdminDashboard />} />
             {/* User Creation route */}

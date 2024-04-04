@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import moment from 'moment'
+import {DaysGrid} from '../types/EventCalendarTypes.ts'
 
 export default function useEventCalendar() {
     const [date, setDate] = useState(moment())
-    const [daysGrid, setDaysGrid] = useState<Array<any>>([])
+    const [daysGrid, setDaysGrid] = useState<Array<DaysGrid>>([])
 
     useEffect(() => getMonthDaysGrid(), [date])
 
@@ -24,7 +25,7 @@ export default function useEventCalendar() {
         else totalNextMonthStartDays = 0
 
         const totalDays = date.daysInMonth() + totalLastMonthFinalDays + totalNextMonthStartDays
-        const monthList: Array<any> = Array.from({ length: totalDays })
+        const monthList: Array<DaysGrid> = Array.from({ length: totalDays })
         let counter = 1
 
         for (let i = totalLastMonthFinalDays; i < totalDays; i++){

@@ -192,6 +192,26 @@ app.get('/getAllUserData', async (req, res) => {
         res.status(500).json({ message: 'Failed to fetch user data', error: error.message });
     }
 });
+
+// Route to fetch all training data
+app.get('/getAllTrainingData', async (req, res) => {
+    try {
+        // Retrieve all user data from the database
+        const allTrainingData = await Training.find();
+
+        // If no user data is found, return a 404 status and message
+        if (!allTrainingData || allTrainingData.length === 0) {
+            return res.status(404).json({ message: 'No training data found' });
+        }
+
+        // If user data is found, return it in the response
+        res.status(200).json({ allTrainingData });
+    } catch (error) {
+        // If an error occurs, return a 500 status and error message
+        res.status(500).json({ message: 'Failed to fetch user data', error: error.message });
+    }
+});
+
 // Route to fetch all admin user data
 app.get('/getAllAdminUserData', async (req, res) => {
 
