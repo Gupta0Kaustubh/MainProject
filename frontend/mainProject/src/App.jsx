@@ -16,6 +16,7 @@ import QuizCreationPage from './components/QuizCreationPage.jsx'
 import ForgotPassword from './components/ForgotPassword.jsx'
 import AdminUserView from './components/AdminUserView.jsx';
 import UserProfile from './components/UserProfile.jsx';
+import AdminCalendar from './components/AdminCalendar.jsx';
 
 function App() {
 
@@ -56,6 +57,8 @@ function App() {
             <Route path="/user-profile" element={<UserProfile matchedUserEmail={userEmail} />} />
             {/* Admin Dashboard route */}
             <Route path="/admin-dashboard" element={<AdminDashboard />} />
+            {/* Admin Calendar route */}
+            <Route path="/admin-calendar" element={<AdminCalendar />} />
             {/* User Creation route */}
             <Route path="/user-creation" element={<UserCreationPage onSubmit={handleRegistration} />} />
             {/* User Default Password route */}

@@ -20,7 +20,15 @@ function EmployeeDashboard() {
 
         const mappedData = trainingData.allTrainingData.map(training => {
           // Generate a random color
-          const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+          function generateLightColor() {
+            // Generate light colors by ensuring each RGB component has a higher value
+            const r = Math.floor(Math.random() * 128) + 128; // R component between 128 and 255
+            const g = Math.floor(Math.random() * 128) + 128; // G component between 128 and 255
+            const b = Math.floor(Math.random() * 128) + 128; // B component between 128 and 255
+            return `rgb(${r}, ${g}, ${b})`;
+        }
+        
+        const randomColor = generateLightColor();
           
           return {
             id: training._id,

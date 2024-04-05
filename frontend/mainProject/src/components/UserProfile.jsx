@@ -9,8 +9,15 @@ import {
     MDBCheckbox,
   } from 'mdb-react-ui-kit';
 import Navbar from './navbars/EmpNavbar';
+import './styles/buttonStyle.css'
 
 const UserProfile = ({ matchedUserEmail }) => {
+
+  const [isDisplayed, setIsDisplayed] = useState(false);
+
+  const handleClick = () => {
+      setIsDisplayed(true);
+  };
 
     const UserEmail = localStorage.getItem('email')
 
@@ -44,17 +51,14 @@ const UserProfile = ({ matchedUserEmail }) => {
                 console.error("Error fetching user data:", error);
             });
 
-            
-
-        }, [UserDetails,matchedUsers]);
-
-    
+        }, [UserDetails,matchedUsers,]);
     
     return (
         <>
         <Navbar />
-        <h1>{matchedUsers.length}</h1>
-        {/* <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'auto' }}>
+        <button type="button" class="btn btn-outline-success  px-5 d-flex justify-content-center button_style mb-2" onClick={handleClick}>Show Details !!!</button>
+        {isDisplayed && (
+        <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'auto' }}>
             
       <MDBRow className="h-100 justify-content-center align-items-center">
         
@@ -81,14 +85,26 @@ const UserProfile = ({ matchedUserEmail }) => {
                     <label htmlFor='userId' className='form-label mb-1 ms-3'>Gender</label>
                     <MDBInput id='userId' type='text' wrapperClass='mb-4' name='userId' value={matchedUsers[0].gender} />
                   </MDBCol>
+                  
+                </MDBRow>
+                <MDBRow>
                   <MDBCol col='2'>
                     <label htmlFor='userId' className='form-label mb-1 ms-3'>Date Of Joining</label>
                     <MDBInput id='userId' type='text' wrapperClass='mb-4' name='userId' value={matchedUsers[0].doj} />
                   </MDBCol>
                   <MDBCol col='2'>
+                    <label htmlFor='userId' className='form-label mb-1 ms-3'>State</label>
+                    <MDBInput id='userId' type='text' wrapperClass='mb-4' name='userId' value={matchedUsers[0].state} />
+                  </MDBCol>
+                <MDBCol col='2'>
                     <label htmlFor='userId' className='form-label mb-1 ms-3'>Experience (in years)</label>
                     <MDBInput id='userId' type='text' wrapperClass='mb-4' name='userId' value={matchedUsers[0].experience} />
                   </MDBCol>
+                  <MDBCol col='10'>
+                    <label htmlFor='userId' className='form-label mb-1 ms-3'>User Specializations</label>
+                    <MDBInput id='userId' type='text' wrapperClass='mb-4' name='userId' value={matchedUsers[0].specializations} />
+                  </MDBCol>
+                  
                 </MDBRow>
                 <h2 className='pb-2'>Training Details</h2>
                 <MDBRow>
@@ -174,7 +190,8 @@ const UserProfile = ({ matchedUserEmail }) => {
           
         </MDBCol>
       </MDBRow>
-    </MDBContainer> */}
+    </MDBContainer>
+        )}
     </>
     );
 };

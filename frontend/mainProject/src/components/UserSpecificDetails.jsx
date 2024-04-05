@@ -14,7 +14,7 @@ const UserSpecificDetails = ({ matchedUsers }) => {
     const user = matchedUsers.length > 0 ? matchedUsers[0] : null;
     
     return (
-        <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'auto' }}>
+      <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'auto' }}>
             
       <MDBRow className="h-100 justify-content-center align-items-center">
         
@@ -30,8 +30,8 @@ const UserSpecificDetails = ({ matchedUsers }) => {
                     <MDBInput id='userId' type='text' wrapperClass='mb-4' name='userId' value={matchedUsers[0].userId} />
                   </MDBCol>
                   <MDBCol col='2'>
-                    <label htmlFor='userId' className='form-label mb-1 ms-3'>Name</label>
-                    <MDBInput id='userId' type='text' wrapperClass='mb-4' name='userId' value={matchedUsers[0].Name} />
+                    <label htmlFor='Name' className='form-label mb-1 ms-3'>Name</label>
+                    <MDBInput id='Name' type='text' wrapperClass='mb-4' name='Name' value={matchedUsers[0].Name} />
                   </MDBCol>
                   <MDBCol col='2'>
                     <label htmlFor='userId' className='form-label mb-1 ms-3'>Email Id</label>
@@ -41,14 +41,26 @@ const UserSpecificDetails = ({ matchedUsers }) => {
                     <label htmlFor='userId' className='form-label mb-1 ms-3'>Gender</label>
                     <MDBInput id='userId' type='text' wrapperClass='mb-4' name='userId' value={matchedUsers[0].gender} />
                   </MDBCol>
-                  <MDBCol col='2'>
+                  
+                </MDBRow>
+                <MDBRow>
+                <MDBCol col='2'>
                     <label htmlFor='userId' className='form-label mb-1 ms-3'>Date Of Joining</label>
                     <MDBInput id='userId' type='text' wrapperClass='mb-4' name='userId' value={matchedUsers[0].doj} />
                   </MDBCol>
                   <MDBCol col='2'>
+                    <label htmlFor='userId' className='form-label mb-1 ms-3'>State</label>
+                    <MDBInput id='userId' type='text' wrapperClass='mb-4' name='userId' value={matchedUsers[0].state} />
+                  </MDBCol>
+                <MDBCol col='2'>
                     <label htmlFor='userId' className='form-label mb-1 ms-3'>Experience (in years)</label>
                     <MDBInput id='userId' type='text' wrapperClass='mb-4' name='userId' value={matchedUsers[0].experience} />
                   </MDBCol>
+                  <MDBCol col='10'>
+                    <label htmlFor='userId' className='form-label mb-1 ms-3'>User Specializations</label>
+                    <MDBInput id='userId' type='text' wrapperClass='mb-4' name='userId' value={matchedUsers[0].specializations} />
+                  </MDBCol>
+                  
                 </MDBRow>
                 <h2 className='pb-2'>Training Details</h2>
                 <MDBRow>

@@ -63,7 +63,7 @@ function UserLoginPage({onSubmit}) {
     e.preventDefault();
     // Here you can perform any actions with the form data, such as submitting it to a backend API
     onSubmit(formData)
-    const isAdmin = UserDetails.allUserData.find(user => user.email === formData.email && user.passwords == formData.password && user.userType== 'admin');
+    const isAdmin = UserDetails.allUserData.find(user => user.email === formData.email && user.passwords == formData.password && (user.userType== 'Admin' || user.userType == 'admin'));
     console.log("User Type",UserDetails);
     const isUser = UserDetails.allUserData.find(user => user.email === formData.email && user.passwords == formData.password);
     if(isUser) {
