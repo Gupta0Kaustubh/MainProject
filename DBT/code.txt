@@ -1,0 +1,38 @@
+1)
+WITH trainings AS (
+    SELECT * FROM [Main_Project].[dbt_staging].[stg_trainings]
+),
+quiz AS (
+    SELECT * FROM [Main_Project].[dbt_staging].[stg_quiz]
+),
+tracker AS (
+    SELECT * FROM [Main_Project].[dbt_staging].[stg_tracker] where trainingStatus = 'completed'
+), 
+firstoutput as (
+SELECT 
+    t.trainingName, q.difficultyLevel, 
+    AVG(t.optimizedDuration) AS optimizedDuration_in_hours, 
+    cast(AVG(tr.assessment_completion_time_in_hours) as int) AS avg_assessment_completion_time_in_hours 
+    FROM trainings t LEFT JOIN quiz q ON t.trainingId = q.trainingId
+    LEFT JOIN  tracker tr ON tr.trainingId = t.trainingId
+    GROUP BY q.difficultyLevel, t.trainingName
+)
+select * from firstoutput
+
+2) * 
+with tracker as (
+select * from [Main_Project].[dbt_staging].[stg_tracker] where trainingStatus = 'completed'
+), 
+trainings AS (
+    SELECT * FROM [Main_Project].[dbt_staging].[stg_trainings]
+),
+firstoutput as(
+select tr.userId, t.trainingName, t.optimizedDuration, tr.assessment_completion_time_in_hours, 
+tr.scoreAchievedInQuiz, tr.ratingGivenByTrainer 
+from tracker tr left join trainings t on t.trainingId = tr.trainingId
+)
+select f.userId, f.trainingName, f.scoreAchievedInQuiz, f.ratingGivenByTrainer, 
+cast(((f.optimizedDuration / f.assessment_completion_time_in_hours)*100) as int) as 'UserEfficiency_OutOf100' 
+from firstoutput f where f.scoreAchievedInQuiz < 50 and f.ratingGivenByTrainer < 3
+AND ((f.optimizedDuration / f.assessment_completion_time_in_hours) * 100) <= 50
+order by ((f.optimizedDuration / f.assessment_completion_time_in_hours) * 100), f.scoreAchievedInQuiz

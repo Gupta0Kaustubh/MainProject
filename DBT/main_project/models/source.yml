@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: Main_Project
+    database: Main_Project
+    schema: dbo
+    tables:
+      - name: users_data
+      - name: trainers_data
+      - name: trainings_data
+      - name: quiz_data
+      - name: tracker_data
