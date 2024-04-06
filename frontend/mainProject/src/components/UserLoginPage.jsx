@@ -17,7 +17,7 @@ import {
   }
   from 'mdb-react-ui-kit';
 
-function UserLoginPage({onSubmit}) {
+function UserLoginPage({onSubmit, setAdminCheck, setEmpCheck}) {
 
   const navigate = useNavigate();
   const [UserDetails, setUserDetails] = useState([]);
@@ -76,12 +76,14 @@ function UserLoginPage({onSubmit}) {
       }
       else if(isAdmin) {
         toast.success('Redirecting to the Admin Dashboard');
+        setAdminCheck(true)
         setTimeout(() => {
           navigate('/admin-dashboard');
       }, 2000);
       }
       else  {
         toast.success('Redirecting to the Employee Dashboard');
+        setEmpCheck(true)
         localStorage.setItem('email',formData.email)
         setTimeout(() => {
           navigate('/emp-dashboard');

@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './navbars/Navbar';
+import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
 import {
@@ -14,7 +15,9 @@ import {
   MDBInput,
 } from 'mdb-react-ui-kit';
 
-function TrainerCreationPage() {
+function TrainerCreationPage({ adminCheck, setAdminCheck }) {
+  
+  const navigate = useNavigate()
   const [trainerData, setTrainerData] = useState({
     userId:'',
     trainerName: '',
@@ -22,6 +25,12 @@ function TrainerCreationPage() {
     trainerRating: 1,
     trainerSpecialization: ''
   });
+
+  useEffect(() => {
+    if (!adminCheck) {
+      navigate('/')
+    }
+  }, [])
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -58,7 +67,7 @@ function TrainerCreationPage() {
 
   return (
     <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'auto' }}>
-      <Navbar />
+      <Navbar setAdminCheck={setAdminCheck} />
       {/* ToastContainer for displaying notifications */}
       <ToastContainer
         position="top-right"

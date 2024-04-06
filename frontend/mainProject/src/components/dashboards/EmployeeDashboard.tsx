@@ -3,11 +3,17 @@ import Navbar from '../navbars/EmpNavbar';
 import EventCalender from '../calendar/EventCalender';
 import { Button, DialogActions, DialogContent, DialogContentText, Stack } from '@mui/material';
 import moment from 'moment';
+import { useNavigate } from 'react-router-dom';
 
-function EmployeeDashboard() {
+function EmployeeDashboard({empCheck, setEmpCheck}) {
   const [data, setData] = useState([]);
+  const navigate = useNavigate()
 
   useEffect(() => {
+
+    if (!empCheck) {
+      navigate('/')
+    }
     // Fetch training data
     fetch("http://localhost:3001/getAllTrainingData")
       .then(response => {
@@ -63,7 +69,7 @@ function EmployeeDashboard() {
 
   return (
     <>
-      <Navbar />
+      <Navbar setEmpCheck={setEmpCheck} />
       <Stack width='100%' minHeight='100vh' justifyContent='center'>
         <EventCalender data={data} onDataChange={setData} />
       </Stack>

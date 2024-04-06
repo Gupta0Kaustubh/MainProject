@@ -2,12 +2,17 @@ import React,{useState, useEffect} from 'react'
 import Navbar from './navbars/Navbar';
 import EventCalender from '../components/calendar/EventCalender'
 import { Button, DialogActions, DialogContent, DialogContentText, Stack } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
-const AdminCalendar = () => {
+const AdminCalendar = ({adminCheck, setAdminCheck}) => {
 
-    const [data, setData] = useState([]);
+  const [data, setData] = useState([]);
+  const navigate = useNavigate()
 
-    useEffect(() => {
+  useEffect(() => {
+    if (!adminCheck) {
+        navigate('/')
+      }
       // Fetch training data
       fetch("http://localhost:3001/getAllTrainingData")
         .then(response => {
@@ -63,7 +68,7 @@ const AdminCalendar = () => {
 
   return (
     <>
-      <Navbar />
+      <Navbar setAdminCheck={setAdminCheck} />
       <Stack width='100%' minHeight='100vh' justifyContent='center'>
         <EventCalender data={data} onDataChange={setData} />
       </Stack>

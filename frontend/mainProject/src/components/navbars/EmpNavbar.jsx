@@ -1,15 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-function Navbar() {
+function Navbar({setEmpCheck}) {
   return (
-    <nav className="navbar bg-tertiary mx-4">
+    <nav className="navbar navbar-expand-lg bg-tertiary mx-3">
       <div className="container-fluid">
-      <Link className='link-opacity-10' to='/emp-dashboard'><h1 className='text-light'>TrainTrack </h1></Link>
-        <form className="d-flex" role="search">
-          <Link className='link-opacity-10' to='/user-profile'><h4 className="text-danger me-5 mb-0" style={{ cursor: 'pointer' }}>User Profile</h4></Link>
-          <Link className='link-opacity-10' to='/'><h4 className="text-danger me-5 mb-0" style={{ cursor: 'pointer' }}>Logout</h4></Link>
-        </form>
+        <Link className='navbar-brand link-opacity-10 fs-1 fw-semibold text-light' to='/emp-dashboard'>TrainTrack</Link>
+        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+            
+          </ul>
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link className='nav-link link-opacity-10 fs-4 me-5 fw-semibold text-white-50' to='/user-profile'>User Profile</Link>
+            </li>
+            <li className="nav-item">
+              <Link className='nav-link link-opacity-10 text-danger  fs-4 me-4 fw-semibold' to='/' onClick={() => setEmpCheck(false)}>Logout</Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </nav>
   );

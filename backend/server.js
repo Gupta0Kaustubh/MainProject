@@ -32,7 +32,6 @@ mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .catch(err => console.error('Error connecting to MongoDB:', err));
 
 
-
 // Route to handle forgot password submission
 app.post('/forgotPassword', async (req, res) => {
     try {

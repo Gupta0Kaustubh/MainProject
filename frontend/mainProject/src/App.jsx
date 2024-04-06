@@ -20,6 +20,9 @@ import AdminCalendar from './components/AdminCalendar.jsx';
 
 function App() {
 
+  const [adminCheck, setAdminCheck] = useState(false)
+  const [empCheck, setEmpCheck] = useState(false)
+
   const [userEmail, setUserEmail] = useState([])
 
   const handleLogin = (formData) => {
@@ -50,29 +53,29 @@ function App() {
           {/* Routes setup */}
           <Routes>
             {/* Home route */}
-          <Route path="/" element={<UserLoginPage onSubmit={handleLogin} />} />
+          <Route path="/" element={<UserLoginPage onSubmit={handleLogin} setAdminCheck={setAdminCheck } setEmpCheck={setEmpCheck} />} />
             {/* Employee Dashboard route */}
-            <Route path="/emp-dashboard" element={<EmployeeDashboard />} />
+            <Route path="/emp-dashboard" element={<EmployeeDashboard setEmpCheck={setEmpCheck} empCheck={empCheck} />} />
             {/* Employee Profile route */}
-            <Route path="/user-profile" element={<UserProfile matchedUserEmail={userEmail} />} />
+            <Route path="/user-profile" element={<UserProfile matchedUserEmail={userEmail} setEmpCheck={setEmpCheck} />} />
             {/* Admin Dashboard route */}
-            <Route path="/admin-dashboard" element={<AdminDashboard />} />
+            <Route path="/admin-dashboard" element={<AdminDashboard adminCheck={adminCheck} setAdminCheck={setAdminCheck} />} />
             {/* Admin Calendar route */}
-            <Route path="/admin-calendar" element={<AdminCalendar />} />
+            <Route path="/admin-calendar" element={<AdminCalendar adminCheck={adminCheck} setAdminCheck={setAdminCheck} />} />
             {/* User Creation route */}
-            <Route path="/user-creation" element={<UserCreationPage onSubmit={handleRegistration} />} />
+            <Route path="/user-creation" element={<UserCreationPage onSubmit={handleRegistration} adminCheck={adminCheck} setAdminCheck={setAdminCheck} />} />
             {/* User Default Password route */}
             <Route path="/user-forgot" element={<UserForgotPassword />} />
             {/* User Default Password route */}
             <Route path="/forgot-password" element={<ForgotPassword />} />
             {/* Trainer Creation route */}
-            <Route path="/trainer-creation" element={<TrainerCreationPage />} />
+            <Route path="/trainer-creation" element={<TrainerCreationPage adminCheck={adminCheck} setAdminCheck={setAdminCheck} />} />
             {/* Training Creation route */}
-            <Route path="/training-creation" element={<TrainingCreationPage />} />
+            <Route path="/training-creation" element={<TrainingCreationPage adminCheck={adminCheck} setAdminCheck={setAdminCheck} />} />
             {/* Quiz Creation route */}
-            <Route path="/quiz-creation" element={<QuizCreationPage />} />
+            <Route path="/quiz-creation" element={<QuizCreationPage adminCheck={adminCheck} setAdminCheck={setAdminCheck} />} />
             {/* Admin Viewing User route */}
-            <Route path="/admin-unique-user" element={<AdminUserView />} />
+            <Route path="/admin-unique-user" element={<AdminUserView adminCheck={adminCheck} setAdminCheck={setAdminCheck} />} />
           </Routes>
       </Router>
     </>

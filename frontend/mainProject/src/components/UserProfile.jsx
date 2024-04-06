@@ -10,10 +10,12 @@ import {
   } from 'mdb-react-ui-kit';
 import Navbar from './navbars/EmpNavbar';
 import './styles/buttonStyle.css'
+import { useNavigate } from 'react-router-dom';
 
-const UserProfile = ({ matchedUserEmail }) => {
+const UserProfile = ({ matchedUserEmail, setEmpCheck }) => {
 
   const [isDisplayed, setIsDisplayed] = useState(false);
+  const navigate = useNavigate()
 
   const handleClick = () => {
       setIsDisplayed(true);
@@ -26,7 +28,7 @@ const UserProfile = ({ matchedUserEmail }) => {
     let user = matchedUserEmail
 
     useEffect(() => {
-        // Getting UserData
+      // Getting UserData
         console.log("Email:",matchedUserEmail.email)
         fetch("http://localhost:3001/getAllAdminUserData")
             .then(function (response) {
@@ -55,7 +57,7 @@ const UserProfile = ({ matchedUserEmail }) => {
     
     return (
         <>
-        <Navbar />
+        <Navbar setEmpCheck={setEmpCheck} />
         <button type="button" class="btn btn-outline-success  px-5 d-flex justify-content-center button_style mb-2" onClick={handleClick}>Show Details !!!</button>
         {isDisplayed && (
         <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'auto' }}>

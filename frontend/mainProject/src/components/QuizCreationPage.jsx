@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './navbars/Navbar'
 
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import {
   MDBContainer,
   MDBRow,
@@ -14,7 +15,9 @@ import {
   MDBInput,
 } from 'mdb-react-ui-kit';
 
-function QuizCreationPage() {
+function QuizCreationPage({ adminCheck, setAdminCheck }) {
+  
+  const navigate = useNavigate()
   const [quizData, setQuizData] = useState({
     quizName: '',
     trainingId: '',
@@ -24,6 +27,12 @@ function QuizCreationPage() {
     difficultyLevel: '',
     questionFile: ''
   });
+
+  useEffect(() => {
+    if (!adminCheck) {
+      navigate('/')
+    }
+  }, [])
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -60,7 +69,7 @@ function QuizCreationPage() {
 
   return (
     <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'auto' }}>
-      <Navbar />
+      <Navbar setAdminCheck={setAdminCheck} />
       {/* ToastContainer for displaying notifications */}
       <ToastContainer
         position="top-right"

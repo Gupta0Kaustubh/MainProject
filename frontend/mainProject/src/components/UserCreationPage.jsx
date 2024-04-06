@@ -3,6 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Navbar from './navbars/Navbar';
+import { useNavigate } from 'react-router-dom';
 
 import axios from 'axios';
 import {
@@ -15,9 +16,10 @@ import {
   MDBCheckbox,
 } from 'mdb-react-ui-kit';
 
-function UserCreationPage({ onSubmit }) {
+function UserCreationPage({ onSubmit, adminCheck, setAdminCheck }) {
   
   const [UserDetails, setUserDetails] = useState([]);
+  const navigate = useNavigate()
   const [userData, setUserData] = useState({
     userId:'',
     firstName: '',
@@ -46,6 +48,9 @@ function UserCreationPage({ onSubmit }) {
   };
 
   useEffect(() => {
+    if (!adminCheck) {
+      navigate('/')
+    }
     // Getting UserData
     fetch("http://localhost:3001/getAllUserData")
       .then(function (response) {
@@ -111,7 +116,7 @@ function UserCreationPage({ onSubmit }) {
 
   return (
     <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'auto' }}>
-      <Navbar />
+      <Navbar setAdminCheck={setAdminCheck} />
       {/* ToastContainer for displaying notifications */}
       <ToastContainer
         position="top-right"

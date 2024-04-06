@@ -1,10 +1,10 @@
 import React from 'react'
 import Navbar from '../navbars/Navbar'
 
-function AdminDashboard() {
+function AdminDashboard({adminCheck, setAdminCheck}) {
   return (
     <>
-      <Navbar />
+      <Navbar setAdminCheck={setAdminCheck} />
       <div>AdminDashboard</div>
       </>
   )
