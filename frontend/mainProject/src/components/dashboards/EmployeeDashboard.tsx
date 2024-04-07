@@ -51,7 +51,7 @@ function EmployeeDashboard({empCheck, setEmpCheck}) {
                       <label>Training Description : &nbsp;</label>{training.trainingDescription}
                     </DialogContentText>
                     <DialogContentText id={`alert-dialog-description-${training._id}`}>
-                      <label>Trainer Name : &nbsp;</label>{training.trainerName}
+                      <label>Training Duration : &nbsp;</label>{training.timeOfTraining}
                     </DialogContentText>
                     <DialogContentText id={`alert-dialog-description-${training._id}`}>
                       <label>Start Date : &nbsp;</label>{startdate}
