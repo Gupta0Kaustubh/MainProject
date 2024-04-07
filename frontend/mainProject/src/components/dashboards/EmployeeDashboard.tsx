@@ -4,6 +4,7 @@ import EventCalender from '../calendar/EventCalender';
 import { Button, DialogActions, DialogContent, DialogContentText, Stack } from '@mui/material';
 import moment from 'moment';
 import { useNavigate } from 'react-router-dom';
+import '../styles/buttonStyle.css'
 
 function EmployeeDashboard({empCheck, setEmpCheck}) {
   const [data, setData] = useState([]);
@@ -34,7 +35,10 @@ function EmployeeDashboard({empCheck, setEmpCheck}) {
             return `rgb(${r}, ${g}, ${b})`;
         }
         
-        const randomColor = generateLightColor();
+          const randomColor = generateLightColor();
+          
+          let enddate = new Date(training.endDate).toISOString().split('T')[0];
+          let startdate = new Date(training.startDate).toISOString().split('T')[0];
           
           return {
             id: training._id,
@@ -42,14 +46,26 @@ function EmployeeDashboard({empCheck, setEmpCheck}) {
             endDate: new Date(training.endDate), 
             popupContent: (
               <>
-                <DialogContent>
-                  <DialogContentText id={`alert-dialog-description-${training._id}`}>
-                    {training.trainingDescription}
-                  </DialogContentText>
+                <DialogContent className='dialogue bg-slate-400'>
+                    <DialogContentText id={`alert-dialog-description-${training._id}`}>
+                      <label>Training Description : &nbsp;</label>{training.trainingDescription}
+                    </DialogContentText>
+                    <DialogContentText id={`alert-dialog-description-${training._id}`}>
+                      <label>Trainer Name : &nbsp;</label>{training.trainerName}
+                    </DialogContentText>
+                    <DialogContentText id={`alert-dialog-description-${training._id}`}>
+                      <label>Start Date : &nbsp;</label>{startdate}
+                    </DialogContentText>
+                    <DialogContentText id={`alert-dialog-description-${training._id}`}>
+                      <label>End Date : &nbsp;</label>{enddate}
+                    </DialogContentText>
+                    <DialogContentText id={`alert-dialog-description-${training._id}`}>
+                      <label>Optimized Duration : &nbsp;</label>{training.optimizedDuration} hrs
+                    </DialogContentText>
                 </DialogContent>
-                <DialogActions>
+                {/* <DialogActions>
                   <Button autoFocus>OK</Button>
-                </DialogActions>
+                </DialogActions> */}
               </>
             ),
             title: training.trainingName,

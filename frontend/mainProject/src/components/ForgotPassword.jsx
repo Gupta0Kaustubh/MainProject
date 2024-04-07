@@ -79,7 +79,7 @@ function UserForgotPassword() {
         <MDBRow className='g-0 d-flex align-items-center bg-primary-subtle'>
 
           <MDBCol md='6'>
-            <MDBCardImage src={ForgotPassword} alt='phone' className='rounded-t-5 rounded-tr-lg-0 ms-3' fluid />
+            <MDBCardImage src={ForgotPassword} alt='phone' className='rounded-t-5 rounded-tr-lg-0' fluid />
           </MDBCol>
 
           <MDBCol md='6'>

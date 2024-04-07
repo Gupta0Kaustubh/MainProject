@@ -104,15 +104,49 @@ function UserCreationPage({ onSubmit, adminCheck, setAdminCheck }) {
       .then(response => {
         console.log('User data submitted successfully:', response.data);
         toast.success('User data submitted successfully');
-        setTimeout(() => {
-          window.location.reload();
-        }, 6000);
+          setUserData({
+        userId:'',
+        firstName: '',
+        middleName:'',
+        lastName: '',
+        email: '',
+        phoneNumber: '',
+        gender: '',
+        doj: '',
+        specializations:'',
+        dob: '',
+        city: '',
+        state: '',
+        experience:'',
+        userType: '',
+        subscribeNewsletter: false,
+      });
       })
       .catch(error => {
         console.error('Error submitting user data:', error);
         toast.error('Failed to submit user data. Please try again.');
       });
   };
+
+  function back() {
+      setUserData({
+        userId:'',
+        firstName: '',
+        middleName:'',
+        lastName: '',
+        email: '',
+        phoneNumber: '',
+        gender: '',
+        doj: '',
+        specializations:'',
+        dob: '',
+        city: '',
+        state: '',
+        experience:'',
+        userType: '',
+        subscribeNewsletter: false,
+      });
+  }
 
   return (
     <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'auto' }}>
@@ -252,7 +286,7 @@ function UserCreationPage({ onSubmit, adminCheck, setAdminCheck }) {
               
             </MDBCol>
             <MDBCol col='3'>
-              <button className="btn btn-secondary mb-4 w-100 mt-4" onClick={() => window.location.reload()}>Cancel</button>
+                    <button className="btn btn-secondary mb-4 w-100 mt-4" onClick={() => back()}>Cancel</button>
             </MDBCol>
         </MDBRow>
               </form>

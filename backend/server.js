@@ -287,7 +287,7 @@ app.post('/submitTrainerData', async (req, res) => {
 app.post('/submitTrainingData', async (req, res) => {
     try {
         // Extract training data from the request body
-        const { trainingId, trainingName, trainingDescription, trainerId, trainerName, startDate, endDate, optimizedDuration } = req.body;
+        const { trainingId, trainingName, trainingDescription, trainerId, startDate, endDate, optimizedDuration, timingOfTraining } = req.body;
 
         // Create a new Training document
         const newTraining = new Training({
@@ -295,10 +295,10 @@ app.post('/submitTrainingData', async (req, res) => {
             trainingName,
             trainingDescription,
             trainerId,
-            trainerName,
             startDate,
             endDate,
-            optimizedDuration
+            optimizedDuration,
+            timingOfTraining
         });
 
         // Save the new training data to the database
@@ -343,7 +343,8 @@ app.post('/submitQuizData', async (req, res) => {
 // Endpoint to execute the Python script
 app.post('/execute-python-script', (req, res) => {
     // Execute the Python script
-    const pythonProcess = spawn('python', ['C:/Users/KaustubhGupta/Desktop/KG/Main Project/MainProject/ConversionAndRetrieval/Retrieval.py']);
+    // const pythonProcess = spawn('python', ['C:/Users/KaustubhGupta/Desktop/KG/Main Project/MainProject/ConversionAndRetrieval/Retrieval.py']);
+    const pythonProcess = spawn('python', ['D:/JMAN/MainProject/ConversionAndRetrieval/Retrieval.py']);   /* home */
   
     // Handle script output
     pythonProcess.stdout.on('data', (data) => {

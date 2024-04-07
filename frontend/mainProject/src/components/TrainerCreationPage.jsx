@@ -55,15 +55,29 @@ function TrainerCreationPage({ adminCheck, setAdminCheck }) {
       .then((response) => {
         console.log('Trainer data submitted successfully:', response.data);
         toast.success('Trainer data submitted successfully');
-        setTimeout(() => {
-          window.location.reload();
-        }, 6000);
+        setTrainerData({
+          userId:'',
+    trainerName: '',
+      trainerDesignation: '',
+    trainerRating: 1,
+    trainerSpecialization: ''
+        })
       })
       .catch((error) => {
         console.error('Error submitting trainer data:', error);
         toast.error('Failed to submit trainer data. Please try again.');
       });
   };
+
+  function back() {
+    setTrainerData({
+      userId:'',
+    trainerName: '',
+      trainerDesignation: '',
+    trainerRating: 1,
+    trainerSpecialization: ''
+    })
+  }
 
   return (
     <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'auto' }}>
@@ -140,7 +154,7 @@ function TrainerCreationPage({ adminCheck, setAdminCheck }) {
               
             </MDBCol>
             <MDBCol col='3'>
-              <button className="btn btn-secondary mb-4 w-100 mt-4" onClick={() => window.location.reload()}>Cancel</button>
+              <button className="btn btn-secondary mb-4 w-100 mt-4" onClick={() => back()}>Cancel</button>
             </MDBCol>
         </MDBRow>
               </form>

@@ -24,10 +24,10 @@ function TrainingCreationPage({adminCheck, setAdminCheck}) {
     trainingName: '',
     trainingDescription: '',
     trainerId:'',
-    trainerName: '',
     startDate: '',
     endDate: '',
-    optimizedDuration: ''
+    optimizedDuration: '',
+    timingOfTraining: ''
   });
 
   useEffect(() => {
@@ -59,15 +59,35 @@ function TrainingCreationPage({adminCheck, setAdminCheck}) {
       .then((response) => {
         console.log('Training data submitted successfully:', response.data);
         toast.success('Training data submitted successfully');
-        setTimeout(() => {
-          window.location.reload();
-        }, 6000);
+        setTrainingData({
+          trainingId:'',
+    trainingName: '',
+    trainingDescription: '',
+    trainerId:'',
+    startDate: '',
+    endDate: '',
+    optimizedDuration: '',
+    timingOfTraining: ''
+        })
       })
       .catch((error) => {
         console.error('Error submitting training data:', error);
         toast.error('Failed to submit training data. Please try again.');
       });
   };
+
+  function back() {
+    setTrainingData({
+      trainingId:'',
+    trainingName: '',
+    trainingDescription: '',
+    trainerId:'',
+    startDate: '',
+    endDate: '',
+    optimizedDuration: '',
+    timingOfTraining: ''
+    })
+  }
 
   return (
     <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'auto' }}>
@@ -118,12 +138,12 @@ function TrainingCreationPage({adminCheck, setAdminCheck}) {
                 </MDBRow>                   
                 <MDBRow>
                   <MDBCol col='6'>
+                    <label htmlFor='timingOfTraining' className='form-label mb-1'>Timing Of Training</label><span className='ms-1' style={{ color: 'red' }}>*</span>
+                    <MDBInput id='timingOfTraining' type='text' wrapperClass='mb-4' name='timingOfTraining' onChange={handleInputChange} value={trainingData.timingOfTraining}  />
+                    </MDBCol>
+                    <MDBCol col='6'>
                     <label htmlFor='trainerId' className='form-label mb-1'>Trainer Id</label><span className='ms-1' style={{ color: 'red' }}>*</span>
                     <MDBInput id='trainerId' type='text' wrapperClass='mb-4' name='trainerId' onChange={handleInputChange} value={trainingData.trainerId}  />
-                  </MDBCol>
-                  <MDBCol col='6'>
-                    <label htmlFor='trainerName' className='form-label mb-1'>Trainer Name</label><span className='ms-1' style={{ color: 'red' }}>*</span>
-                    <MDBInput id='trainerName' type='text' wrapperClass='mb-4' name='trainerName' onChange={handleInputChange} value={trainingData.trainerName}  />
                   </MDBCol>
                                   
                 </MDBRow>                   
@@ -154,7 +174,7 @@ function TrainingCreationPage({adminCheck, setAdminCheck}) {
               
             </MDBCol>
             <MDBCol col='3'>
-              <button className="btn btn-secondary mb-4 w-100 mt-4" onClick={() => window.location.reload()}>Cancel</button>
+              <button className="btn btn-secondary mb-4 w-100 mt-4" onClick={() => back()}>Cancel</button>
             </MDBCol>
         </MDBRow>
               </form>

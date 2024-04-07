@@ -5,8 +5,10 @@ import pyodbc
 from sqlalchemy import create_engine
 from sqlalchemy.engine import URL
 
-SERVER_NAME = 'DESKTOP-J6NGJ2S'
-DATABASE_NAME = 'Main_Project'
+# SERVER_NAME = 'DESKTOP-J6NGJ2S'
+SERVER_NAME = 'DESKTOP-0UABFVU'  # home
+# DATABASE_NAME = 'Main_Project'
+DATABASE_NAME = 'MainProject'  # home
 
 connection_string = f"mssql+pyodbc://{SERVER_NAME}/{DATABASE_NAME}?trusted_connection=yes&driver=ODBC+Driver+17+for+SQL+Server"
 engine = create_engine(connection_string)
@@ -98,9 +100,9 @@ df5.to_sql('table5', engine)
 # Execute SQL query to join the tables
 query = """
 select u.userId, u.firstName || ' ' || u.lastName as "Name", u.email, u.gender, u.specializations, u.doj,
-u.state,u.experience, t.trainingId, t.trainingName, t.trainerId, t.trainerName, t.optimizedDuration, tr.trainingStatus, tr.assessment_percentage_done,
+u.state,u.experience, t.trainingId, t.trainingName, t.trainerId, table2.trainerName, t.optimizedDuration, tr.trainingStatus, tr.assessment_percentage_done,
 tr.assessment_completion_time_in_hours, tr.scoreAchievedInQuiz, tr.quizPassedOrFailed, tr.ratingGivenByTrainer
-from table1 u left join table5 tr on u.userId = tr.userId left join table3 t on tr.trainingId = t.trainingId left join table2 on u.userId = table2.userId
+from table1 u left join table5 tr on u.userId = tr.userId left join table3 t on tr.trainingId = t.trainingId left join table2 on t.trainerId = table2.userId
 """
 
 # Execute the query and load result into a DataFrame

@@ -21,9 +21,7 @@ const AdminUserView = ({adminCheck, setAdminCheck}) => {
             ...formData,
             [name]: value
         });
-        if (value.trim() === '') {
-            window.location.reload();
-        }
+        
     };
 
     useEffect(() => {

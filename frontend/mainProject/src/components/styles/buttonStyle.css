@@ -1,3 +1,11 @@
 .button_style{
     margin-left: 40%;
 }
+.dialogue{
+    width: 600px;
+    height: 200px;
+}
+.dialogue label{
+    color: rgb(75, 71, 71);
+    font-weight: 500;
+}

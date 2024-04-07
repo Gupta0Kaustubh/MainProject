@@ -5,7 +5,7 @@ function Navbar({ setAdminCheck }) {
   return (
     <nav className="navbar navbar-expand-lg bg-tertiary mx-3">
       <div className="container-fluid">
-        <Link className='navbar-brand link-opacity-10 fs-1 fw-semibold text-light' to='/admin-dashboard'>TrainTrack</Link>
+        <Link className='navbar-brand link-opacity-10 fs-1 fw-semibold text-light' to='/admin-dashboard'>TrainTrack Ltd.</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -15,25 +15,25 @@ function Navbar({ setAdminCheck }) {
           </ul>
           <ul className="navbar-nav">
             <li className="nav-item">
-              <Link className='nav-link link-opacity-10 fs-4 me-2 fw-semibold text-white-50' to='/admin-calendar'>Calendar</Link>
+              <Link className='nav-link link-opacity-10 fs-5 me-2 fw-semibold text-white-50' to='/admin-calendar'>Calendar</Link>
             </li>
             <li className="nav-item">
-              <Link className='nav-link link-opacity-10 fs-4 me-2 fw-semibold text-white-50' to='/user-creation'>User Creation</Link>
+              <Link className='nav-link link-opacity-10 fs-5 me-2 fw-semibold text-white-50' to='/user-creation'>User Creation</Link>
             </li>
             <li className="nav-item">
-              <Link className='nav-link link-opacity-10 fs-4 me-2 fw-semibold text-white-50' to='/trainer-creation'>Trainer Creation</Link>
+              <Link className='nav-link link-opacity-10 fs-5 me-2 fw-semibold text-white-50' to='/trainer-creation'>Trainer Creation</Link>
             </li>
             <li className="nav-item">
-              <Link className='nav-link link-opacity-10 fs-4 me-2 fw-semibold text-white-50' to='/training-creation'>Training Creation</Link>
+              <Link className='nav-link link-opacity-10 fs-5 me-2 fw-semibold text-white-50' to='/training-creation'>Training Creation</Link>
             </li>
             <li className="nav-item">
-              <Link className='nav-link link-opacity-10 fs-4 me-2 fw-semibold text-white-50' to='/quiz-creation'>Quiz Creation</Link>
+              <Link className='nav-link link-opacity-10 fs-5 me-2 fw-semibold text-white-50' to='/quiz-creation'>Quiz Creation</Link>
             </li>
             <li className="nav-item">
-              <Link className='nav-link link-opacity-10 fs-4 me-2 fw-semibold text-white-50' to='/admin-unique-user'>User Progress</Link>
+              <Link className='nav-link link-opacity-10 fs-5 me-2 fw-semibold text-white-50' to='/admin-unique-user'>User Progress</Link>
             </li>
             <li className="nav-item">
-              <Link className='nav-link link-opacity-10 text-danger  fs-4 me-2 fw-semibold' to='/' onClick={() => setAdminCheck(false)}>Logout</Link>
+              <Link className='nav-link link-opacity-10 text-danger  fs-5 me-2 fw-semibold' to='/' onClick={() => setAdminCheck(false)}>Logout</Link>
             </li>
           </ul>
         </div>
