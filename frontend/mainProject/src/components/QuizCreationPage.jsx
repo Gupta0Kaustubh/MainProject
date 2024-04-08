@@ -42,9 +42,33 @@ function QuizCreationPage({ adminCheck, setAdminCheck }) {
     }));
   };
 
+  async function runScripts() {
+    try {
+      const pythonResponse = await fetch('http://localhost:3001/execute-python-script', {
+        method: 'POST',
+      });
+      if (!pythonResponse.ok) {
+        throw new Error('Failed to execute Python script');
+      }
+      console.log('Python retrieval executed successfully');
+  
+      // Execute DBT
+      const dbtResponse = await fetch('/rundbt', { method: 'GET' });
+      if (!dbtResponse.ok) {
+        throw new Error('DBT execution failed');
+      }
+  
+      console.log('DBT executed successfully');
+    } catch (error) {
+      console.error('Error:', error.message);
+      alert('Failed to execute Python script or DBT');
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    await runScripts()
     // Perform form validation
     if (!quizData.quizName|| !quizData.trainingId || !quizData.trainingName || !quizData.maxScores || !quizData.minScores || !quizData.difficultyLevel || !quizData.questionFile) {
       toast.error('Please fill in all the required fields.');

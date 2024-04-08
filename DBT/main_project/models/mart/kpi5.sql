@@ -25,7 +25,7 @@ trainings as (
 select * from {{ref('stg_trainings')}}
 )
 
-select difficultyLevel, f.trainingId, trainingName, TotalUsers, PassedUsers, FailedUsers, UsersWithOngoingTraining 
+select top 1000 difficultyLevel, f.trainingId, trainingName, TotalUsers, PassedUsers, FailedUsers, UsersWithOngoingTraining 
 
 from first_output f left join trainings t on t.trainingId = f.trainingId where Rank <=5
 order by difficultyLevel, TotalUsers desc

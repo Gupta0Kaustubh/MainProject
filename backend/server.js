@@ -10,6 +10,8 @@ const Training = require('./models/User').Training;
 const QuizData = require('./models/User').QuizData;
 const AdminUserView = require('./models/User').AdminUserView;
 const dotenv = require('dotenv');
+const { exec } = require('child_process');
+const path = require('path');
 
 const { spawn } = require('child_process');
 
@@ -343,8 +345,8 @@ app.post('/submitQuizData', async (req, res) => {
 // Endpoint to execute the Python script
 app.post('/execute-python-script', (req, res) => {
     // Execute the Python script
-    // const pythonProcess = spawn('python', ['C:/Users/KaustubhGupta/Desktop/KG/Main Project/MainProject/ConversionAndRetrieval/Retrieval.py']);
-    const pythonProcess = spawn('python', ['D:/JMAN/MainProject/ConversionAndRetrieval/Retrieval.py']);   /* home */
+    const pythonProcess = spawn('python', ['C:/Users/KaustubhGupta/Desktop/KG/Main Project/MainProject/ConversionAndRetrieval/Retrieval.py']);
+    // const pythonProcess = spawn('python', ['D:/JMAN/MainProject/ConversionAndRetrieval/Retrieval.py']);   /* home */
   
     // Handle script output
     pythonProcess.stdout.on('data', (data) => {
@@ -359,6 +361,28 @@ app.post('/execute-python-script', (req, res) => {
     // Send response
     res.send('Python script execution initiated');
   });
+
+  
+// Define a route to trigger the DBT execution
+const dbtMainProjectFolderPath = path.join(__dirname, '..', 'DBT', 'main_project');
+app.get('/rundbt', (req, res) => {
+    // Change the working directory to the main_project folder
+    process.chdir(dbtMainProjectFolderPath);
+
+    // Execute the DBT command
+    exec('dbt run', (error, stdout, stderr) => {
+        if (error) {
+            console.error(`Error: ${error.message}`);
+            return res.status(500).send('DBT execution failed');
+        }
+        if (stderr) {
+            console.error(`Error: ${stderr}`);
+            return res.status(500).send('DBT execution failed');
+        }
+        console.log(`DBT output: ${stdout}`);
+        res.send('DBT execution successful');
+    });
+});
 
 
 // Setting up the server to listen on a specified port or defaulting to 3001

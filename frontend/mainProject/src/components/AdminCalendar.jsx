@@ -51,7 +51,7 @@ const AdminCalendar = ({adminCheck, setAdminCheck}) => {
                       <label>Training Description : &nbsp;</label>{training.trainingDescription}
                     </DialogContentText>
                     <DialogContentText id={`alert-dialog-description-${training._id}`}>
-                      <label>Training Duration : &nbsp;</label>{training.timeOfTraining}
+                      <label>Training Duration : &nbsp;</label>{training.timingOfTraining}
                     </DialogContentText>
                     <DialogContentText id={`alert-dialog-description-${training._id}`}>
                       <label>Start Date : &nbsp;</label>{startdate}

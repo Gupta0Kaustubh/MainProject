@@ -39,7 +39,7 @@ const trainingSchema = new mongoose.Schema({
     startDate: { type: Date, required: true },
     endDate: { type: Date, required: true },
     optimizedDuration: { type: Number, required: true }, // Duration in hours or days
-    timeOfTraining: {type: String, required: true},
+    timingOfTraining: {type: String, required: true},
     createdAt: { type: Date, default: Date.now }
 });
 

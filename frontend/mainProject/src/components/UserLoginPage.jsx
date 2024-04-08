@@ -58,42 +58,67 @@ function UserLoginPage({onSubmit, setAdminCheck, setEmpCheck}) {
       });
   }, []);
 
-  const handleSubmit = (e) => {
-
+  async function runScripts() {
+    try {
+      const pythonResponse = await fetch('http://localhost:3001/execute-python-script', {
+        method: 'POST',
+      });
+      if (!pythonResponse.ok) {
+        throw new Error('Failed to execute Python script');
+      }
+      console.log('Python retrieval executed successfully');
+  
+      // Execute DBT
+      const dbtResponse = await fetch('/rundbt', { method: 'GET' });
+      if (!dbtResponse.ok) {
+        throw new Error('DBT execution failed');
+      }
+  
+      console.log('DBT executed successfully');
+    } catch (error) {
+      console.error('Error:', error.message);
+      alert('Failed to execute Python script or DBT');
+    }
+  }
+  
+  async function handleSubmit(e) {
     e.preventDefault();
-    // Here you can perform any actions with the form data, such as submitting it to a backend API
-    onSubmit(formData)
-    const isAdmin = UserDetails.allUserData.find(user => user.email === formData.email && user.passwords == formData.password && (user.userType== 'Admin' || user.userType == 'admin'));
-    console.log("User Type",UserDetails);
-    const isUser = UserDetails.allUserData.find(user => user.email === formData.email && user.passwords == formData.password);
-    if(isUser) {
-      if(formData.password.length == 4) {
-        toast.success('Redirecting to the change password page');
+    onSubmit(formData);
+  
+    const isAdmin = UserDetails.allUserData.find(user => user.email === formData.email && user.passwords === formData.password && (user.userType === 'Admin' || user.userType === 'admin'));
+    const isUser = UserDetails.allUserData.find(user => user.email === formData.email && user.passwords === formData.password);
+  
+    if (isUser) {
+      try {
+        await runScripts();
+        if (formData.password.length === 4) {
+          toast.success('Redirecting to the change password page');
           setTimeout(() => {
             navigate('/user-forgot');
-        }, 2000);
-        
+          }, 2000);
+        } else if (isAdmin) {
+          toast.success('Redirecting to the Admin Dashboard');
+          setAdminCheck(true);
+          setTimeout(() => {
+            navigate('/admin-dashboard');
+          }, 2000);
+        } else {
+          toast.success('Redirecting to the Employee Dashboard');
+          setEmpCheck(true);
+          localStorage.setItem('email', formData.email);
+          setTimeout(() => {
+            navigate('/emp-dashboard');
+          }, 4000);
+        }
+      } catch (error) {
+        toast.error('Error executing scripts: ' + error.message);
       }
-      else if(isAdmin) {
-        toast.success('Redirecting to the Admin Dashboard');
-        setAdminCheck(true)
-        setTimeout(() => {
-          navigate('/admin-dashboard');
-      }, 2000);
-      }
-      else  {
-        toast.success('Redirecting to the Employee Dashboard');
-        setEmpCheck(true)
-        localStorage.setItem('email',formData.email)
-        setTimeout(() => {
-          navigate('/emp-dashboard');
-      }, 4000);
-      }
-    }
-    else {
+    } else {
       toast.error('Invalid username or password');
     }
-  };
+  }
+  
+
 
   return (
     <MDBContainer className="my-5">

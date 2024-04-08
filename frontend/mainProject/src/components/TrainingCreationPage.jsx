@@ -44,8 +44,32 @@ function TrainingCreationPage({adminCheck, setAdminCheck}) {
     }));
   };
 
+  async function runScripts() {
+    try {
+      const pythonResponse = await fetch('http://localhost:3001/execute-python-script', {
+        method: 'POST',
+      });
+      if (!pythonResponse.ok) {
+        throw new Error('Failed to execute Python script');
+      }
+      console.log('Python retrieval executed successfully');
+  
+      // Execute DBT
+      const dbtResponse = await fetch('/rundbt', { method: 'GET' });
+      if (!dbtResponse.ok) {
+        throw new Error('DBT execution failed');
+      }
+  
+      console.log('DBT executed successfully');
+    } catch (error) {
+      console.error('Error:', error.message);
+      alert('Failed to execute Python script or DBT');
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    await runScripts()
     console.log(trainingData);
     // Perform form validation
     if (!trainingData.trainingId || !trainingData.trainingName ||!trainingData.trainerId ||  !trainingData.trainerName || !trainingData.startDate || !trainingData.endDate || !trainingData.optimizedDuration) {

@@ -73,7 +73,30 @@ function UserCreationPage({ onSubmit, adminCheck, setAdminCheck }) {
       });
   }, []);
 
-  const handleSubmit = async (e) => {
+  async function runScripts() {
+    try {
+      const pythonResponse = await fetch('http://localhost:3001/execute-python-script', {
+        method: 'POST',
+      });
+      if (!pythonResponse.ok) {
+        throw new Error('Failed to execute Python script');
+      }
+      console.log('Python retrieval executed successfully');
+  
+      // Execute DBT
+      const dbtResponse = await fetch('/rundbt', { method: 'GET' });
+      if (!dbtResponse.ok) {
+        throw new Error('DBT execution failed');
+      }
+  
+      console.log('DBT executed successfully');
+    } catch (error) {
+      console.error('Error:', error.message);
+      alert('Failed to execute Python script or DBT');
+    }
+  }
+
+  async function handleSubmit (e)  {
     e.preventDefault();
 
     const isUser = UserDetails.allUserData.find(user => user.email === userData.email);
@@ -84,6 +107,7 @@ function UserCreationPage({ onSubmit, adminCheck, setAdminCheck }) {
     const password = generateRandomPassword();
     const updatedUserData = { ...userData, passwords: password }; 
     onSubmit(updatedUserData);
+    await runScripts()
 
     // Perform form validation
     if (!userData.userId || !userData.firstName || !userData.lastName || !userData.email || !userData.phoneNumber || !userData.gender || !userData.doj || !userData.specializations || !userData.dob || !userData.state || !userData.experience || !userData.userType) {

@@ -12,10 +12,10 @@ datatype_and_renamed AS (
         trainingName,
         trainingDescription,
         trainerId,
-        trainerName,
         CONVERT(date, startDate) AS startDate,
         CONVERT(date, enddate) AS enddate,
         case when isnumeric(optimizedDuration) = 1 then convert(int, optimizedDuration) else null end as optimizedDuration,
+        timingOfTraining,
         CONVERT(date, createdAt) AS createdAt
     FROM required_fields
 )
