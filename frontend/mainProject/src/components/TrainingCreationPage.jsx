@@ -23,7 +23,8 @@ function TrainingCreationPage({adminCheck, setAdminCheck}) {
     trainingId:'',
     trainingName: '',
     trainingDescription: '',
-    trainerId:'',
+    trainerId: '',
+    trainerName:'',
     startDate: '',
     endDate: '',
     optimizedDuration: '',
@@ -53,6 +54,15 @@ function TrainingCreationPage({adminCheck, setAdminCheck}) {
         throw new Error('Failed to execute Python script');
       }
       console.log('Python retrieval executed successfully');
+
+      // Snow
+      const pythonResponseSnow = await fetch('http://localhost:3001/execute-snow-python-script', {
+        method: 'POST',
+      });
+      if (!pythonResponseSnow.ok) {
+        throw new Error('Failed to execute Snow Python script');
+      }
+      console.log('Snow Python retrieval executed successfully');
   
       // Execute DBT
       const dbtResponse = await fetch('/rundbt', { method: 'GET' });
@@ -72,7 +82,7 @@ function TrainingCreationPage({adminCheck, setAdminCheck}) {
     await runScripts()
     console.log(trainingData);
     // Perform form validation
-    if (!trainingData.trainingId || !trainingData.trainingName ||!trainingData.trainerId ||  !trainingData.trainerName || !trainingData.startDate || !trainingData.endDate || !trainingData.optimizedDuration) {
+    if (!trainingData.trainingId || !trainingData.trainingName ||!trainingData.trainerId || !trainingData.startDate || !trainingData.endDate || !trainingData.optimizedDuration) {
       toast.error('Please fill in all the required fields.');
       return;
     }

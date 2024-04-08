@@ -16,6 +16,8 @@ import {
 } from 'mdb-react-ui-kit';
 
 function QuizCreationPage({ adminCheck, setAdminCheck }) {
+
+  const [QuizDetails, setQuizDetails] = useState([]);
   
   const navigate = useNavigate()
   const [quizData, setQuizData] = useState({
@@ -32,6 +34,26 @@ function QuizCreationPage({ adminCheck, setAdminCheck }) {
     if (!adminCheck) {
       navigate('/')
     }
+    // Getting QuizData
+    fetch("http://localhost:3001/getAllQuizData")
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then(function (data) {
+        setQuizDetails(data);
+        console.log("QuizDetails:",QuizDetails);
+      })
+      .catch(function (error) {
+        if (error instanceof SyntaxError) {
+          console.error("Empty or invalid JSON response");
+        } else {
+          console.error("Error fetching quiz data:", error);
+        }
+        throw error;
+      });
   }, [])
 
   const handleInputChange = (e) => {
@@ -51,6 +73,15 @@ function QuizCreationPage({ adminCheck, setAdminCheck }) {
         throw new Error('Failed to execute Python script');
       }
       console.log('Python retrieval executed successfully');
+
+      // Snow
+      const pythonResponseSnow = await fetch('http://localhost:3001/execute-snow-python-script', {
+        method: 'POST',
+      });
+      if (!pythonResponseSnow.ok) {
+        throw new Error('Failed to execute Snow Python script');
+      }
+      console.log('Snow Python retrieval executed successfully');
   
       // Execute DBT
       const dbtResponse = await fetch('/rundbt', { method: 'GET' });

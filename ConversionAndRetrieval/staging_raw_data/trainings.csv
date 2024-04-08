@@ -1,0 +1,100 @@
+_id,trainingId,trainingName,trainingDescription,trainerId,startDate,endDate,optimizedDuration,timingOfTraining,createdAt
+661376236116598e0df46649,Training_1,Cybersecurity Essentials,Information by nature.,Emp_109,2024-11-30,2024-12-05,3,2024-11-30 00:00:00 - 2024-12-05 00:00:00,2024-02-22 01:09:47
+661376236116598e0df4664a,Training_2,Cybersecurity Essentials,Democratic building kind owner.,Emp_129,2023-12-22,2023-12-31,30,2023-12-22 00:00:00 - 2023-12-31 00:00:00,2024-03-17 06:04:07
+661376236116598e0df4664b,Training_3,Introduction to JavaScript,Help operation capital unit song development.,Emp_111,2024-01-27,2024-02-05,7,2024-01-27 00:00:00 - 2024-02-05 00:00:00,2024-01-15 18:24:22
+661376236116598e0df4664c,Training_4,Cybersecurity Essentials,Number never game great exactly.,Emp_121,2023-12-11,2023-12-20,31,2023-12-11 00:00:00 - 2023-12-20 00:00:00,2024-02-15 18:13:24
+661376236116598e0df4664d,Training_5,Machine Learning Basics,Nature tell street.,Emp_93,2023-10-14,2023-10-23,10,2023-10-14 00:00:00 - 2023-10-23 00:00:00,2024-02-20 00:09:13
+661376236116598e0df4664e,Training_6,Introduction to JavaScript,Yes either recognize throughout like skill international realize.,Emp_96,2024-01-20,2024-01-26,37,2024-01-20 00:00:00 - 2024-01-26 00:00:00,2024-04-05 20:10:02
+661376236116598e0df4664f,Training_7,Web Development Fundamentals,Expert mouth identify scientist whatever listen evidence.,Emp_27,2023-08-18,2023-08-25,8,2023-08-18 00:00:00 - 2023-08-25 00:00:00,2024-02-09 23:12:52
+661376236116598e0df46650,Training_8,Backend Development with Node.js,Produce nice important star get.,Emp_7,2023-12-24,2023-12-30,29,2023-12-24 00:00:00 - 2023-12-30 00:00:00,2024-03-30 19:43:45
+661376236116598e0df46651,Training_9,Frontend Development with React,Explain affect own produce step power general.,Emp_162,2024-09-15,2024-09-23,16,2024-09-15 00:00:00 - 2024-09-23 00:00:00,2024-03-24 17:58:22
+661376236116598e0df46652,Training_10,Web Development Fundamentals,Country fish physical card perhaps.,Emp_131,2023-08-21,2023-08-27,3,2023-08-21 00:00:00 - 2023-08-27 00:00:00,2024-01-02 10:23:26
+661376236116598e0df46653,Training_11,Data Science Essentials,Take to medical catch role cup.,Emp_173,2024-08-14,2024-08-20,30,2024-08-14 00:00:00 - 2024-08-20 00:00:00,2024-01-30 15:53:41
+661376236116598e0df46654,Training_12,Cybersecurity Essentials,Girl what since three national right safe.,Emp_191,2024-08-19,2024-08-24,19,2024-08-19 00:00:00 - 2024-08-24 00:00:00,2024-02-04 09:51:05
+661376236116598e0df46655,Training_13,Cybersecurity Essentials,Skill white general.,Emp_131,2024-10-26,2024-11-05,33,2024-10-26 00:00:00 - 2024-11-05 00:00:00,2024-03-29 12:08:22
+661376236116598e0df46656,Training_14,Introduction to JavaScript,Option continue beyond commercial rate store check.,Emp_139,2024-10-23,2024-10-29,16,2024-10-23 00:00:00 - 2024-10-29 00:00:00,2024-03-15 12:57:56
+661376236116598e0df46657,Training_15,Database Management with MongoDB,Near card it may.,Emp_59,2024-09-20,2024-09-30,17,2024-09-20 00:00:00 - 2024-09-30 00:00:00,2024-03-29 13:15:48
+661376236116598e0df46658,Training_16,Machine Learning Basics,You hundred week off see town.,Emp_71,2024-04-15,2024-04-24,17,2024-04-15 00:00:00 - 2024-04-24 00:00:00,2024-02-02 05:54:26
+661376236116598e0df46659,Training_17,Machine Learning Basics,Here foot body hard.,Emp_199,2024-03-19,2024-03-25,15,2024-03-19 00:00:00 - 2024-03-25 00:00:00,2024-02-26 03:47:40
+661376236116598e0df4665a,Training_18,Backend Development with Node.js,Well chance together man.,Emp_70,2024-07-26,2024-08-02,30,2024-07-26 00:00:00 - 2024-08-02 00:00:00,2024-03-06 16:24:24
+661376236116598e0df4665b,Training_19,Frontend Development with React,Argue deal carry only.,Emp_52,2024-03-12,2024-03-21,13,2024-03-12 00:00:00 - 2024-03-21 00:00:00,2024-01-23 22:46:11
+661376236116598e0df4665c,Training_20,Database Management with MongoDB,Together add these.,Emp_195,2024-02-19,2024-02-28,11,2024-02-19 00:00:00 - 2024-02-28 00:00:00,2024-03-19 09:37:06
+661376236116598e0df4665d,Training_21,Web Development Fundamentals,Let mission prevent never respond huge assume.,Emp_43,2023-11-08,2023-11-18,27,2023-11-08 00:00:00 - 2023-11-18 00:00:00,2024-02-14 12:13:35
+661376236116598e0df4665e,Training_22,Machine Learning Basics,Spring road start expert.,Emp_21,2024-11-28,2024-12-06,33,2024-11-28 00:00:00 - 2024-12-06 00:00:00,2024-01-16 08:52:42
+661376236116598e0df4665f,Training_23,Cybersecurity Essentials,Anything firm participant painting night good certain theory.,Emp_138,2024-09-03,2024-09-10,8,2024-09-03 00:00:00 - 2024-09-10 00:00:00,2024-02-14 16:14:11
+661376236116598e0df46660,Training_24,Web Development Fundamentals,Describe no white exactly.,Emp_124,2024-03-06,2024-03-11,22,2024-03-06 00:00:00 - 2024-03-11 00:00:00,2024-03-15 19:08:59
+661376236116598e0df46661,Training_25,Frontend Development with React,Former arrive establish wrong animal Democrat certainly meeting.,Emp_192,2024-08-28,2024-09-06,23,2024-08-28 00:00:00 - 2024-09-06 00:00:00,2024-03-04 06:22:12
+661376236116598e0df46662,Training_26,Cloud Computing Fundamentals,Data money listen.,Emp_133,2024-10-25,2024-11-01,10,2024-10-25 00:00:00 - 2024-11-01 00:00:00,2024-03-31 19:55:44
+661376236116598e0df46663,Training_27,Introduction to JavaScript,Western those table.,Emp_118,2024-09-12,2024-09-17,16,2024-09-12 00:00:00 - 2024-09-17 00:00:00,2024-01-01 02:44:01
+661376236116598e0df46664,Training_28,Introduction to Python Programming,Who church center kitchen.,Emp_24,2024-11-06,2024-11-12,24,2024-11-06 00:00:00 - 2024-11-12 00:00:00,2024-02-25 06:44:31
+661376236116598e0df46665,Training_29,Frontend Development with React,Affect attorney growth blue.,Emp_35,2024-03-09,2024-03-17,35,2024-03-09 00:00:00 - 2024-03-17 00:00:00,2024-01-01 21:57:50
+661376236116598e0df46666,Training_30,Frontend Development with React,Might able black meeting plan.,Emp_156,2024-10-31,2024-11-06,26,2024-10-31 00:00:00 - 2024-11-06 00:00:00,2024-01-03 21:18:07
+661376236116598e0df46667,Training_31,Cybersecurity Essentials,Nation particularly very here address citizen.,Emp_98,2024-10-01,2024-10-06,16,2024-10-01 00:00:00 - 2024-10-06 00:00:00,2024-03-19 02:40:18
+661376236116598e0df46668,Training_32,Database Management with MongoDB,Interest single production any officer the.,Emp_126,2023-12-12,2023-12-18,30,2023-12-12 00:00:00 - 2023-12-18 00:00:00,2024-02-29 15:41:40
+661376236116598e0df46669,Training_33,Frontend Development with React,Return international either all year.,Emp_163,2024-09-25,2024-09-30,23,2024-09-25 00:00:00 - 2024-09-30 00:00:00,2024-01-29 02:16:49
+661376236116598e0df4666a,Training_34,Introduction to JavaScript,Media up return social particularly image include.,Emp_104,2023-08-11,2023-08-17,32,2023-08-11 00:00:00 - 2023-08-17 00:00:00,2024-01-10 19:13:18
+661376236116598e0df4666b,Training_35,Web Development Fundamentals,Customer low better once fact.,Emp_93,2024-11-05,2024-11-13,2,2024-11-05 00:00:00 - 2024-11-13 00:00:00,2024-04-02 04:47:09
+661376236116598e0df4666c,Training_36,Database Management with MongoDB,Government maintain onto staff air ground tonight.,Emp_68,2023-06-09,2023-06-14,25,2023-06-09 00:00:00 - 2023-06-14 00:00:00,2024-02-22 06:09:24
+661376236116598e0df4666d,Training_37,Database Management with MongoDB,General want remain.,Emp_115,2024-10-05,2024-10-10,2,2024-10-05 00:00:00 - 2024-10-10 00:00:00,2024-02-15 16:35:00
+661376236116598e0df4666e,Training_38,Introduction to JavaScript,Leader film statement particularly.,Emp_143,2024-09-02,2024-09-11,37,2024-09-02 00:00:00 - 2024-09-11 00:00:00,2024-02-06 16:56:13
+661376236116598e0df4666f,Training_39,Web Development Fundamentals,Know which without too unit open.,Emp_94,2024-10-28,2024-11-07,40,2024-10-28 00:00:00 - 2024-11-07 00:00:00,2024-03-31 21:47:17
+661376236116598e0df46670,Training_40,Cloud Computing Fundamentals,Above standard task special performance popular discussion at.,Emp_166,2023-12-28,2024-01-02,11,2023-12-28 00:00:00 - 2024-01-02 00:00:00,2024-01-24 20:12:59
+661376236116598e0df46671,Training_41,Introduction to JavaScript,Across head defense continue.,Emp_52,2024-12-27,2025-01-03,10,2024-12-27 00:00:00 - 2025-01-03 00:00:00,2024-03-10 12:21:48
+661376236116598e0df46672,Training_42,Introduction to Python Programming,Girl group student better physical.,Emp_196,2024-10-18,2024-10-25,3,2024-10-18 00:00:00 - 2024-10-25 00:00:00,2024-03-13 02:54:27
+661376236116598e0df46673,Training_43,Cybersecurity Essentials,By rich goal.,Emp_4,2023-07-08,2023-07-18,5,2023-07-08 00:00:00 - 2023-07-18 00:00:00,2024-02-28 04:08:31
+661376236116598e0df46674,Training_44,Cloud Computing Fundamentals,Activity head learn fight this discover.,Emp_186,2024-12-09,2024-12-14,3,2024-12-09 00:00:00 - 2024-12-14 00:00:00,2024-01-09 11:08:54
+661376236116598e0df46675,Training_45,Introduction to JavaScript,Bill professional camera look.,Emp_48,2024-10-11,2024-10-18,30,2024-10-11 00:00:00 - 2024-10-18 00:00:00,2024-02-11 00:39:32
+661376236116598e0df46676,Training_46,Database Management with MongoDB,Law effect case culture light event part identify.,Emp_28,2024-08-12,2024-08-17,10,2024-08-12 00:00:00 - 2024-08-17 00:00:00,2024-03-28 13:11:18
+661376236116598e0df46677,Training_47,Introduction to JavaScript,Position road consumer admit company Congress picture.,Emp_167,2024-01-23,2024-02-02,25,2024-01-23 00:00:00 - 2024-02-02 00:00:00,2024-04-04 06:40:41
+661376236116598e0df46678,Training_48,Data Science Essentials,Beyond without west.,Emp_129,2024-09-22,2024-10-02,37,2024-09-22 00:00:00 - 2024-10-02 00:00:00,2024-04-04 13:01:53
+661376236116598e0df46679,Training_49,Cloud Computing Fundamentals,Finally talk produce tend shake style rate.,Emp_184,2023-08-16,2023-08-24,17,2023-08-16 00:00:00 - 2023-08-24 00:00:00,2024-03-12 18:58:33
+661376236116598e0df4667a,Training_50,Data Science Essentials,When choice then commercial.,Emp_69,2024-06-29,2024-07-05,18,2024-06-29 00:00:00 - 2024-07-05 00:00:00,2024-01-23 01:30:50
+661376236116598e0df4667b,Training_51,Introduction to Python Programming,Green never reach peace.,Emp_138,2024-08-21,2024-08-26,32,2024-08-21 00:00:00 - 2024-08-26 00:00:00,2024-01-25 10:42:29
+661376236116598e0df4667c,Training_52,Database Management with MongoDB,Care black across cover international figure often.,Emp_47,2023-09-03,2023-09-10,20,2023-09-03 00:00:00 - 2023-09-10 00:00:00,2024-02-11 02:28:29
+661376236116598e0df4667d,Training_53,Database Management with MongoDB,Any professional sing whom.,Emp_109,2023-12-09,2023-12-14,4,2023-12-09 00:00:00 - 2023-12-14 00:00:00,2024-02-08 11:41:41
+661376236116598e0df4667e,Training_54,Cloud Computing Fundamentals,Civil responsibility population hope civil nearly.,Emp_33,2023-09-28,2023-10-06,4,2023-09-28 00:00:00 - 2023-10-06 00:00:00,2024-03-24 17:43:37
+661376236116598e0df4667f,Training_55,Database Management with MongoDB,Month choose soldier scene chair although space.,Emp_109,2023-11-27,2023-12-06,5,2023-11-27 00:00:00 - 2023-12-06 00:00:00,2024-01-03 03:33:00
+661376236116598e0df46680,Training_56,Database Management with MongoDB,Four travel six citizen easy.,Emp_118,2024-05-10,2024-05-17,15,2024-05-10 00:00:00 - 2024-05-17 00:00:00,2024-02-28 08:24:47
+661376236116598e0df46681,Training_57,Backend Development with Node.js,Despite agent major race.,Emp_11,2024-10-04,2024-10-10,38,2024-10-04 00:00:00 - 2024-10-10 00:00:00,2024-03-18 13:15:08
+661376236116598e0df46682,Training_58,Introduction to Python Programming,Task window street five political school concern.,Emp_134,2024-05-23,2024-06-01,37,2024-05-23 00:00:00 - 2024-06-01 00:00:00,2024-01-02 17:19:52
+661376236116598e0df46683,Training_59,Introduction to Python Programming,Understand event prepare institution drug media.,Emp_29,2023-08-15,2023-08-20,28,2023-08-15 00:00:00 - 2023-08-20 00:00:00,2024-03-29 19:41:42
+661376236116598e0df46684,Training_60,Backend Development with Node.js,Picture finally bill.,Emp_180,2024-10-09,2024-10-17,9,2024-10-09 00:00:00 - 2024-10-17 00:00:00,2024-03-22 23:04:01
+661376236116598e0df46685,Training_61,Frontend Development with React,Onto speech he production author institution choice.,Emp_16,2024-06-03,2024-06-08,36,2024-06-03 00:00:00 - 2024-06-08 00:00:00,2024-04-03 12:02:24
+661376236116598e0df46686,Training_62,Cloud Computing Fundamentals,Loss understand eight able.,Emp_66,2023-06-11,2023-06-16,30,2023-06-11 00:00:00 - 2023-06-16 00:00:00,2024-03-16 03:16:29
+661376236116598e0df46687,Training_63,Introduction to JavaScript,Recognize single seat industry.,Emp_77,2023-11-03,2023-11-08,2,2023-11-03 00:00:00 - 2023-11-08 00:00:00,2024-02-20 07:45:04
+661376236116598e0df46688,Training_64,Introduction to JavaScript,Ten maybe simply forget.,Emp_119,2024-03-02,2024-03-10,8,2024-03-02 00:00:00 - 2024-03-10 00:00:00,2024-01-26 23:52:08
+661376236116598e0df46689,Training_65,Data Science Essentials,Benefit music positive space arm music interview.,Emp_121,2024-03-14,2024-03-20,32,2024-03-14 00:00:00 - 2024-03-20 00:00:00,2024-01-03 22:35:10
+661376236116598e0df4668a,Training_66,Introduction to Python Programming,Yard often clearly already side space.,Emp_136,2023-06-21,2023-06-30,25,2023-06-21 00:00:00 - 2023-06-30 00:00:00,2024-04-01 23:00:54
+661376236116598e0df4668b,Training_67,Introduction to Python Programming,Sense feeling new while west energy less.,Emp_187,2024-01-30,2024-02-07,19,2024-01-30 00:00:00 - 2024-02-07 00:00:00,2024-02-18 10:44:54
+661376236116598e0df4668c,Training_68,Backend Development with Node.js,Measure along better near.,Emp_175,2024-11-23,2024-12-01,7,2024-11-23 00:00:00 - 2024-12-01 00:00:00,2024-01-29 04:22:20
+661376236116598e0df4668d,Training_69,Frontend Development with React,Business goal view least operation key.,Emp_132,2023-10-31,2023-11-08,34,2023-10-31 00:00:00 - 2023-11-08 00:00:00,2024-01-24 20:00:29
+661376236116598e0df4668e,Training_70,Database Management with MongoDB,Star democratic write.,Emp_127,2024-12-02,2024-12-11,18,2024-12-02 00:00:00 - 2024-12-11 00:00:00,2024-03-27 01:10:27
+661376236116598e0df4668f,Training_71,Frontend Development with React,Someone film weight television available daughter public somebody.,Emp_105,2023-08-31,2023-09-09,22,2023-08-31 00:00:00 - 2023-09-09 00:00:00,2024-01-19 08:40:08
+661376236116598e0df46690,Training_72,Backend Development with Node.js,Station side think realize.,Emp_17,2024-10-19,2024-10-26,14,2024-10-19 00:00:00 - 2024-10-26 00:00:00,2024-03-20 14:07:21
+661376236116598e0df46691,Training_73,Machine Learning Basics,Different fight four kitchen difficult actually.,Emp_126,2023-07-06,2023-07-15,3,2023-07-06 00:00:00 - 2023-07-15 00:00:00,2024-01-31 20:05:51
+661376236116598e0df46692,Training_74,Cloud Computing Fundamentals,Tell magazine mean course draw risk.,Emp_117,2024-02-07,2024-02-12,14,2024-02-07 00:00:00 - 2024-02-12 00:00:00,2024-02-17 22:40:34
+661376236116598e0df46693,Training_75,Cloud Computing Fundamentals,Significant kitchen Mrs weight evidence.,Emp_57,2024-02-20,2024-02-27,31,2024-02-20 00:00:00 - 2024-02-27 00:00:00,2024-04-07 02:11:42
+661376236116598e0df46694,Training_76,Cloud Computing Fundamentals,Out officer entire some.,Emp_132,2024-07-10,2024-07-19,40,2024-07-10 00:00:00 - 2024-07-19 00:00:00,2024-02-20 00:52:58
+661376236116598e0df46695,Training_77,Backend Development with Node.js,Air institution some account leg benefit past trial.,Emp_61,2024-12-17,2024-12-27,1,2024-12-17 00:00:00 - 2024-12-27 00:00:00,2024-02-04 14:22:00
+661376236116598e0df46696,Training_78,Backend Development with Node.js,Window impact stage consider.,Emp_188,2023-06-13,2023-06-18,40,2023-06-13 00:00:00 - 2023-06-18 00:00:00,2024-04-03 20:26:27
+661376236116598e0df46697,Training_79,Machine Learning Basics,Candidate few social shoulder.,Emp_82,2023-12-31,2024-01-07,3,2023-12-31 00:00:00 - 2024-01-07 00:00:00,2024-04-06 00:40:04
+661376236116598e0df46698,Training_80,Data Science Essentials,Full member tell feel central.,Emp_61,2023-08-16,2023-08-21,29,2023-08-16 00:00:00 - 2023-08-21 00:00:00,2024-04-08 04:31:25
+661376236116598e0df46699,Training_81,Frontend Development with React,Manage resource career ability single price.,Emp_124,2024-02-07,2024-02-14,1,2024-02-07 00:00:00 - 2024-02-14 00:00:00,2024-03-03 20:50:13
+661376236116598e0df4669a,Training_82,Introduction to JavaScript,Dinner official such discussion.,Emp_112,2023-11-12,2023-11-17,2,2023-11-12 00:00:00 - 2023-11-17 00:00:00,2024-02-12 08:51:48
+661376236116598e0df4669b,Training_83,Machine Learning Basics,Few win miss become street they as.,Emp_79,2023-06-23,2023-06-28,31,2023-06-23 00:00:00 - 2023-06-28 00:00:00,2024-03-20 13:01:21
+661376236116598e0df4669c,Training_84,Introduction to Python Programming,Loss hot rule well floor.,Emp_56,2023-10-06,2023-10-12,16,2023-10-06 00:00:00 - 2023-10-12 00:00:00,2024-02-24 03:12:48
+661376236116598e0df4669d,Training_85,Web Development Fundamentals,Actually concern case.,Emp_36,2023-09-10,2023-09-16,36,2023-09-10 00:00:00 - 2023-09-16 00:00:00,2024-02-22 23:33:40
+661376236116598e0df4669e,Training_86,Introduction to Python Programming,Respond interview simply owner.,Emp_81,2024-10-10,2024-10-18,14,2024-10-10 00:00:00 - 2024-10-18 00:00:00,2024-01-01 14:15:40
+661376236116598e0df4669f,Training_87,Cloud Computing Fundamentals,Suggest country against around popular whether exactly.,Emp_49,2024-01-27,2024-02-01,26,2024-01-27 00:00:00 - 2024-02-01 00:00:00,2024-03-17 02:25:00
+661376236116598e0df466a0,Training_88,Web Development Fundamentals,Yes car information data place.,Emp_90,2024-09-20,2024-09-30,12,2024-09-20 00:00:00 - 2024-09-30 00:00:00,2024-01-29 08:33:49
+661376236116598e0df466a1,Training_89,Cloud Computing Fundamentals,Security goal medical well.,Emp_141,2024-06-23,2024-07-02,39,2024-06-23 00:00:00 - 2024-07-02 00:00:00,2024-01-14 00:03:59
+661376236116598e0df466a2,Training_90,Introduction to Python Programming,Mother people media population debate.,Emp_6,2023-11-23,2023-11-28,8,2023-11-23 00:00:00 - 2023-11-28 00:00:00,2024-03-02 11:52:25
+661376236116598e0df466a3,Training_91,Backend Development with Node.js,Structure big space yes agreement need.,Emp_12,2024-01-03,2024-01-12,18,2024-01-03 00:00:00 - 2024-01-12 00:00:00,2024-02-25 16:39:53
+661376236116598e0df466a4,Training_92,Cloud Computing Fundamentals,Serve popular lawyer find world.,Emp_136,2024-02-02,2024-02-07,34,2024-02-02 00:00:00 - 2024-02-07 00:00:00,2024-01-14 01:42:37
+661376236116598e0df466a5,Training_93,Machine Learning Basics,Difficult military they material piece.,Emp_9,2023-08-29,2023-09-08,5,2023-08-29 00:00:00 - 2023-09-08 00:00:00,2024-01-25 05:34:26
+661376236116598e0df466a6,Training_94,Machine Learning Basics,Say another fight.,Emp_167,2024-10-29,2024-11-03,32,2024-10-29 00:00:00 - 2024-11-03 00:00:00,2024-02-18 16:13:23
+661376236116598e0df466a7,Training_95,Database Management with MongoDB,Sign popular forget old technology.,Emp_38,2024-11-27,2024-12-04,39,2024-11-27 00:00:00 - 2024-12-04 00:00:00,2024-03-14 00:51:29
+661376236116598e0df466a8,Training_96,Database Management with MongoDB,Same have prove without door mind.,Emp_93,2024-02-29,2024-03-09,23,2024-02-29 00:00:00 - 2024-03-09 00:00:00,2024-04-03 16:13:19
+661376236116598e0df466a9,Training_97,Frontend Development with React,Option still information young research reveal history behind.,Emp_72,2023-06-05,2023-06-14,1,2023-06-05 00:00:00 - 2023-06-14 00:00:00,2024-02-03 13:49:35
+661376236116598e0df466aa,Training_98,Machine Learning Basics,Congress large friend American I player.,Emp_58,2023-07-09,2023-07-17,35,2023-07-09 00:00:00 - 2023-07-17 00:00:00,2024-03-05 17:59:40
+661376236116598e0df466ab,Training_99,Introduction to JavaScript,Common on test enter.,Emp_146,2024-07-20,2024-07-26,4,2024-07-20 00:00:00 - 2024-07-26 00:00:00,2024-01-28 05:26:05

@@ -36,6 +36,7 @@ const trainingSchema = new mongoose.Schema({
     trainingName: { type: String, required: true },
     trainingDescription: { type: String },
     trainerId: { type: String, required: true },
+    trainerName: { type: String, required: true },
     startDate: { type: Date, required: true },
     endDate: { type: Date, required: true },
     optimizedDuration: { type: Number, required: true }, // Duration in hours or days

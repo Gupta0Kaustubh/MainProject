@@ -233,6 +233,26 @@ app.get('/getAllAdminUserData', async (req, res) => {
     }
 });
 
+// Route to fetch all quiz data
+app.get('/getAllQuizData', async (req, res) => {
+
+    try {
+        // Retrieve all user data from the database
+        const allQuizData = await QuizData.find();
+
+        // If no user data is found, return a 404 status and message
+        if (!allQuizData || allQuizData.length === 0) {
+            return res.status(404).json({ message: 'No user data found' });
+        }
+
+        // If user data is found, return it in the response
+        res.status(200).json({ allQuizData });
+    } catch (error) {
+        // If an error occurs, return a 500 status and error message
+        res.status(500).json({ message: 'Failed to fetch user data', error: error.message });
+    }
+});
+
 // Route to handle changing user password
 app.post('/changePassword', async (req, res) => {
     try {
@@ -297,6 +317,7 @@ app.post('/submitTrainingData', async (req, res) => {
             trainingName,
             trainingDescription,
             trainerId,
+            trainerName,
             startDate,
             endDate,
             optimizedDuration,
@@ -342,11 +363,30 @@ app.post('/submitQuizData', async (req, res) => {
     }
 });
 
-// Endpoint to execute the Python script
+// Endpoint to execute the SSMS Python script
 app.post('/execute-python-script', (req, res) => {
     // Execute the Python script
-    const pythonProcess = spawn('python', ['C:/Users/KaustubhGupta/Desktop/KG/Main Project/MainProject/ConversionAndRetrieval/Retrieval.py']);
-    // const pythonProcess = spawn('python', ['D:/JMAN/MainProject/ConversionAndRetrieval/Retrieval.py']);   /* home */
+    // const pythonProcess = spawn('python', ['C:/Users/KaustubhGupta/Desktop/KG/Main Project/MainProject/ConversionAndRetrieval/Retrieval.py']);
+    const pythonProcess = spawn('python', ['D:/JMAN/MainProject/ConversionAndRetrieval/Retrieval.py']);   /* home */
+  
+    // Handle script output
+    pythonProcess.stdout.on('data', (data) => {
+      console.log(`Python script output: ${data}`);
+    });
+  
+    // Handle script errors
+    pythonProcess.stderr.on('data', (data) => {
+      console.error(`Error executing Python script: ${data}`);
+    });
+  
+    // Send response
+    res.send('Python script execution initiated');
+  });
+// Endpoint to execute the SnowFlake Python script
+app.post('/execute-snow-python-script', (req, res) => {
+    // Execute the Python script
+    // const pythonProcess = spawn('python', ['C:/Users/KaustubhGupta/Desktop/KG/Main Project/MainProject/ConversionAndRetrieval/ingestion-mongo-snowflake.py']);
+    const pythonProcess = spawn('python', ['D:/JMAN/MainProject/ConversionAndRetrieval/ingestion-mongo-snowflake.py']);   /* home */
   
     // Handle script output
     pythonProcess.stdout.on('data', (data) => {

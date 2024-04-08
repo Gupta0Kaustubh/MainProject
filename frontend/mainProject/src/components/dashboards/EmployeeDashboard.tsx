@@ -51,6 +51,9 @@ function EmployeeDashboard({empCheck, setEmpCheck}) {
                       <label>Training Description : &nbsp;</label>{training.trainingDescription}
                     </DialogContentText>
                     <DialogContentText id={`alert-dialog-description-${training._id}`}>
+                      <label>Trainer Name : &nbsp;</label>{training.trainerName}
+                    </DialogContentText>
+                    <DialogContentText id={`alert-dialog-description-${training._id}`}>
                       <label>Training Duration : &nbsp;</label>{training.timingOfTraining}
                     </DialogContentText>
                     <DialogContentText id={`alert-dialog-description-${training._id}`}>
@@ -61,6 +64,9 @@ function EmployeeDashboard({empCheck, setEmpCheck}) {
                     </DialogContentText>
                     <DialogContentText id={`alert-dialog-description-${training._id}`}>
                       <label>Optimized Duration : &nbsp;</label>{training.optimizedDuration} hrs
+                  </DialogContentText>
+                  <DialogContentText id={`alert-dialog-description-${training._id}`}>
+                      <label style={{cursor: 'pointer', color: 'black', transition: 'color 0.3s'}}>HackerRank Link : &nbsp; https://www.hackerrank.com/{training.trainingName}</label>
                     </DialogContentText>
                 </DialogContent>
                 {/* <DialogActions>

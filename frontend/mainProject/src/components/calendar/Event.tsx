@@ -20,7 +20,7 @@ const Event: FC<Props> = ({event, i}) => {
       borderRadius: '5px',
       height: '3rem',
       paddingY: '0.4em',
-      marginX: '0.5em'
+      marginX: '0.5em',
     }}
     onClick={() => setShowDialog(true)}
     >

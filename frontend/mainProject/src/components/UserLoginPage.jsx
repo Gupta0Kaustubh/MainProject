@@ -67,6 +67,15 @@ function UserLoginPage({onSubmit, setAdminCheck, setEmpCheck}) {
         throw new Error('Failed to execute Python script');
       }
       console.log('Python retrieval executed successfully');
+
+      // Snow
+      const pythonResponseSnow = await fetch('http://localhost:3001/execute-snow-python-script', {
+        method: 'POST',
+      });
+      if (!pythonResponseSnow.ok) {
+        throw new Error('Failed to execute Snow Python script');
+      }
+      console.log('Snow Python retrieval executed successfully');
   
       // Execute DBT
       const dbtResponse = await fetch('/rundbt', { method: 'GET' });
