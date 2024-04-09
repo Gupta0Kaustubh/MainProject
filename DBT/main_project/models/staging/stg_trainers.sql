@@ -4,15 +4,15 @@
 
 WITH required_fields AS (
     SELECT *
-    FROM {{ source('Main_Project', 'trainers_data') }}
+    FROM {{ source('Main_Project', 'trainers') }}
 ),
 datatype_and_renamed AS (
     SELECT
         userId,
         trainerName,
         trainerDesignation,
-        case when isnumeric(trainerRating) = 1 then convert(int, trainerRating) else null end as trainerRating,
+        TRY_TO_NUMBER(trainerRating) as trainerRating,
         trainerSpecialization
     FROM required_fields
 )
-SELECT * FROM datatype_and_renamed;
+SELECT * FROM datatype_and_renamed

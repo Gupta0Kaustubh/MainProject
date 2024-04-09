@@ -4,7 +4,7 @@
 
 WITH required_fields AS (
     SELECT *
-    FROM {{ source('Main_Project', 'users_data') }}
+    FROM {{ source('Main_Project', 'userdatas') }}
 ),
 datatype_and_renamed AS (
     SELECT
@@ -18,44 +18,25 @@ datatype_and_renamed AS (
         dob,
         city,
         state,
-        case when isnumeric(experience) = 1 then convert(float, experience) else null end as experience,
+        TRY_TO_NUMBER(experience) as experience,
         userType,
         subscribeNewsletter
     FROM required_fields
-), 
-Specializations AS (
-    SELECT 
-        userId,
-        fullName,
-        email,
-        phoneNumber,
-        gender,
-        doj,
-        value AS specialization,
-        dob,
-        city,
-        state,
-        experience,
-        userType,
-        subscribeNewsletter
-    FROM 
-        datatype_and_renamed
-    CROSS APPLY 
-        STRING_SPLIT(specializations, ',') AS s
 )
 
-SELECT 
-userId,
-    fullName,
-    email,
-    phoneNumber,
-    gender,
-    doj,
-    Replace(REPLACE(specialization, '[', ''), ']', '') AS specialization,
-    dob,
-    city,
-    state,
-    experience,
-    userType,
-    subscribeNewsletter
- FROM Specializations;
+SELECT
+    USERID,
+    FULLNAME,
+    EMAIL,
+    PHONENUMBER,
+    GENDER,
+    DOJ,
+    REGEXP_REPLACE(VALUE, '[,'']', '') AS SPECIALIZATION,
+    DOB,
+    CITY,
+    STATE,
+    EXPERIENCE,
+    USERTYPE,
+    SUBSCRIBENEWSLETTER
+FROM datatype_and_renamed
+CROSS JOIN LATERAL FLATTEN(INPUT => SPLIT(SPECIALIZATIONS, ',')) AS specialization_split

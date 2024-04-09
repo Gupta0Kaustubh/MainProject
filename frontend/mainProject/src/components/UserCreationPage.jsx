@@ -197,8 +197,8 @@ function UserCreationPage({ onSubmit, adminCheck, setAdminCheck }) {
         pauseOnHover
         theme="dark"
       />
-      <MDBRow className="h-100 justify-content-center align-items-center">
-        <MDBCol md='6' className='text-center text-md-start d-flex flex-column justify-content-center'>
+      <MDBRow className="h-100 justify-content-center align-items-start">
+        <MDBCol md='6' className='text-center text-md-start d-flex flex-column justify-content-center pt-5 mt-1'>
           <h1 className="my-3 display-3 fw-bold ls-tight px-3">
             <br />
             <span className="text-primary">User Creation</span>
@@ -212,7 +212,7 @@ function UserCreationPage({ onSubmit, adminCheck, setAdminCheck }) {
           </p>
         </MDBCol>
         <MDBCol md='6'>
-          <MDBCard className='my-5 bg-primary-subtle'>
+          <MDBCard className='my-5 bg-secondary-subtle'>
             <MDBCardBody className='p-5'>
               <form onSubmit={handleSubmit}>
                 <MDBRow>

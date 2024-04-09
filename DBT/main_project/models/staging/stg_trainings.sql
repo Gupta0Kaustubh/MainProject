@@ -4,7 +4,7 @@
 
 WITH required_fields AS (
     SELECT *
-    FROM {{ source('Main_Project', 'trainings_data') }}
+    FROM {{ source('Main_Project', 'trainings') }}
 ),
 datatype_and_renamed AS (
     SELECT
@@ -12,11 +12,11 @@ datatype_and_renamed AS (
         trainingName,
         trainingDescription,
         trainerId,
-        CONVERT(date, startDate) AS startDate,
-        CONVERT(date, enddate) AS enddate,
-        case when isnumeric(optimizedDuration) = 1 then convert(int, optimizedDuration) else null end as optimizedDuration,
+        TO_DATE(startDate) AS startDate,
+        TO_DATE(enddate) AS enddate,
+        TRY_TO_NUMBER(optimizedDuration) as optimizedDuration,
         timingOfTraining,
-        CONVERT(date, createdAt) AS createdAt
+        TO_DATE(createdAt) AS createdAt
     FROM required_fields
 )
-SELECT * FROM datatype_and_renamed;
+SELECT * FROM datatype_and_renamed

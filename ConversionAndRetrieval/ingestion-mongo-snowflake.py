@@ -118,6 +118,5 @@ for filename in os.listdir("staging_raw_data"):
 
 # Commit the transaction
 snowflake_conn.commit()
-
 # Close Snowflake connection
 snowflake_conn.close()

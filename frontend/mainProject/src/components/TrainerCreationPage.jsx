@@ -143,7 +143,7 @@ function TrainerCreationPage({ adminCheck, setAdminCheck }) {
           </p>
         </MDBCol>
         <MDBCol md='6'>
-          <MDBCard className='my-5 bg-primary-subtle'>
+          <MDBCard className='my-5 bg-secondary-subtle'>
             <MDBCardBody className='p-5'>
                 <form onSubmit={handleSubmit}>
                 <MDBRow>

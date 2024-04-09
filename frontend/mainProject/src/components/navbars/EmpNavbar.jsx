@@ -8,7 +8,7 @@ function Navbar({ setEmpCheck }) {
   return (
     <nav className="navbar navbar-expand-lg bg-tertiary mx-3">
       <div className="container-fluid">
-        <Link className='navbar-brand link-opacity-10 fs-1 fw-semibold text-light' to='/emp-dashboard' onClick={() => setActive(null)}>TrainTrack Ltd.</Link>
+        <Link className='navbar-brand link-opacity-10 fs-1 fw-semibold text-light' to='/emp-dashboard' onClick={() => setActive(null)}>TalentEdge Hub</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -17,6 +17,9 @@ function Navbar({ setEmpCheck }) {
             
           </ul>
           <ul className="navbar-nav">
+            <li className="nav-item">
+              <Link className={`nav-link link-opacity-10 fs-5 me-3 fw-semibold ${active === 'Training Prediction' ? 'text-light' : 'text-white-50'}`} to='/prediction-page' onClick={()=> setActive('Training Prediction')}>Training Prediction</Link>
+            </li>
             <li className="nav-item">
               <Link className={`nav-link link-opacity-10 fs-5 me-3 fw-semibold ${active === 'User-Profile' ? 'text-light' : 'text-white-50'}`} to='/user-profile' onClick={()=> setActive('User-Profile')}>User Profile</Link>
             </li>

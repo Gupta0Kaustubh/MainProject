@@ -1,5 +1,8 @@
+html, body {
+    height: 100%;
+}
 
-
-body{
-    background-color: rgb(68, 71, 71);
+body {
+    margin: 0; /* Remove default margin */
+    background: linear-gradient(to bottom, #4a47a3, #2b2b2b); /* Adjust colors as needed */
 }

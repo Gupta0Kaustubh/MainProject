@@ -58,14 +58,14 @@ const UserProfile = ({ matchedUserEmail, setEmpCheck }) => {
     return (
         <>
         <Navbar setEmpCheck={setEmpCheck} />
-        <button type="button" class="btn btn-outline-success  px-5 d-flex justify-content-center button_style mb-2" onClick={handleClick}>Show Details !!!</button>
+        <button type="button" class="btn btn-outline-warning  px-5 d-flex justify-content-center button_style mb-4" onClick={handleClick}>Show Details !!!</button>
         {isDisplayed && (
         <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'auto' }}>
             
       <MDBRow className="h-100 justify-content-center align-items-center">
         
         <MDBCol md='12'>
-          <MDBCard className=' bg-primary-subtle'>
+          <MDBCard className=' bg-secondary-subtle'>
           
             <MDBCardBody className='p-5'>
             <h2 className='pb-2'>User Details</h2>

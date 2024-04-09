@@ -23,7 +23,7 @@ firstoutput AS (
     trainings t 
   LEFT JOIN 
     quiz q ON t.trainingId = q.trainingId
-  LEFT JOIN  
+  LEFT JOIN 
     tracker tr ON tr.trainingId = t.trainingId
   GROUP BY 
     q.difficultyLevel, 
@@ -39,4 +39,4 @@ FROM
 WHERE 
   ((f.optimizedDuration_in_hours / f.avg_assessment_completion_time_in_hours) * 100) >= 100
 ORDER BY 
-  ((f.optimizedDuration_in_hours / f.avg_assessment_completion_time_in_hours) * 100) DESC;
+  ((f.optimizedDuration_in_hours / f.avg_assessment_completion_time_in_hours) * 100) DESC

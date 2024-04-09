@@ -4,16 +4,16 @@
 
 WITH required_fields AS (
     SELECT *
-    FROM {{ source('Main_Project', 'quiz_data') }}
+    FROM {{ source('Main_Project', 'quizdatas') }}
 ),
 datatype_and_renamed AS (
     SELECT
         quizName,
         trainingId,
         trainingName,
-        case when isnumeric(maxScores) = 1 then convert(int, maxScores) else null end as maxScores,
-        case when isnumeric(minScores) = 1 then convert(int, minScores) else null end as minScores,
+        TRY_TO_NUMBER(maxScores) as maxScores,
+        TRY_TO_NUMBER(minScores) as minScores,
         difficultyLevel
     FROM required_fields
 )
-SELECT * FROM datatype_and_renamed;
+SELECT * FROM datatype_and_renamed

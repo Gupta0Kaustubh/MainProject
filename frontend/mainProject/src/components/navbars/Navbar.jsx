@@ -5,9 +5,9 @@ function Navbar({ setAdminCheck }) {
   const [active, setActive] = useState(null);
 
   return (
-    <nav className="navbar navbar-expand-lg bg-tertiary mx-3">
+    <nav className="navbar navbar-expand-lg bg-tertiary mx-3" >
       <div className="container-fluid">
-        <Link className='navbar-brand link-opacity-10 fs-1 fw-semibold text-light' to='/admin-dashboard' onClick={() => setActive(null)}>TrainTrack Ltd.</Link>
+        <Link className='navbar-brand link-opacity-10 fs-1 fw-semibold text-light' to='/admin-dashboard' onClick={() => setActive(null)}>TalentEdge Hub</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>

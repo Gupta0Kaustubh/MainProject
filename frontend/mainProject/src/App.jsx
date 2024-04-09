@@ -17,6 +17,7 @@ import ForgotPassword from './components/ForgotPassword.jsx'
 import AdminUserView from './components/AdminUserView.jsx';
 import UserProfile from './components/UserProfile.jsx';
 import AdminCalendar from './components/AdminCalendar.jsx';
+import PredictionPage from './components/PredictionPage.jsx';
 
 function App() {
 
@@ -65,6 +66,8 @@ function App() {
             <Route path="/quiz-creation" element={<QuizCreationPage adminCheck={adminCheck} setAdminCheck={setAdminCheck} />} />
             {/* Admin Viewing User route */}
             <Route path="/admin-unique-user" element={<AdminUserView adminCheck={adminCheck} setAdminCheck={setAdminCheck} />} />
+            {/* Admin Viewing User route */}
+            <Route path="/prediction-page" element={<PredictionPage adminCheck={adminCheck} setAdminCheck={setAdminCheck} />} />
           </Routes>
       </Router>
     </>

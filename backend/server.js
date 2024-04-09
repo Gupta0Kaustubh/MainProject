@@ -242,7 +242,7 @@ app.get('/getAllQuizData', async (req, res) => {
 
         // If no user data is found, return a 404 status and message
         if (!allQuizData || allQuizData.length === 0) {
-            return res.status(404).json({ message: 'No user data found' });
+            return res.status(404).json({ message: 'No quiz data found' });
         }
 
         // If user data is found, return it in the response
@@ -366,8 +366,8 @@ app.post('/submitQuizData', async (req, res) => {
 // Endpoint to execute the SSMS Python script
 app.post('/execute-python-script', (req, res) => {
     // Execute the Python script
-    // const pythonProcess = spawn('python', ['C:/Users/KaustubhGupta/Desktop/KG/Main Project/MainProject/ConversionAndRetrieval/Retrieval.py']);
-    const pythonProcess = spawn('python', ['D:/JMAN/MainProject/ConversionAndRetrieval/Retrieval.py']);   /* home */
+    const pythonProcess = spawn('python', ['C:/Users/KaustubhGupta/Desktop/KG/Main Project/MainProject/ConversionAndRetrieval/Retrieval.py']);
+    // const pythonProcess = spawn('python', ['D:/JMAN/MainProject/ConversionAndRetrieval/Retrieval.py']);   /* home */
   
     // Handle script output
     pythonProcess.stdout.on('data', (data) => {
@@ -385,8 +385,8 @@ app.post('/execute-python-script', (req, res) => {
 // Endpoint to execute the SnowFlake Python script
 app.post('/execute-snow-python-script', (req, res) => {
     // Execute the Python script
-    // const pythonProcess = spawn('python', ['C:/Users/KaustubhGupta/Desktop/KG/Main Project/MainProject/ConversionAndRetrieval/ingestion-mongo-snowflake.py']);
-    const pythonProcess = spawn('python', ['D:/JMAN/MainProject/ConversionAndRetrieval/ingestion-mongo-snowflake.py']);   /* home */
+    const pythonProcess = spawn('python', ['C:/Users/KaustubhGupta/Desktop/KG/Main Project/MainProject/ConversionAndRetrieval/ingestion-mongo-snowflake.py']);
+    // const pythonProcess = spawn('python', ['D:/JMAN/MainProject/ConversionAndRetrieval/ingestion-mongo-snowflake.py']);   /* home */
   
     // Handle script output
     pythonProcess.stdout.on('data', (data) => {

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Modal, Button } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -16,45 +17,46 @@ import {
 } from 'mdb-react-ui-kit';
 
 function QuizCreationPage({ adminCheck, setAdminCheck }) {
-
   const [QuizDetails, setQuizDetails] = useState([]);
-  
-  const navigate = useNavigate()
+  const [showModal, setShowModal] = useState(false);
+  const [show,setshow]=useState(false)
+  const navigate = useNavigate();
   const [quizData, setQuizData] = useState({
     quizName: '',
     trainingId: '',
     trainingName: '',
-      maxScores: '',
-      minScores: '',
+    maxScores: '',
+    minScores: '',
     difficultyLevel: '',
     questionFile: ''
   });
 
+  async function getdata(){
+    await fetch("http://localhost:3001/getAllQuizData")
+          .then(function (response) {
+              if (!response.ok) {
+                  throw new Error("Network response was not ok");
+              }
+              return response.json();
+          })
+          .then(function (data) {
+              // Convert data to array if it's not already an array
+              const userDetailsArray = Array.isArray(data) ? data : [data];
+              setQuizDetails(userDetailsArray[0].allQuizData);
+              console.log('dd', QuizDetails)
+              
+          })
+          .catch(function (error) {
+              console.error("Error fetching user data:", error);
+              setshow(true)
+          });
+  }
   useEffect(() => {
     if (!adminCheck) {
       navigate('/')
     }
-    // Getting QuizData
-    fetch("http://localhost:3001/getAllQuizData")
-      .then(function (response) {
-        if (!response.ok) {
-          throw new Error("Network response was not ok");
-        }
-        return response.json();
-      })
-      .then(function (data) {
-        setQuizDetails(data);
-        console.log("QuizDetails:",QuizDetails);
-      })
-      .catch(function (error) {
-        if (error instanceof SyntaxError) {
-          console.error("Empty or invalid JSON response");
-        } else {
-          console.error("Error fetching quiz data:", error);
-        }
-        throw error;
-      });
-  }, [])
+    getdata()
+    }, [show]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -82,13 +84,13 @@ function QuizCreationPage({ adminCheck, setAdminCheck }) {
         throw new Error('Failed to execute Snow Python script');
       }
       console.log('Snow Python retrieval executed successfully');
-  
+
       // Execute DBT
       const dbtResponse = await fetch('/rundbt', { method: 'GET' });
       if (!dbtResponse.ok) {
         throw new Error('DBT execution failed');
       }
-  
+
       console.log('DBT executed successfully');
     } catch (error) {
       console.error('Error:', error.message);
@@ -101,7 +103,7 @@ function QuizCreationPage({ adminCheck, setAdminCheck }) {
 
     await runScripts()
     // Perform form validation
-    if (!quizData.quizName|| !quizData.trainingId || !quizData.trainingName || !quizData.maxScores || !quizData.minScores || !quizData.difficultyLevel || !quizData.questionFile) {
+    if (!quizData.quizName || !quizData.trainingId || !quizData.trainingName || !quizData.maxScores || !quizData.minScores || !quizData.difficultyLevel || !quizData.questionFile) {
       toast.error('Please fill in all the required fields.');
       return;
     }
@@ -113,14 +115,14 @@ function QuizCreationPage({ adminCheck, setAdminCheck }) {
         console.log('Quiz data submitted successfully:', response.data);
         toast.success('Quiz data submitted successfully');
         setQuizData({
-    quizName: '',
-    trainingId: '',
-    trainingName: '',
-      maxScores: '',
-      minScores: '',
-    difficultyLevel: '',
-    questionFile: ''
-  })
+          quizName: '',
+          trainingId: '',
+          trainingName: '',
+          maxScores: '',
+          minScores: '',
+          difficultyLevel: '',
+          questionFile: ''
+        })
       })
       .catch((error) => {
         console.error('Error submitting Quiz data:', error);
@@ -130,20 +132,19 @@ function QuizCreationPage({ adminCheck, setAdminCheck }) {
 
   function back() {
     setQuizData({
-    quizName: '',
-    trainingId: '',
-    trainingName: '',
+      quizName: '',
+      trainingId: '',
+      trainingName: '',
       maxScores: '',
       minScores: '',
-    difficultyLevel: '',
-    questionFile: ''
-  })
+      difficultyLevel: '',
+      questionFile: ''
+    })
   }
 
   return (
     <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'auto' }}>
       <Navbar setAdminCheck={setAdminCheck} />
-      {/* ToastContainer for displaying notifications */}
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -156,93 +157,97 @@ function QuizCreationPage({ adminCheck, setAdminCheck }) {
         pauseOnHover
         theme="dark"
       />
-      <MDBRow className="h-100 justify-content-center align-items-center">
-        <MDBCol md='6' className='text-center text-md-start d-flex flex-column justify-content-center'>
-          <h1 className="my-3 display-3 fw-bold ls-tight px-3">
-            <br />
-            <span className="text-primary">Quiz Creation</span>
-          </h1>
-          <h1 className="my-5 display-3 fw-bold ls-tight px-3">
-            The best offer <br />
-            <span className="text-primary">for your business</span>
-          </h1>
-          <p className='px-3' style={{color: 'hsl(217, 10%, 50.8%)'}}>
-            Welcome to our platform, where innovation meets opportunity. Join us to unlock endless possibilities for your business growth. Our tailored solutions cater to your unique needs, ensuring seamless integration and success at every step. Elevate your business today and embark on a journey towards excellence with us.
-          </p>
-        </MDBCol>
-        <MDBCol md='6'>
-          <MDBCard className='my-5 bg-primary-subtle'>
-            <MDBCardBody className='p-5'>
-                <form onSubmit={handleSubmit}>
-                <MDBRow>
-                  <MDBCol col='12'>
-                    <label htmlFor='quizName' className='form-label mb-1'>Quiz Name</label><span className='ms-1' style={{ color: 'red' }}>*</span>
-                    <MDBInput id='quizName' type='text' wrapperClass='mb-4' name='quizName' onChange={handleInputChange} value={quizData.quizName} required />
-                  </MDBCol>              
-                 </MDBRow>  
-                <MDBRow>
-                  
-                    <MDBCol col='6'>
-                    <label htmlFor='trainingId' className='form-label mb-1'>Training Id</label><span className='ms-1' style={{ color: 'red' }}>*</span>
-                    <MDBInput id='trainingId' type='text' wrapperClass='mb-4' name='trainingId' onChange={handleInputChange} value={quizData.trainingId} required />
-                  </MDBCol>
-                  <MDBCol col='6'>
-                    <label htmlFor='trainingName' className='form-label mb-1'>Training Name</label><span className='ms-1' style={{ color: 'red' }}>*</span>
-                    <MDBInput id='trainingName' type='text' wrapperClass='mb-4' name='trainingName' onChange={handleInputChange} value={quizData.trainingName} required />
-                  </MDBCol>
-                         
-                 </MDBRow>  
-                 <MDBRow>
-                    <MDBCol col='6'>
-                    <label htmlFor='maxScores' className='form-label mb-1'>Maximum Score </label><span className='ms-1' style={{ color: 'red' }}>*</span>
-                    <MDBInput id='maxScores' type='number' wrapperClass='mb-4' name='maxScores' onChange={handleInputChange} value={quizData.maxScores} min={1} max={100} required/>
-                  </MDBCol>
-                    <MDBCol col='6'>
-                    <label htmlFor='minScores' className='form-label mb-1'>Minimum Score Required</label><span className='ms-1' style={{ color: 'red' }}>*</span>
-                    <MDBInput id='minScores' type='number' wrapperClass='mb-4' name='minScores' onChange={handleInputChange} value={quizData.minScores} min={1} max={100} required/>
-                  </MDBCol>
-                </MDBRow>                 
-                <MDBRow>
-                  <MDBCol col='6'>
-                    <label htmlFor='difficultyLevel' className='form-label mb-1'>Difficulty Level</label><span className='ms-1' style={{ color: 'red' }}>*</span>
-                    <select className="form-select mb-4" id="difficultyLevel" name="difficultyLevel" onChange={handleInputChange} value={quizData.difficultyLevel} required>
-                      <option value="">Select Difficulty Level</option>
-                      <option value="easy">Easy</option>
-                      <option value="moderate">Moderate</option>
-                      <option value="Hard">Hard</option>
-                    </select>
-                  </MDBCol>
-                  <MDBCol col='6'>
-                    <label htmlFor='questionFile' className='form-label mb-1'>Question File <span className='ms-1'style={{ color: 'red' }}>*</span>
-                    <br /> <span>(only .xlsx or .csv or .json file to be uploaded)</span>
-                    </label>
-                    <div className='mb-4'>
-                        <input id='questionFile' type='file' name='questionFile' onChange={handleInputChange} value={quizData.questionFile} accept='.xlsx, .json, .csv' required />
-                    </div>
-                  </MDBCol>
-                </MDBRow>   
+      <Button className='mt-3 me-4 float-end' onClick={() => setShowModal(true)}>Create Quiz + </Button>
 
-                           
-          
-        <MDBRow>
-            <MDBCol col='3'>  
-                    <button className="btn btn-primary mb-4 w-100 mt-4" onClick={handleSubmit}>Save</button>
-              
-            </MDBCol>
-            <MDBCol col='3'>
-              <button className="btn btn-secondary mb-4 w-100 mt-4" onClick={() => back()}>Cancel</button>
-            </MDBCol>
-        </MDBRow>
-              </form>
-            </MDBCardBody>
-            
-          </MDBCard>
-          
-        </MDBCol>
+      <MDBRow className="h-100 d-flex justify-content-center align-items-center">
+      <MDBCol md='12' className=' ms-5 ps-5 text-center text-md-start mt-5 pt-5'>
+  <h2 className="card-title">Quiz Details</h2>
+  <MDBRow>
+    {QuizDetails.map((quiz, index) => (
+      <MDBCol md='4' key={index}>
+        <MDBCard className="my-3">
+          <MDBCardBody>
+            <p className="card-text">Quiz Name: {quiz.quizName}</p>
+            <p className="card-text">Training ID: {quiz.trainingId}</p>
+            <p className="card-text">Training Name: {quiz.trainingName}</p>
+            <p className="card-text">Difficulty Level: {quiz.difficultyLevel}</p>
+            <p className="card-text">Max Score: {quiz.maxScores}</p>
+            <p className="card-text">Min Score: {quiz.minScores}</p>
+            <p className="card-text">Question File: {quiz.questionFile}</p>
+            {/* Add more details as needed */}
+          </MDBCardBody>
+        </MDBCard>
+      </MDBCol>
+    ))}
+  </MDBRow>
+</MDBCol>
+
       </MDBRow>
+
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Quiz Creation</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <form onSubmit={handleSubmit}>
+            <MDBRow>
+              <MDBCol col='12'>
+                <label htmlFor='quizName' className='form-label mb-1'>Quiz Name</label><span className='ms-1' style={{ color: 'red' }}>*</span>
+                <MDBInput id='quizName' type='text' wrapperClass='mb-4' name='quizName' onChange={handleInputChange} value={quizData.quizName} required />
+              </MDBCol>
+            </MDBRow>
+            <MDBRow>
+              <MDBCol col='6'>
+                <label htmlFor='trainingId' className='form-label mb-1'>Training Id</label><span className='ms-1' style={{ color: 'red' }}>*</span>
+                <MDBInput id='trainingId' type='text' wrapperClass='mb-4' name='trainingId' onChange={handleInputChange} value={quizData.trainingId} required />
+              </MDBCol>
+              <MDBCol col='6'>
+                <label htmlFor='trainingName' className='form-label mb-1'>Training Name</label><span className='ms-1' style={{ color: 'red' }}>*</span>
+                <MDBInput id='trainingName' type='text' wrapperClass='mb-4' name='trainingName' onChange={handleInputChange} value={quizData.trainingName} required />
+              </MDBCol>
+            </MDBRow>
+            <MDBRow>
+              <MDBCol col='6'>
+                <label htmlFor='maxScores' className='form-label mb-1'>Maximum Score </label><span className='ms-1' style={{ color: 'red' }}>*</span>
+                <MDBInput id='maxScores' type='number' wrapperClass='mb-4' name='maxScores' onChange={handleInputChange} value={quizData.maxScores} min={1} max={100} required />
+              </MDBCol>
+              <MDBCol col='6'>
+                <label htmlFor='minScores' className='form-label mb-1'>Minimum Score Required</label><span className='ms-1' style={{ color: 'red' }}>*</span>
+                <MDBInput id='minScores' type='number' wrapperClass='mb-4' name='minScores' onChange={handleInputChange} value={quizData.minScores} min={1} max={100} required />
+              </MDBCol>
+            </MDBRow>
+            <MDBRow>
+              <MDBCol col='6'>
+                <label htmlFor='difficultyLevel' className='form-label mb-1'>Difficulty Level</label><span className='ms-1' style={{ color: 'red' }}>*</span>
+                <select className="form-select mb-4" id="difficultyLevel" name="difficultyLevel" onChange={handleInputChange} value={quizData.difficultyLevel} required>
+                  <option value="">Select Difficulty Level</option>
+                  <option value="easy">Easy</option>
+                  <option value="moderate">Moderate</option>
+                  <option value="Hard">Hard</option>
+                </select>
+              </MDBCol>
+              <MDBCol col='6'>
+                <label htmlFor='questionFile' className='form-label mb-1'>Question File <span className='ms-1' style={{ color: 'red' }}>*</span>
+                  <br /> <span>(only .xlsx or .csv or .json file to be uploaded)</span>
+                </label>
+                <div className='mb-4'>
+                  <input id='questionFile' type='file' name='questionFile' onChange={handleInputChange} value={quizData.questionFile} accept='.xlsx, .json, .csv' required />
+                </div>
+              </MDBCol>
+            </MDBRow>
+            <MDBRow>
+              <MDBCol col='3'>
+                <button className="btn btn-primary mb-4 w-100 mt-4" onClick={handleSubmit}>Save</button>
+              </MDBCol>
+              <MDBCol col='3'>
+                <button className="btn btn-secondary mb-4 w-100 mt-4" onClick={() => setShowModal(false)}>Cancel</button>
+              </MDBCol>
+            </MDBRow>
+          </form>
+        </Modal.Body>
+      </Modal>
     </MDBContainer>
   )
 }
-
 
 export default QuizCreationPage;

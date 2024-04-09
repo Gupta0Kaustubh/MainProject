@@ -133,7 +133,7 @@ function UserLoginPage({onSubmit, setAdminCheck, setEmpCheck}) {
     <MDBContainer className="my-5">
       <nav className="navbar bg-tertiary mb-3 ms-3">
       <div className="container-fluid">
-        <h1 className='text-light'>TrainTrack Ltd.</h1>
+        <h1 className='text-light'>TalentEdge Hub</h1>
       </div>
     </nav>
     {/* ToastContainer for displaying notifications */}

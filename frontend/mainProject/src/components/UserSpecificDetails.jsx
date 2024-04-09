@@ -14,12 +14,12 @@ const UserSpecificDetails = ({ matchedUsers }) => {
     const user = matchedUsers.length > 0 ? matchedUsers[0] : null;
     
     return (
-      <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'auto' }}>
+      <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'hiddden' }}>
             
       <MDBRow className="h-100 justify-content-center align-items-center">
         
         <MDBCol md='12'>
-          <MDBCard className=' bg-primary-subtle'>
+          <MDBCard className=' bg-secondary-subtle mt-5'>
           
             <MDBCardBody className='p-5'>
             <h2 className='pb-2'>User Details</h2>

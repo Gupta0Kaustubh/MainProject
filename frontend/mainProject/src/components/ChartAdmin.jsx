@@ -5,7 +5,7 @@ import React from 'react'
 
 const ChartAdmin = () => {
   return (
-    <div>ChartAdmin</div>
+    <h1>addd</h1>
   )
 }
 
