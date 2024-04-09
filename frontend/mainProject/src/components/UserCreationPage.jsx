@@ -201,18 +201,18 @@ function UserCreationPage({ onSubmit, adminCheck, setAdminCheck }) {
         <MDBCol md='6' className='text-center text-md-start d-flex flex-column justify-content-center pt-5 mt-1'>
           <h1 className="my-3 display-3 fw-bold ls-tight px-3">
             <br />
-            <span className="text-primary">User Creation</span>
+            <span className="text-light ">User Creation</span>
           </h1>
-          <h1 className="my-5 display-3 fw-bold ls-tight px-3">
+          <h1 className="my-5 text-dark display-3 fw-bold ls-tight px-3">
             The best offer <br />
-            <span className="text-primary">for your business</span>
+            <span className="text-light">for your business</span>
           </h1>
-          <p className='px-3' style={{color: 'hsl(217, 10%, 50.8%)'}}>
+          <p className='px-3 text-dark-emphasis'>
             Welcome to our platform, where innovation meets opportunity. Join us to unlock endless possibilities for your business growth. Our tailored solutions cater to your unique needs, ensuring seamless integration and success at every step. Elevate your business today and embark on a journey towards excellence with us.
           </p>
         </MDBCol>
         <MDBCol md='6'>
-          <MDBCard className='my-5 bg-secondary-subtle'>
+          <MDBCard className='my-5 bg-secondary-subtle border border-2 border-dark fw-semibold'>
             <MDBCardBody className='p-5'>
               <form onSubmit={handleSubmit}>
                 <MDBRow>

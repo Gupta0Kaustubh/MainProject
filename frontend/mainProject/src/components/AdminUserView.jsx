@@ -75,7 +75,7 @@ const AdminUserView = ({adminCheck, setAdminCheck}) => {
             <form onSubmit={handleSubmit}>
                 <div className="d-flex justify-content-center mt-4">
                     <input
-                        className="form-control me-2 w-25"
+                        className="form-control me-2 w-25 border border-2 border-black rounded"
                         type="search"
                         placeholder="Please enter the User Id or email"
                         aria-label="Search"

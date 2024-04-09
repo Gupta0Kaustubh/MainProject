@@ -8,7 +8,7 @@ function Navbar({ setEmpCheck }) {
   return (
     <nav className="navbar navbar-expand-lg bg-tertiary mx-3">
       <div className="container-fluid">
-        <Link className='navbar-brand link-opacity-10 fs-1 fw-semibold text-light' to='/emp-dashboard' onClick={() => setActive(null)}>TalentEdge Hub</Link>
+        <Link className='navbar-brand link-opacity-10 fs-1 fw-semibold text-light p-2 mt-1' style={{boxShadow:' 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}} to='/emp-dashboard' onClick={() => setActive(null)}>TalentEdge Hub</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>

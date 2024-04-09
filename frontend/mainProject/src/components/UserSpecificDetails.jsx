@@ -19,7 +19,7 @@ const UserSpecificDetails = ({ matchedUsers }) => {
       <MDBRow className="h-100 justify-content-center align-items-center">
         
         <MDBCol md='12'>
-          <MDBCard className=' bg-secondary-subtle mt-5'>
+          <MDBCard className=' bg-secondary-subtle border border-2 border-dark fw-semibold mt-5'>
           
             <MDBCardBody className='p-5'>
             <h2 className='pb-2'>User Details</h2>

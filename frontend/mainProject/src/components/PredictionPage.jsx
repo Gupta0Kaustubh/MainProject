@@ -16,8 +16,8 @@ import { useEffect, useState } from 'react';
   
 const PredictionPage = ({setAdminCheck, adminCheck}) => {
 
-
-  const [UserDetails, setUserDetails] = useState([]);
+    const [show,setshow]=useState(false)
+    const [UserDetails, setUserDetails] = useState([]);
     const [trainingData, setTrainingData] = useState({
         gender:'',
         specialization: '',
@@ -39,13 +39,15 @@ const PredictionPage = ({setAdminCheck, adminCheck}) => {
             .then(function (data) {
                 // Convert data to array if it's not already an array
                 const userDetailsArray = Array.isArray(data) ? data : [data];
-                setUserDetails(userDetailsArray);
+              setUserDetails(userDetailsArray[0].allUserData);
+              console.log("ff", UserDetails)
                 
             })
             .catch(function (error) {
-                console.error("Error fetching user data:", error);
+              console.error("Error fetching user data:", error);
+              setshow(true)
             });
-      }, []);
+      }, [show]);
 
       const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -93,7 +95,7 @@ const PredictionPage = ({setAdminCheck, adminCheck}) => {
       <MDBRow className="h-100 justify-content-center align-items-center">
         
         <MDBCol md='6'>
-          <MDBCard className='my-5 bg-secondary-subtle'>
+          <MDBCard className='my-5 bg-secondary-subtle border border-2 border-dark fw-semibold'>
             <MDBCardBody className='p-5'>
                 <form onSubmit={handleSubmit}>
                 <MDBRow>
@@ -130,7 +132,7 @@ const PredictionPage = ({setAdminCheck, adminCheck}) => {
                     <label htmlFor='trainingName' className='form-label mb-1'>Training Name</label>
                     <select className="form-select mb-4" id="trainingName" name="trainingName" onChange={handleInputChange} value={trainingData.trainingName}>
     <option value="">Select Training Name</option>
-    {[...new Set(UserDetails[0].allUserData.map(userData => userData.trainingName))].map((uniqueTrainingName, index) => (
+    {[...new Set(UserDetails.map(userData => userData.trainingName))].map((uniqueTrainingName, index) => (
       <option key={index} value={uniqueTrainingName}>{uniqueTrainingName}</option>
     ))}
   </select>
@@ -158,7 +160,7 @@ const PredictionPage = ({setAdminCheck, adminCheck}) => {
         </MDBCol>
 
         <MDBCol md='6'>
-          <MDBCard className='my-5 bg-secondary-subtle'>
+          <MDBCard className='my-5 bg-secondary-subtle border border-2 border-dark fw-semibold'>
             <MDBCardBody className='p-5'>
             
     

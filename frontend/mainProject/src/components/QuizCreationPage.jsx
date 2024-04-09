@@ -157,23 +157,23 @@ function QuizCreationPage({ adminCheck, setAdminCheck }) {
         pauseOnHover
         theme="dark"
       />
-      <Button className='mt-3 me-4 float-end' onClick={() => setShowModal(true)}>Create Quiz + </Button>
+      <Button className='mt-3 me-4 float-end border border-2 border-dark' onClick={() => setShowModal(true)}>Create Quiz + </Button>
 
       <MDBRow className="h-100 d-flex justify-content-center align-items-center">
       <MDBCol md='12' className=' ms-5 ps-5 text-center text-md-start mt-5 pt-5'>
-  <h2 className="card-title">Quiz Details</h2>
+  <h2 className="card-title text-light ps-1">Quiz Details</h2>
   <MDBRow>
     {QuizDetails.map((quiz, index) => (
       <MDBCol md='4' key={index}>
-        <MDBCard className="my-3">
+        <MDBCard className="my-3 me-3 bg-secondary-subtle border border-2 border-dark fw-semibold">
           <MDBCardBody>
-            <p className="card-text">Quiz Name: {quiz.quizName}</p>
-            <p className="card-text">Training ID: {quiz.trainingId}</p>
-            <p className="card-text">Training Name: {quiz.trainingName}</p>
-            <p className="card-text">Difficulty Level: {quiz.difficultyLevel}</p>
-            <p className="card-text">Max Score: {quiz.maxScores}</p>
-            <p className="card-text">Min Score: {quiz.minScores}</p>
-            <p className="card-text">Question File: {quiz.questionFile}</p>
+            <p className="card-text"><label className='fs-5 fw-semibold text-dark pe-1'>Quiz Name:</label> {quiz.quizName}</p>
+            <p className="card-text"><label className='fs-5 fw-semibold text-dark pe-1'>Training ID: </label>{quiz.trainingId}</p>
+       
+            <p className="card-text"><label className='fs-5 fw-semibold text-dark pe-1'>Difficulty Level: </label>{quiz.difficultyLevel}</p>
+            <p className="card-text"><label className='fs-5 fw-semibold text-dark pe-1'>Max Score: </label>{quiz.maxScores}</p>
+            <p className="card-text"><label className='fs-5 fw-semibold text-dark pe-1'>Min Score:</label> {quiz.minScores}</p>
+            <p className="card-text"><label className='fs-5 fw-semibold text-dark pe-1'>Question File: </label>{quiz.questionFile}</p>
             {/* Add more details as needed */}
           </MDBCardBody>
         </MDBCard>
@@ -184,12 +184,12 @@ function QuizCreationPage({ adminCheck, setAdminCheck }) {
 
       </MDBRow>
 
-      <Modal show={showModal} onHide={() => setShowModal(false)}>
+      <Modal show={showModal} onHide={() => setShowModal(false)} className='mt-5'>
         <Modal.Header closeButton>
           <Modal.Title>Quiz Creation</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className='fw-semibold'>
             <MDBRow>
               <MDBCol col='12'>
                 <label htmlFor='quizName' className='form-label mb-1'>Quiz Name</label><span className='ms-1' style={{ color: 'red' }}>*</span>

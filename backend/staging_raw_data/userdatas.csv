@@ -1,6 +1,6 @@
 _id,userId,firstName,middleName,lastName,email,phoneNumber,gender,doj,specializations,dob,city,state,experience,userType,subscribeNewsletter,passwords,__v
 66125d506116598e0dae9e2a,Emp_0,Kaustubh,,Gupta,kaustubhgupta9860@gmail.com,8979630137,Male,09-03-2023,"['Microservices', 'Test-Driven Development', '.NET', 'Data Visualization']",07-04-2015,Bryanstad,Arizona,5,Admin,False,12345678,
-66125d506116598e0dae9e2b,Emp_1,Cathy,Robert,Mata,johnbaker@example.com,(375)527-9939,Male,09-03-2023,"['Kubernetes', 'MySQL', 'C#', 'NoSQL']",07-04-2015,Bryanstad,Arizona,5,User,False,NQ@y9_Ov,
+66125d506116598e0dae9e2b,Emp_1,Cathy,Robert,Mata,johnbaker@example.com,(375)527-9939,Male,09-03-2023,"['Kubernetes', 'MySQL', 'C#', 'NoSQL']",07-04-2015,Bryanstad,Arizona,5,User,False,12345678,
 66125d506116598e0dae9e2c,Emp_2,David,Robert,Sanford,corymiller@example.com,248.611.9083,Male,16-06-2022,"['C#', 'DevOps', 'MongoDB', 'Objective-C']",16-08-1993,East Alexamouth,South Dakota,11,User,True,G)15(NdX,
 66125d506116598e0dae9e2d,Emp_3,Kendra,Lauren,Sanchez,boothpatrick@example.com,001-853-345-0172x1681,Female,02-10-2022,"['HTML', 'Test-Driven Development', 'Google Cloud Platform', 'GraphQL']",30-07-1970,Christyburgh,Virginia,6,User,False,$rP2BHvI,
 66125d506116598e0dae9e2e,Emp_4,Lauren,Tracy,Vargas,emorales@example.net,+1-932-448-8082x0694,Male,19-02-2024,"['NoSQL', 'Objective-C', 'Continuous Deployment', 'Continuous Integration']",07-07-1954,Robertstad,Colorado,20,User,True,h)4kTZYp,

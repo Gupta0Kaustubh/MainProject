@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from 'react-router-dom';
-import BackImage from '../assets/back.jpg';
+import BackImage from '../assets/bird.jpg';
   
 import {
     MDBBtn,
@@ -131,9 +131,9 @@ function UserLoginPage({onSubmit, setAdminCheck, setEmpCheck}) {
 
   return (
     <MDBContainer className="my-5">
-      <nav className="navbar bg-tertiary mb-3 ms-3">
+      <nav className="navbar bg-tertiary mb-3">
       <div className="container-fluid">
-        <h1 className='text-light'>TalentEdge Hub</h1>
+        <h1 className='text-light p-2' style={{boxShadow:' 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}}>TalentEdge Hub</h1>
       </div>
     </nav>
     {/* ToastContainer for displaying notifications */}
@@ -150,14 +150,14 @@ function UserLoginPage({onSubmit, setAdminCheck, setEmpCheck}) {
                     theme="dark"
                 />
       <MDBCard>
-        <MDBRow className='g-0'>
+        <MDBRow className='g-0 '>
           <MDBCol md='6'>
-            <MDBCardImage src={BackImage} alt="login form" className='rounded-start w-100 h-100'/>
+            <MDBCardImage src='https://img.lovepik.com/photo/45009/7677.jpg_wh860.jpg' alt="login form" className='rounded-start w-100 h-100'/>
           </MDBCol>
           <MDBCol md='6'>
-            <MDBCardBody className='d-flex flex-column'>
+            <MDBCardBody className='d-flex flex-column fw-semibold ' style={{boxShadow:' 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}}>
               <div className='d-flex flex-row mt-2'>
-                <MDBIcon fas icon="cubes fa-3x me-3" style={{ color: '#ff6219' }}/>
+                <MDBIcon fas icon="won-sign fa-3x me-3" style={{ color: '#ff6219' }}/>
                 <span className="h1 fw-bold mb-0">USER LOGIN</span>
               </div>
               <h5 className="fw-normal my-4 pb-3" style={{letterSpacing: '1px'}}>Sign into your account</h5>

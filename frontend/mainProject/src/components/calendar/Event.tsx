@@ -21,6 +21,7 @@ const Event: FC<Props> = ({event, i}) => {
       height: '3rem',
       paddingY: '0.4em',
       marginX: '0.5em',
+      border: '2px solid gray'
     }}
     onClick={() => setShowDialog(true)}
     >
