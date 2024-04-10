@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: kpi1
+    description: kpi1 table
+    columns:
+      - name: trainingName
+        description: Name of the training
+        tests:
+          - not_null
+      - name: difficultyLevel
+        description: Difficulty level of the training
+        tests:
+          - not_null
+      - name: UserEfficiency_OutOf100
+        description: User efficiency calculated out of 100
+        tests:
+          - not_null
