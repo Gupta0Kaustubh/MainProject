@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from 'react-router-dom';
-import BackImage from '../assets/bird.jpg';
+import BackImage from '../assets/back.jpg';
+import './styles/buttonStyle.css'
   
 import {
     MDBBtn,
@@ -152,7 +153,7 @@ function UserLoginPage({onSubmit, setAdminCheck, setEmpCheck}) {
       <MDBCard>
         <MDBRow className='g-0 '>
           <MDBCol md='6'>
-            <MDBCardImage src='https://img.lovepik.com/photo/45009/7677.jpg_wh860.jpg' alt="login form" className='rounded-start w-100 h-100'/>
+            <MDBCardImage src='https://media.istockphoto.com/id/1281150061/vector/register-account-submit-access-login-password-username-internet-online-website-concept.jpg?s=612x612&w=0&k=20&c=9HWSuA9IaU4o-CK6fALBS5eaO1ubnsM08EOYwgbwGBo=' alt="login form" className=' imageLogin rounded-start'/>
           </MDBCol>
           <MDBCol md='6'>
             <MDBCardBody className='d-flex flex-column fw-semibold ' style={{boxShadow:' 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)'}}>

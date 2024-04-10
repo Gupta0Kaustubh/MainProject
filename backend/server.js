@@ -9,6 +9,7 @@ const Trainer = require('./models/User').Trainer;
 const Training = require('./models/User').Training;
 const QuizData = require('./models/User').QuizData;
 const AdminUserView = require('./models/User').AdminUserView;
+const TotalInfo = require('./models/User').TotalInfo;
 const dotenv = require('dotenv');
 const { exec } = require('child_process');
 const path = require('path');
@@ -366,8 +367,8 @@ app.post('/submitQuizData', async (req, res) => {
 // Endpoint to execute the SSMS Python script
 app.post('/execute-python-script', (req, res) => {
     // Execute the Python script
-    // const pythonProcess = spawn('python', ['C:/Users/KaustubhGupta/Desktop/KG/Main Project/MainProject/ConversionAndRetrieval/Retrieval.py']);
-    const pythonProcess = spawn('python', ['D:/JMAN/MainProject/ConversionAndRetrieval/Retrieval.py']);   /* home */
+    const pythonProcess = spawn('python', ['C:/Users/KaustubhGupta/Desktop/KG/Main Project/MainProject/ConversionAndRetrieval/Retrieval.py']);
+    // const pythonProcess = spawn('python', ['D:/JMAN/MainProject/ConversionAndRetrieval/Retrieval.py']);   /* home */
   
     // Handle script output
     pythonProcess.stdout.on('data', (data) => {
@@ -385,8 +386,8 @@ app.post('/execute-python-script', (req, res) => {
 // Endpoint to execute the SnowFlake Python script
 app.post('/execute-snow-python-script', (req, res) => {
     // Execute the Python script
-    // const pythonProcess = spawn('python', ['C:/Users/KaustubhGupta/Desktop/KG/Main Project/MainProject/ConversionAndRetrieval/ingestion-mongo-snowflake.py']);
-    const pythonProcess = spawn('python', ['D:/JMAN/MainProject/ConversionAndRetrieval/ingestion-mongo-snowflake.py']);   /* home */
+    const pythonProcess = spawn('python', ['C:/Users/KaustubhGupta/Desktop/KG/Main Project/MainProject/ConversionAndRetrieval/ingestion-mongo-snowflake.py']);
+    // const pythonProcess = spawn('python', ['D:/JMAN/MainProject/ConversionAndRetrieval/ingestion-mongo-snowflake.py']);   /* home */
   
     // Handle script output
     pythonProcess.stdout.on('data', (data) => {
@@ -422,6 +423,25 @@ app.get('/rundbt', (req, res) => {
         console.log(`DBT output: ${stdout}`);
         res.send('DBT execution successful');
     });
+});
+
+// Get ALL INFO DATA
+app.get('/totaldata', async (req, res) => {
+    try {
+        // Retrieve data from the MongoDB collection (replace 'CollectionName' with your actual collection name)
+        const data = await TotalInfo.find();
+
+        // If no data is found, return a 404 status and message
+        if (!data || data.length === 0) {
+            return res.status(404).json({ message: 'No data found' });
+        }
+
+        // If data is found, return it in the response
+        res.status(200).json({ data });
+    } catch (error) {
+        // If an error occurs, return a 500 status and error message
+        res.status(500).json({ message: 'Failed to fetch data', error: error.message });
+    }
 });
 
 

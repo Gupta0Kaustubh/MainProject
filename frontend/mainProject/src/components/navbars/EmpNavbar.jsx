@@ -18,6 +18,9 @@ function Navbar({ setEmpCheck }) {
           </ul>
           <ul className="navbar-nav">
             <li className="nav-item">
+              <Link className={`nav-link link-opacity-10 fs-5 me-3 fw-semibold ${active === 'EmpCalendar' ? 'text-light' : 'text-white-50'}`} to='/emp-calendar' onClick={()=> setActive('EmpCalendar')}>Calendar</Link>
+            </li>
+            <li className="nav-item">
               <Link className={`nav-link link-opacity-10 fs-5 me-3 fw-semibold ${active === 'Training Prediction' ? 'text-light' : 'text-white-50'}`} to='/prediction-page' onClick={()=> setActive('Training Prediction')}>Training Prediction</Link>
             </li>
             <li className="nav-item">

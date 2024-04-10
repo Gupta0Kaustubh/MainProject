@@ -89,7 +89,31 @@ const AdminUserViewSchema = new mongoose.Schema({
     ratingGivenByTrainer:String
 })
 
+const TotalInfoSchema = new mongoose.Schema({
+    userId: { type: String, required: true },
+    fullName: { type: String, required: true },
+    email: String,
+    phoneNumber: String,
+    gender: String,
+    dateOfBirth: Date,
+    dateOfJoining: Date,
+    specialization: String,
+    city: String,
+    state: String,
+    trainerSpecialization: String,
+    trainingName: String,
+    optimizedDuration: String,
+    difficultyLevel: String,
+    trainingStatus: String,
+    assessmentPercentageDone: String,
+    assessmentCompletionTimeInHours: String,
+    scoreAchievedInQuiz: String,
+    quizPassedOrFailed: String,
+    ratingGivenByTrainer: String
+});
+
 const Tracker = mongoose.model('Tracker', trackerSchema);
 const AdminUserView = mongoose.model('AdminUserView', AdminUserViewSchema);
+const TotalInfo = mongoose.model('TotalInfo', TotalInfoSchema);
 
-module.exports = { UserData, Trainer, Training, QuizData, Tracker, AdminUserView };
+module.exports = { UserData, Trainer, Training, QuizData, Tracker, AdminUserView, TotalInfo };

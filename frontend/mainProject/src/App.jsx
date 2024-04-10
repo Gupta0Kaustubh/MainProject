@@ -18,6 +18,7 @@ import AdminUserView from './components/AdminUserView.jsx';
 import UserProfile from './components/UserProfile.jsx';
 import AdminCalendar from './components/AdminCalendar.jsx';
 import PredictionPage from './components/PredictionPage.jsx';
+import EmpCalendar from './components/EmpCalendar.jsx';
 
 function App() {
 
@@ -52,6 +53,8 @@ function App() {
             <Route path="/admin-dashboard" element={<AdminDashboard adminCheck={adminCheck} setAdminCheck={setAdminCheck} />} />
             {/* Admin Calendar route */}
             <Route path="/admin-calendar" element={<AdminCalendar adminCheck={adminCheck} setAdminCheck={setAdminCheck} />} />
+            {/* Employee Calendar route */}
+            <Route path="/emp-calendar" element={<EmpCalendar empCheck={empCheck} setEmpCheck={setEmpCheck} />} />
             {/* User Creation route */}
             <Route path="/user-creation" element={<UserCreationPage onSubmit={handleRegistration} adminCheck={adminCheck} setAdminCheck={setAdminCheck} />} />
             {/* User Default Password route */}

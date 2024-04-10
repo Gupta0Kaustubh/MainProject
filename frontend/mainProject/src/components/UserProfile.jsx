@@ -60,7 +60,7 @@ const UserProfile = ({ matchedUserEmail, setEmpCheck }) => {
         <Navbar setEmpCheck={setEmpCheck} />
         <button type="button" class="btn btn-outline-warning  px-5 d-flex justify-content-center button_style mb-4" onClick={handleClick}>Show Details !!!</button>
         {isDisplayed && (
-        <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'auto' }}>
+        <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'visible' }}>
             
       <MDBRow className="h-100 justify-content-center align-items-center">
         
