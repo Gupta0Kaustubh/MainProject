@@ -1,7 +1,7 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css'
 
 import Home from './components/Home.jsx';
@@ -22,6 +22,9 @@ import EmpCalendar from './components/EmpCalendar.jsx';
 
 function App() {
 
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [role, setRole] = useState('');
+
   const [adminCheck, setAdminCheck] = useState(false)
   const [empCheck, setEmpCheck] = useState(false)
 
@@ -37,40 +40,63 @@ function App() {
     console.log('User data received in App:', userData);
   };
 
+  useEffect(() => {
+    const loggedIn = localStorage.getItem('isLoggedIn');
+    const userRole = localStorage.getItem('role');
+    if (loggedIn === 'true' && userRole) {
+      setIsLoggedIn(true);
+      setRole(userRole);
+    }
+  }, [isLoggedIn, role])
+
   return (
     <>
       {/* Router setup */}
       <Router>
           {/* Routes setup */}
           <Routes>
-            {/* Home route */}
-          <Route path="/" element={<UserLoginPage onSubmit={handleLogin} setAdminCheck={setAdminCheck } setEmpCheck={setEmpCheck} />} />
-            {/* Employee Dashboard route */}
-            <Route path="/emp-dashboard" element={<EmployeeDashboard setEmpCheck={setEmpCheck} empCheck={empCheck} />} />
-            {/* Employee Profile route */}
-            <Route path="/user-profile" element={<UserProfile matchedUserEmail={userEmail} setEmpCheck={setEmpCheck} />} />
-            {/* Admin Dashboard route */}
-            <Route path="/admin-dashboard" element={<AdminDashboard adminCheck={adminCheck} setAdminCheck={setAdminCheck} />} />
-            {/* Admin Calendar route */}
-            <Route path="/admin-calendar" element={<AdminCalendar adminCheck={adminCheck} setAdminCheck={setAdminCheck} />} />
-            {/* Employee Calendar route */}
-            <Route path="/emp-calendar" element={<EmpCalendar empCheck={empCheck} setEmpCheck={setEmpCheck} />} />
-            {/* User Creation route */}
-            <Route path="/user-creation" element={<UserCreationPage onSubmit={handleRegistration} adminCheck={adminCheck} setAdminCheck={setAdminCheck} />} />
-            {/* User Default Password route */}
+          {/* Login route */}
+            <Route path="/" element={<UserLoginPage setIsLoggedIn={setIsLoggedIn} onSubmit={handleLogin} />} />
+          {/* User Default Password route */}
             <Route path="/user-forgot" element={<UserForgotPassword />} />
             {/* User Default Password route */}
             <Route path="/forgot-password" element={<ForgotPassword />} />
+          {isLoggedIn && (
+            <>
+              {role === 'Employee' && (
+                <>
+                  {/* Employee Dashboard route */}
+                  <Route path="/emp-dashboard" element={<EmployeeDashboard setIsLoggedIn={setIsLoggedIn} />} />
+                  {/* Employee Profile route */}
+                  <Route path="/user-profile" element={<UserProfile matchedUserEmail={userEmail} setIsLoggedIn={setIsLoggedIn} />} />
+                  {/* Employee Calendar route */}
+                  <Route path="/emp-calendar" element={<EmpCalendar setIsLoggedIn={setIsLoggedIn} />} />
+                  {/* Prediction User route */}
+                  <Route path="/prediction-page" element={<PredictionPage setIsLoggedIn={setIsLoggedIn} />} />
+                </>
+              )}
+            
+            {role === 'Admin' && (
+          <>
+            {/* User Creation route */}
+            <Route path="/user-creation" element={<UserCreationPage onSubmit={handleRegistration} setIsLoggedIn={setIsLoggedIn} />} />
+            {/* Admin Dashboard route */}
+            <Route path="/admin-dashboard" element={<AdminDashboard setIsLoggedIn={setIsLoggedIn} />} />
+            {/* Admin Calendar route */}
+                  <Route path="/admin-calendar" element={<AdminCalendar setIsLoggedIn={setIsLoggedIn } />} />
             {/* Trainer Creation route */}
-            <Route path="/trainer-creation" element={<TrainerCreationPage adminCheck={adminCheck} setAdminCheck={setAdminCheck} />} />
+            <Route path="/trainer-creation" element={<TrainerCreationPage setIsLoggedIn={setIsLoggedIn} />} />
             {/* Training Creation route */}
-            <Route path="/training-creation" element={<TrainingCreationPage adminCheck={adminCheck} setAdminCheck={setAdminCheck} />} />
+            <Route path="/training-creation" element={<TrainingCreationPage setIsLoggedIn={setIsLoggedIn} />} />
             {/* Quiz Creation route */}
-            <Route path="/quiz-creation" element={<QuizCreationPage adminCheck={adminCheck} setAdminCheck={setAdminCheck} />} />
+            <Route path="/quiz-creation" element={<QuizCreationPage setIsLoggedIn={setIsLoggedIn} />} />
             {/* Admin Viewing User route */}
-            <Route path="/admin-unique-user" element={<AdminUserView adminCheck={adminCheck} setAdminCheck={setAdminCheck} />} />
-            {/* Admin Viewing User route */}
-            <Route path="/prediction-page" element={<PredictionPage adminCheck={adminCheck} setAdminCheck={setAdminCheck} />} />
+                  <Route path="/admin-unique-user" element={<AdminUserView setIsLoggedIn={setIsLoggedIn} />} />
+                  </>
+            )}
+            
+          </>
+          )}
           </Routes>
       </Router>
     </>

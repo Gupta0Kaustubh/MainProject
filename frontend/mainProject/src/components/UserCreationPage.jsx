@@ -16,7 +16,7 @@ import {
   MDBCheckbox,
 } from 'mdb-react-ui-kit';
 
-function UserCreationPage({ onSubmit, adminCheck, setAdminCheck }) {
+function UserCreationPage({ onSubmit, setIsLoggedIn }) {
   
   const [UserDetails, setUserDetails] = useState([]);
   const navigate = useNavigate()
@@ -48,9 +48,6 @@ function UserCreationPage({ onSubmit, adminCheck, setAdminCheck }) {
   };
 
   useEffect(() => {
-    if (!adminCheck) {
-      navigate('/')
-    }
     // Getting UserData
     fetch("http://localhost:3001/getAllUserData")
       .then(function (response) {
@@ -183,7 +180,7 @@ function UserCreationPage({ onSubmit, adminCheck, setAdminCheck }) {
 
   return (
     <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'auto' }}>
-      <Navbar setAdminCheck={setAdminCheck} />
+      <Navbar setIsLoggedIn={setIsLoggedIn} />
       {/* ToastContainer for displaying notifications */}
       <ToastContainer
         position="top-right"

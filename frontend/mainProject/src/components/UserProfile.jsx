@@ -12,7 +12,7 @@ import Navbar from './navbars/EmpNavbar';
 import './styles/buttonStyle.css'
 import { useNavigate } from 'react-router-dom';
 
-const UserProfile = ({ matchedUserEmail, setEmpCheck }) => {
+const UserProfile = ({ matchedUserEmail, setIsLoggedIn }) => {
 
   const [isDisplayed, setIsDisplayed] = useState(false);
   const navigate = useNavigate()
@@ -57,7 +57,7 @@ const UserProfile = ({ matchedUserEmail, setEmpCheck }) => {
     
     return (
         <>
-        <Navbar setEmpCheck={setEmpCheck} />
+        <Navbar setIsLoggedIn={setIsLoggedIn} />
         <button type="button" class="btn btn-outline-warning  px-5 d-flex justify-content-center button_style mb-4" onClick={handleClick}>Show Details !!!</button>
         {isDisplayed && (
         <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'visible' }}>

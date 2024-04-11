@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-function Navbar({ setAdminCheck }) {
+function Navbar({ setIsLoggedIn }) {
   const [active, setActive] = useState(null);
+
+  function logout() {
+    setIsLoggedIn(false)
+    localStorage.setItem("role",'')
+    localStorage.setItem('isLoggedIn',false)
+  }
 
   return (
     <nav className="navbar navbar-expand-lg bg-tertiary mx-3" >
@@ -33,7 +39,7 @@ function Navbar({ setAdminCheck }) {
               <Link className={`nav-link link-opacity-10 fs-5 me-2 fw-semibold ${active === 'User-Progress' ? 'text-light' : 'text-white-50'}`} to='/admin-unique-user' onClick={() => setActive('User-Progress')}>User Progress</Link>
             </li>
             <li className="nav-item">
-              <Link className='nav-link link-opacity-10 text-danger  fs-5 me-2 fw-semibold' to='/' onClick={() => setAdminCheck(false)}>Logout</Link>
+              <Link className='nav-link link-opacity-10 text-danger  fs-5 me-2 fw-semibold' to='/' onClick={logout}>Logout</Link>
             </li>
           </ul>
         </div>

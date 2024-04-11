@@ -18,7 +18,7 @@ import {
   }
   from 'mdb-react-ui-kit';
 
-function UserLoginPage({onSubmit, setAdminCheck, setEmpCheck}) {
+function UserLoginPage({setIsLoggedIn ,onSubmit}) {
 
   const navigate = useNavigate();
   const [UserDetails, setUserDetails] = useState([]);
@@ -108,22 +108,27 @@ function UserLoginPage({onSubmit, setAdminCheck, setEmpCheck}) {
           }, 2000);
         } else if (isAdmin) {
           toast.success('Redirecting to the Admin Dashboard');
-          setAdminCheck(true);
+          setIsLoggedIn(true)
+          localStorage.setItem("role",'Admin')
+          localStorage.setItem('isLoggedIn',true)
           setTimeout(() => {
             navigate('/admin-dashboard');
-          }, 2000);
+          }, 3000);
         } else {
           toast.success('Redirecting to the Employee Dashboard');
-          setEmpCheck(true);
+          setIsLoggedIn(true)
+          localStorage.setItem("role",'Employee')
+          localStorage.setItem('isLoggedIn',true)
           localStorage.setItem('email', formData.email);
           setTimeout(() => {
             navigate('/emp-dashboard');
-          }, 4000);
+          }, 3000);
         }
       } catch (error) {
         toast.error('Error executing scripts: ' + error.message);
       }
     } else {
+      setIsLoggedIn(false)
       toast.error('Invalid username or password');
     }
   }

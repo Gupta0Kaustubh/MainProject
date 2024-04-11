@@ -16,7 +16,7 @@ import {
   MDBInput,
 } from 'mdb-react-ui-kit';
 
-function QuizCreationPage({ adminCheck, setAdminCheck }) {
+function QuizCreationPage({setIsLoggedIn }) {
   const [QuizDetails, setQuizDetails] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [show,setshow]=useState(false)
@@ -52,9 +52,6 @@ function QuizCreationPage({ adminCheck, setAdminCheck }) {
           });
   }
   useEffect(() => {
-    if (!adminCheck) {
-      navigate('/')
-    }
     getdata()
     }, [show]);
 
@@ -144,7 +141,7 @@ function QuizCreationPage({ adminCheck, setAdminCheck }) {
 
   return (
     <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'auto' }}>
-      <Navbar setAdminCheck={setAdminCheck} />
+      <Navbar setIsLoggedIn={setIsLoggedIn} />
       <ToastContainer
         position="top-right"
         autoClose={5000}

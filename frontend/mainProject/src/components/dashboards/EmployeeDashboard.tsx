@@ -8,20 +8,13 @@ import '../styles/buttonStyle.css'
 
 import ChartEmp from '../ChartEmp';
 
-function EmployeeDashboard({empCheck, setEmpCheck}) {
+function EmployeeDashboard({setIsLoggedIn}) {
   const navigate = useNavigate()
 
-  useEffect(() => {
-
-    if (!empCheck) {
-      navigate('/')
-    }
-   
-  }, []);
 
   return (
     <>
-      <Navbar setEmpCheck={setEmpCheck} />
+      <Navbar setIsLoggedIn={setIsLoggedIn} />
       <Stack width='100%' minHeight='100vh' justifyContent='center'>
       <ChartEmp />
       </Stack>

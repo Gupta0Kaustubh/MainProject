@@ -1,8 +1,11 @@
 import React from 'react'
 import Navbar from './navbars/EmpNavbar'
+import { Modal } from 'react-bootstrap';
 import { ToastContainer, toast } from 'react-toastify';
+import axios from 'axios';
 import "react-toastify/dist/ReactToastify.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles/buttonStyle.css'
 import {
     MDBContainer,
     MDBRow,
@@ -14,16 +17,13 @@ import {
   } from 'mdb-react-ui-kit';
 import { useEffect, useState } from 'react';
   
-const PredictionPage = ({setAdminCheck, adminCheck}) => {
+const PredictionPage = ({setIsLoggedIn}) => {
 
+    const [showModal, setShowModal] = useState(false);
     const [show,setshow]=useState(false)
     const [UserDetails, setUserDetails] = useState([]);
     const [trainingData, setTrainingData] = useState({
-        gender:'',
-        specialization: '',
         experience: '',
-        difficultyLevel: '',
-        trainingName:'',
         optimizedDuration: ''
       });
 
@@ -40,7 +40,6 @@ const PredictionPage = ({setAdminCheck, adminCheck}) => {
                 // Convert data to array if it's not already an array
                 const userDetailsArray = Array.isArray(data) ? data : [data];
               setUserDetails(userDetailsArray[0].allUserData);
-              console.log("ff", UserDetails)
                 
             })
             .catch(function (error) {
@@ -68,16 +67,35 @@ const PredictionPage = ({setAdminCheck, adminCheck}) => {
         optimizedDuration: '',
         timingOfTraining: ''
         })
-      }
+  }
+  
+  const [time, setTime] = useState(0)
+  const [hours, setHours] = useState(0)
 
       const handleSubmit = async (e) => {
         e.preventDefault();
+        try {
+      const response = await axios.post('http://127.0.0.1:5000/predict', trainingData);
+          console.log('Predicted Output:', response.data.prediction);
+          setTime(response.data.prediction) 
+    } catch (error) {
+      console.error('Error:', error);
+        }
+        
+        try {
+      const response = await axios.post('http://127.0.0.1:5000/predict1', trainingData);
+          console.log('Predicted Output:', response.data.prediction);
+          setHours(response.data.prediction) 
+    } catch (error) {
+      console.error('Error:', error);
+        }
+        setShowModal(true)
       }
 
 
   return (
     <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'auto' }}>
-      <Navbar setAdminCheck={setAdminCheck} />
+      <Navbar setIsLoggedIn={setIsLoggedIn} />
 
       {/* ToastContainer for displaying notifications */}
       <ToastContainer
@@ -101,11 +119,11 @@ const PredictionPage = ({setAdminCheck, adminCheck}) => {
                 <MDBRow>
                   <MDBCol col='6'>
                     <label htmlFor='gender' className='form-label mb-1'>Gender</label><span className='ms-1' style={{ color: 'red' }}>*</span>
-                    <MDBInput id='gender' type='text' wrapperClass='mb-4' name='gender' onChange={handleInputChange} value={trainingData.gender}  />
+                    <MDBInput id='gender' type='text' wrapperClass='mb-4' name='gender' value={trainingData.gender}  />
                   </MDBCol>
                   <MDBCol col='6'>
                     <label htmlFor='specialization' className='form-label mb-1'>Specialization</label><span className='ms-1' style={{ color: 'red' }}>*</span>
-                    <MDBInput id='specialization' type='text' wrapperClass='mb-4' name='specialization' onChange={handleInputChange} value={trainingData.specialization}  />
+                    <MDBInput id='specialization' type='text' wrapperClass='mb-4' name='specialization' value={trainingData.specialization}  />
                   </MDBCol>
                   
                                   
@@ -117,7 +135,7 @@ const PredictionPage = ({setAdminCheck, adminCheck}) => {
                     </MDBCol>
                     <MDBCol col='6'>
                     <label htmlFor='difficultyLevel' className='form-label mb-1'>Difficulty Level</label><span className='ms-1' style={{ color: 'red' }}>*</span>
-                    <select className="form-select mb-4" id="difficultyLevel" name="difficultyLevel" onChange={handleInputChange} value={trainingData.difficultyLevel} required>
+                    <select className="form-select mb-4" id="difficultyLevel" name="difficultyLevel" value={trainingData.difficultyLevel} required>
                       <option value="">Select Difficulty Level</option>
                       <option value="easy">Easy</option>
                       <option value="moderate">Moderate</option>
@@ -129,8 +147,8 @@ const PredictionPage = ({setAdminCheck, adminCheck}) => {
 
                 <MDBRow>
                     <MDBCol col='6'>
-                    <label htmlFor='trainingName' className='form-label mb-1'>Training Name</label>
-                    <select className="form-select mb-4" id="trainingName" name="trainingName" onChange={handleInputChange} value={trainingData.trainingName}>
+                    <label htmlFor='trainingName' className='form-label mb-1'>Training Name</label><span className='ms-1' style={{ color: 'red' }}>*</span>
+                    <select className="form-select mb-4" id="trainingName" name="trainingName" value={trainingData.trainingName}>
     <option value="">Select Training Name</option>
     {[...new Set(UserDetails.map(userData => userData.trainingName))].map((uniqueTrainingName, index) => (
       <option key={index} value={uniqueTrainingName}>{uniqueTrainingName}</option>
@@ -144,7 +162,7 @@ const PredictionPage = ({setAdminCheck, adminCheck}) => {
                 </MDBRow>               
                 <MDBRow>
             <MDBCol col='3'>  
-                    <button className="btn btn-primary mb-4 w-100 mt-4" onClick={handleSubmit}>Save</button>
+                    <button className="btn btn-primary mb-4 w-100 mt-4" onClick={handleSubmit}>Submit</button>
               
             </MDBCol>
             <MDBCol col='3'>
@@ -158,18 +176,17 @@ const PredictionPage = ({setAdminCheck, adminCheck}) => {
           </MDBCard>
           
         </MDBCol>
-
-        <MDBCol md='6'>
-          <MDBCard className='my-5 bg-secondary-subtle border border-2 border-dark fw-semibold'>
-            <MDBCardBody className='p-5'>
-            
-    
-            </MDBCardBody>
-            
-          </MDBCard>
-          
-        </MDBCol>
       </MDBRow>
+
+      <Modal show={showModal} onHide={() => setShowModal(false)} className='dialoguee'>
+        <Modal.Header closeButton>
+          <Modal.Title>Predictions</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div className='mt-3 mb-5 pt-3 pb-3 fw-bolder fs-6 text-primary'>Predicted Assessment Completion Time : <label className='text-black fw-medium'> &nbsp;{time}  hrs.</label></div>
+          <div className='mt-5 mb-3 pt-3 pb-3 fw-bolder fs-6 text-primary'>Predicted Score Achieved After Training : <label className='text-black fw-medium'> &nbsp;{hours} / 100</label> </div>
+        </Modal.Body>
+      </Modal>
     </MDBContainer>
     
   )

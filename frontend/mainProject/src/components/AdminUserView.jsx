@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from 'react-router-dom';
 
-const AdminUserView = ({adminCheck, setAdminCheck}) => {
+const AdminUserView = ({setIsLoggedIn}) => {
 
     const navigate = useNavigate()
     const [UserDetails, setUserDetails] = useState([]);
@@ -25,9 +25,7 @@ const AdminUserView = ({adminCheck, setAdminCheck}) => {
     };
 
     useEffect(() => {
-        if (!adminCheck) {
-            navigate('/')
-        }
+       
         // Getting UserData
         fetch("http://localhost:3001/getAllAdminUserData")
             .then(function (response) {
@@ -58,7 +56,7 @@ const AdminUserView = ({adminCheck, setAdminCheck}) => {
 
     return (
         <>
-            <Navbar setAdminCheck={setAdminCheck} />
+            <Navbar setIsLoggedIn={setIsLoggedIn} />
             {/* ToastContainer for displaying notifications */}
       <ToastContainer
         position="top-right"

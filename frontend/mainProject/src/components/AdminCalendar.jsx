@@ -5,15 +5,13 @@ import { Button, DialogActions, DialogContent, DialogContentText, Stack } from '
 import { useNavigate } from 'react-router-dom';
 import './styles/buttonStyle.css'
 
-const AdminCalendar = ({adminCheck, setAdminCheck}) => {
+const AdminCalendar = ({setIsLoggedIn}) => {
 
   const [data, setData] = useState([]);
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (!adminCheck) {
-        navigate('/')
-    }
+    
       // Fetch training data
       fetch("http://localhost:3001/getAllTrainingData")
         .then(response => {
@@ -88,7 +86,7 @@ const AdminCalendar = ({adminCheck, setAdminCheck}) => {
 
   return (
     <>
-      <Navbar setAdminCheck={setAdminCheck} />
+      <Navbar setIsLoggedIn={setIsLoggedIn} />
       <Stack width='100%' minHeight='100vh' justifyContent='center'>
         <EventCalender data={data} onDataChange={setData} />
       </Stack>

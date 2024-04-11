@@ -3,18 +3,13 @@ import Navbar from '../navbars/Navbar'
 import ChartAdmin from '../ChartAdmin'
 import { useNavigate } from 'react-router-dom'
 
-function AdminDashboard({adminCheck, setAdminCheck}) {
+function AdminDashboard({setIsLoggedIn}) {
 
   const navigate = useNavigate()
 
-  useEffect(() => {
-      if(!adminCheck){
-        useNavigate('/')
-      }
-  }, [])
   return (
     <>
-      <Navbar setAdminCheck={setAdminCheck} />
+      <Navbar setIsLoggedIn={setIsLoggedIn} />
       <ChartAdmin />
       </>
   )

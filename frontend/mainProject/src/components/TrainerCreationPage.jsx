@@ -15,7 +15,7 @@ import {
   MDBInput,
 } from 'mdb-react-ui-kit';
 
-function TrainerCreationPage({ adminCheck, setAdminCheck }) {
+function TrainerCreationPage({ setIsLoggedIn }) {
   
   const navigate = useNavigate()
   const [trainerData, setTrainerData] = useState({
@@ -26,11 +26,6 @@ function TrainerCreationPage({ adminCheck, setAdminCheck }) {
     trainerSpecialization: ''
   });
 
-  useEffect(() => {
-    if (!adminCheck) {
-      navigate('/')
-    }
-  }, [])
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -114,7 +109,7 @@ function TrainerCreationPage({ adminCheck, setAdminCheck }) {
 
   return (
     <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'auto' }}>
-      <Navbar setAdminCheck={setAdminCheck} />
+      <Navbar setIsLoggedIn={setIsLoggedIn} />
       {/* ToastContainer for displaying notifications */}
       <ToastContainer
         position="top-right"
