@@ -1,6 +1,6 @@
 _id,userId,firstName,middleName,lastName,email,phoneNumber,gender,doj,specializations,dob,city,state,experience,userType,subscribeNewsletter,passwords,__v
 66125d506116598e0dae9e2a,Emp_0,Kaustubh,,Gupta,kaustubhgupta9860@gmail.com,8979630137,Male,09-03-2023,"['Microservices', 'Test-Driven Development', '.NET', 'Data Visualization']",07-04-2015,Bryanstad,Arizona,5,Admin,False,12345678,
-66125d506116598e0dae9e2b,Emp_1,Cathy,Robert,Mata,johnbaker@example.com,(375)527-9939,Male,09-03-2023,"['Kubernetes', 'MySQL', 'C#', 'NoSQL']",07-04-2015,Bryanstad,Arizona,5,User,False,NQ@y9_Ov,
+66125d506116598e0dae9e2b,Emp_1,Cathy,Robert,Mata,johnbaker@example.com,(375)527-9939,Male,09-03-2023,"['Kubernetes', 'MySQL', 'C#', 'NoSQL']",07-04-2015,Bryanstad,Arizona,5,User,False,12345678,
 66125d506116598e0dae9e2c,Emp_2,David,Robert,Sanford,corymiller@example.com,248.611.9083,Male,16-06-2022,"['C#', 'DevOps', 'MongoDB', 'Objective-C']",16-08-1993,East Alexamouth,South Dakota,11,User,True,G)15(NdX,
 66125d506116598e0dae9e2d,Emp_3,Kendra,Lauren,Sanchez,boothpatrick@example.com,001-853-345-0172x1681,Female,02-10-2022,"['HTML', 'Test-Driven Development', 'Google Cloud Platform', 'GraphQL']",30-07-1970,Christyburgh,Virginia,6,User,False,$rP2BHvI,
 66125d506116598e0dae9e2e,Emp_4,Lauren,Tracy,Vargas,emorales@example.net,+1-932-448-8082x0694,Male,19-02-2024,"['NoSQL', 'Objective-C', 'Continuous Deployment', 'Continuous Integration']",07-07-1954,Robertstad,Colorado,20,User,True,h)4kTZYp,
@@ -201,3 +201,4 @@ _id,userId,firstName,middleName,lastName,email,phoneNumber,gender,doj,specializa
 66125d506116598e0dae9ef3,Emp_199,William,Cynthia,Golden,esantiago@example.org,911-554-7956,Female,02-08-2022,"['Machine Learning', 'Swift', 'Data Visualization', 'Docker']",13-12-1931,Stanleyborough,North Dakota,3,User,False,6*B*7VGm,
 661396ff05c893fd32e8258c,Emp_210,Kaustubhhhh,,Gupta,kaustubhgupta@gbtghrththjmangroup.com,08979630137,female,2024-04-11 00:00:00,"DBT, Azure, Full Stack, NodeJs, JavaScript",2024-04-18 00:00:00,Dehradun,UK,3,employee,False,nofM,0.0
 6613ae90bf1abb2367548caf,Emp_211,Kaustubhcddc,,Kaustubh,kacffvvustubhgupta@jmanefcdcddgroup.com,08979630137,male,2024-04-24 00:00:00,"DBT, Azure, Full Stack, NodeJs, JavaScript",2024-04-18 00:00:00,Dehradun,UK,3,admin,False,R9mW,0.0
+661915636fe4305265ef0823,Emp_1000,Kaustubhdcdcdc,,Kaustubh,kauscdcdcdtubhgupta9860@gmail.com,08979630137,female,2024-04-24 00:00:00,"DBT, Azure, Full Stack, NodeJs, JavaScript",2024-04-13 00:00:00,Dehradun,UK,3,employee,False,*(@=,0.0

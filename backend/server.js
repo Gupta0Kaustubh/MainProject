@@ -367,8 +367,8 @@ app.post('/submitQuizData', async (req, res) => {
 // Endpoint to execute the SSMS Python script
 app.post('/execute-python-script', (req, res) => {
     // Execute the Python script
-    // const pythonProcess = spawn('python', ['C:/Users/KaustubhGupta/Desktop/KG/Main Project/MainProject/ConversionAndRetrieval/Retrieval.py']);
-    const pythonProcess = spawn('python', ['D:/JMAN/MainProject/ConversionAndRetrieval/Retrieval.py']);   /* home */
+    const pythonProcess = spawn('python', ['C:/Users/KaustubhGupta/Desktop/KG/Main Project/MainProject/ConversionAndRetrieval/Retrieval.py']);
+    // const pythonProcess = spawn('python', ['D:/JMAN/MainProject/ConversionAndRetrieval/Retrieval.py']);   /* home */
   
     // Handle script output
     pythonProcess.stdout.on('data', (data) => {
@@ -386,8 +386,8 @@ app.post('/execute-python-script', (req, res) => {
 // Endpoint to execute the SnowFlake Python script
 app.post('/execute-snow-python-script', (req, res) => {
     // Execute the Python script
-    // const pythonProcess = spawn('python', ['C:/Users/KaustubhGupta/Desktop/KG/Main Project/MainProject/ConversionAndRetrieval/ingestion-mongo-snowflake.py']);
-    const pythonProcess = spawn('python', ['D:/JMAN/MainProject/ConversionAndRetrieval/ingestion-mongo-snowflake.py']);   /* home */
+    const pythonProcess = spawn('python', ['C:/Users/KaustubhGupta/Desktop/KG/Main Project/MainProject/ConversionAndRetrieval/ingestion-mongo-snowflake.py']);
+    // const pythonProcess = spawn('python', ['D:/JMAN/MainProject/ConversionAndRetrieval/ingestion-mongo-snowflake.py']);   /* home */
   
     // Handle script output
     pythonProcess.stdout.on('data', (data) => {
@@ -403,7 +403,6 @@ app.post('/execute-snow-python-script', (req, res) => {
     res.send('Python script execution initiated');
   });
 
-  
 // Define a route to trigger the DBT execution
 const dbtMainProjectFolderPath = path.join(__dirname, '..', 'DBT', 'main_project');
 app.get('/rundbt', (req, res) => {
@@ -443,6 +442,47 @@ app.get('/totaldata', async (req, res) => {
         res.status(500).json({ message: 'Failed to fetch data', error: error.message });
     }
 });
+
+// Route to handle deleting a user by user ID or email
+app.delete('/deleteUser', async (req, res) => {
+    try {
+        // Extract user ID or email from the request body
+        const { userInput } = req.body;
+        console.log('data', userInput)
+
+        let user;
+
+        // Check if userInput is a valid email
+        if (/^\S+@\S+\.\S+$/.test(userInput)) {
+            // If userInput is an email, find the user by email
+            user = await UserData.findOne({ email: userInput });
+        } else {
+            // If userInput is not an email, assume it's a user ID
+            user = await UserData.findOne({ userId: userInput });
+        }
+
+        // If user not found, return a 404 status and message
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Delete the user from the UserData collection
+        await UserData.deleteOne({ _id: user._id });
+
+        // Also, delete all related records from the AdminUserView collection
+        await AdminUserView.deleteMany({ userId: user.userId });
+
+        // Also, delete all related records from the TotalInfo collection
+        await TotalInfo.deleteMany({ userId: user.userId });
+
+        // Respond with a success message
+        res.status(200).json({ message: 'User deleted successfully' });
+    } catch (error) {
+        // If an error occurs, return a 500 status and error message
+        res.status(500).json({ message: 'Failed to delete user', error: error.message });
+    }
+});
+
 
 
 // Setting up the server to listen on a specified port or defaulting to 3001

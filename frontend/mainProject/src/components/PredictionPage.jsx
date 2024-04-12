@@ -89,7 +89,11 @@ const PredictionPage = ({setIsLoggedIn}) => {
     } catch (error) {
       console.error('Error:', error);
         }
-        setShowModal(true)
+        if(hours && time) {
+          setShowModal(true)
+        }
+        
+        
       }
 
 

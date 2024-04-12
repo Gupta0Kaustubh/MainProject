@@ -138,7 +138,7 @@ function TrainingCreationPage({setIsLoggedIn}) {
         <MDBCol md='6' className='text-center text-md-start d-flex flex-column justify-content-center'>
           <h1 className="my-3 display-3 fw-bold ls-tight px-3">
             <br />
-            <span className="text-light ">User Creation</span>
+            <span className="text-light ">Training Creation</span>
           </h1>
           <h1 className="my-5 text-dark display-3 fw-bold ls-tight px-3">
             The best offer <br />
