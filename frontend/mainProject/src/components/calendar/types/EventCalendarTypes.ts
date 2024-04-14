@@ -11,6 +11,7 @@ export type Event = {
     id?: string;
     title: string;
     popupContent: ReactNode | ReactNode[];
+    popupContent1: ReactNode | ReactNode[];
     startDate: Date | Moment;
     endDate: Date | Moment;
     color?: string;

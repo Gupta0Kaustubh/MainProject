@@ -4,6 +4,9 @@ import EventCalender from '../components/calendar/EventCalender'
 import { Button, DialogActions, DialogContent, DialogContentText, Stack } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import './styles/buttonStyle.css'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+
 
 const AdminCalendar = ({setIsLoggedIn}) => {
 
@@ -44,8 +47,10 @@ const AdminCalendar = ({setIsLoggedIn}) => {
               
               popupContent: (
                 <>
+                  
                   <DialogContent className='dialogue bg-slate-400'>
-                    <DialogContentText id={`alert-dialog-description-${training._id}`}>
+                    {/* <FontAwesomeIcon icon={faPenToSquare} className='ms-5 ps-5' /> */}
+                    <DialogContentText id={`alert-dialog-description-${training._id}`}> 
                       <label>Training Description : &nbsp;</label>{training.trainingDescription}
                     </DialogContentText>
                     <DialogContentText id={`alert-dialog-description-${training._id}`}>

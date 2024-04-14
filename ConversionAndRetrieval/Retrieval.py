@@ -6,10 +6,10 @@ from sqlalchemy import create_engine
 from sqlalchemy.engine import URL
 import snowflake.connector
 
-SERVER_NAME = 'DESKTOP-J6NGJ2S'
-# SERVER_NAME = 'DESKTOP-0UABFVU'  # home
-DATABASE_NAME = 'Main_Project'
-# DATABASE_NAME = 'MainProject'  # home
+# SERVER_NAME = 'DESKTOP-J6NGJ2S'
+SERVER_NAME = 'DESKTOP-0UABFVU'  # home
+# DATABASE_NAME = 'Main_Project'
+DATABASE_NAME = 'MainProject'  # home
 
 connection_string = f"mssql+pyodbc://{SERVER_NAME}/{DATABASE_NAME}?trusted_connection=yes&driver=ODBC+Driver+17+for+SQL+Server"
 engine = create_engine(connection_string)

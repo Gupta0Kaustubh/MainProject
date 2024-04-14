@@ -15,6 +15,24 @@ import { useNavigate } from 'react-router-dom';
 const UserProfile = ({ matchedUserEmail, setIsLoggedIn }) => {
 
   const [isDisplayed, setIsDisplayed] = useState(false);
+
+  const [userData, setUserData] = useState({
+    userId:'',
+    firstName: '',
+    middleName:'',
+    lastName: '',
+    email: '',
+    phoneNumber: '',
+    gender: '', // Modified to store gender as string instead of boolean
+    doj: '',
+    specializations:'',
+    dob: '',
+    city: '',
+    state: '',
+    experience:'',
+    userType: '',
+    subscribeNewsletter: false,
+  });
   const navigate = useNavigate()
 
   const handleClick = () => {
@@ -25,12 +43,11 @@ const UserProfile = ({ matchedUserEmail, setIsLoggedIn }) => {
 
     const [UserDetails, setUserDetails] = useState([]);
     const [matchedUsers, setMatchedUsers] = useState([]);
-    let user = matchedUserEmail
+  let user = matchedUserEmail
+  
 
-    useEffect(() => {
-      // Getting UserData
-        console.log("Email:",matchedUserEmail.email)
-        fetch("http://localhost:3001/getAllAdminUserData")
+  const getUserData = () => {
+      fetch("http://localhost:3001/getAllAdminUserData")
             .then(function (response) {
                 if (!response.ok) {
                     throw new Error("Network response was not ok");
@@ -52,13 +69,18 @@ const UserProfile = ({ matchedUserEmail, setIsLoggedIn }) => {
             .catch(function (error) {
                 console.error("Error fetching user data:", error);
             });
+  }
 
-        }, [UserDetails,matchedUsers,]);
+    useEffect(() => {
+      // Getting UserData
+      getUserData();       
+
+        }, []);
     
     return (
         <>
         <Navbar setIsLoggedIn={setIsLoggedIn} />
-        <button type="button" class="btn btn-outline-warning  px-5 d-flex justify-content-center button_style mb-4" onClick={handleClick}>Show Details !!!</button>
+        <button type="button" className="btn btn-outline-warning  px-5 d-flex justify-content-center button_style mb-4" onClick={handleClick}>Show Details !!!</button>
         {isDisplayed && (
         <MDBContainer fluid className='p-4 pt-1' style={{ height: '100vh', overflowY: 'visible' }}>
             

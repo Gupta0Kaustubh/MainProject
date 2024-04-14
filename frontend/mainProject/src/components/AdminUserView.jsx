@@ -110,6 +110,7 @@ const AdminUserView = ({setIsLoggedIn}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         
+        setMatchedUsers([''])
         const matchedUsers = UserDetails[0].allUserData.filter(user => user.userId == formData.userId || formData.userId == user.email);
         setMatchedUsers(matchedUsers);
         if(matchedUsers.length == 0) {

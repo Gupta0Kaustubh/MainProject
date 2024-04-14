@@ -70,7 +70,7 @@ function App() {
                   {/* Employee Profile route */}
                   <Route path="/user-profile" element={<UserProfile matchedUserEmail={userEmail} setIsLoggedIn={setIsLoggedIn} />} />
                   {/* Employee Calendar route */}
-                  <Route path="/emp-calendar" element={<EmpCalendar setIsLoggedIn={setIsLoggedIn} />} />
+                  <Route path="/emp-calendar" element={<EmpCalendar matchedUserEmail={userEmail} setIsLoggedIn={setIsLoggedIn} />} />
                   {/* Prediction User route */}
                   <Route path="/prediction-page" element={<PredictionPage setIsLoggedIn={setIsLoggedIn} />} />
                 </>

@@ -4,13 +4,68 @@ import EventCalender from '../components/calendar/EventCalender'
 import { Button, DialogActions, DialogContent, DialogContentText, Stack } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import './styles/buttonStyle.css'
+import axios from 'axios';
+import { ToastContainer, toast } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
-const EmpCalendar = ({setIsLoggedIn}) => {
+const EmpCalendar = ({matchedUserEmail, setIsLoggedIn}) => {
   
-    const [data, setData] = useState([]);
-    const navigate = useNavigate()
+  const [data, setData] = useState([]);
+  const [check, setCheck] = useState(false)
+  const UserEmail = localStorage.getItem('email')
+  const [UserDetails, setUserDetails] = useState([]);
+    const [reload, setReload] = useState(false)
+  const navigate = useNavigate()
+
+  const [userData, setUserData] = useState({
+    userId: '',
+    Name: '',
+    email: '',
+    gender: '',
+    specializations: '',
+    doj:'',
+    state:'',
+    experience:'',
+    trainingName:'',
+    trainerName:'',
+    optimizedDuration:'',
+    trainingStatus:'pendiing',
+    assessment_percentage_done:'0',
+    assessment_completion_time_in_hours:'',
+    scoreAchievedInQuiz:'',
+    quizPassedOrFailed:'',
+    ratingGivenByTrainer:''
+  });
+
   
-    useEffect(() => {
+  useEffect(() => {
+
+    fetch("http://localhost:3001/getAllUserData")
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        return response.json();
+      })
+      .then(function (data) {
+        const singleUserData = data.allUserData.find(user => user.email === UserEmail);
+    if (!singleUserData) {
+      console.error("User not found");
+      return;
+    }
+        setUserDetails(singleUserData);
+        console.log("UserData:", UserDetails);
+        if(UserDetails.length == 0) setReload(true)
+      })
+      .catch(function (error) {
+        if (error instanceof SyntaxError) {
+          console.error("Empty or invalid JSON response");
+        } else {
+          console.error("Error fetching user data:", error);
+        }
+        throw error;
+      });
+      
         // Fetch training data
         fetch("http://localhost:3001/getAllTrainingData")
           .then(response => {
@@ -65,6 +120,9 @@ const EmpCalendar = ({setIsLoggedIn}) => {
                       <DialogContentText id={`alert-dialog-description-${training._id}`}>
                         <label style={{cursor: 'pointer', color: 'black', transition: 'color 0.3s'}}>HackerRank Link : &nbsp; https://www.hackerrank.com/{training.trainingName}</label>
                       </DialogContentText>
+                      <DialogContentText id={`alert-dialog-description-${training._id}`}>
+                        <button className='btn btn-outline-info mt-2 px-5 ms-2' onClick={() => handleEnroll(training)}>Enroll</button>
+                      </DialogContentText>
                     </DialogContent>
                   </>
                 ),
@@ -81,11 +139,69 @@ const EmpCalendar = ({setIsLoggedIn}) => {
               console.error("Error fetching training data:", error);
             }
           });
-      }, []);
+  }, [reload]);
+  
+  const handleEnroll = (training) => {
+    // Set userData state
+    setCheck(true)
+  setUserData({
+    userId: UserDetails.userId,
+    Name: UserDetails.firstName,
+    email: UserDetails.email,
+    gender: UserDetails.gender,
+    specializations: UserDetails.specializations,
+    doj: UserDetails.doj,
+    state: UserDetails.state,
+    experience: UserDetails.experience,
+    trainingName: training.trainingName,
+    trainerName: training.trainerName,
+    optimizedDuration: training.optimizedDuration,
+    trainingStatus: 'pending',
+    assessment_percentage_done: '0',
+    assessment_completion_time_in_hours: '',
+    scoreAchievedInQuiz: '',
+    quizPassedOrFailed: '',
+    ratingGivenByTrainer: '',
+  });
+
+};
+
+
+  useEffect(() => {
+    console.log('userData', userData);
+    // Send POST request to submit training data
+    if (check) {
+      axios
+    .post('http://localhost:3001/submitAllAdminUserData', userData) // Using userData directly
+    .then((response) => {
+      console.log('Training enrolled successfully:', response.data);
+      toast.success('Training enrolled successfully');
+      
+    })
+    .catch((error) => {
+      console.error('Error submitting training data:', error);
+      toast.error('Failed to enroll. Please try again.');
+    });
+    }
+  
+  }, [userData]);
   
     return (
       <>
         <Navbar setIsLoggedIn={setIsLoggedIn} />
+        {/* ToastContainer for displaying notifications */}
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
         <Stack width='100%' minHeight='100vh' justifyContent='center'>
           <EventCalender data={data} onDataChange={setData} />
         </Stack>

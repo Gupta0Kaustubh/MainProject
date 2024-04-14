@@ -4,12 +4,12 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const nodemailer = require('nodemailer');
 const mailgen = require('mailgen')
-const UserData = require('./models/User').UserData;
-const Trainer = require('./models/User').Trainer;
-const Training = require('./models/User').Training;
-const QuizData = require('./models/User').QuizData;
-const AdminUserView = require('./models/User').AdminUserView;
-const TotalInfo = require('./models/User').TotalInfo;
+const UserData = require('./models/Models').UserData;
+const Trainer = require('./models/Models').Trainer;
+const Training = require('./models/Models').Training;
+const QuizData = require('./models/Models').QuizData;
+const AdminUserView = require('./models/Models').AdminUserView;
+const TotalInfo = require('./models/Models').TotalInfo;
 const dotenv = require('dotenv');
 const { exec } = require('child_process');
 const path = require('path');
@@ -306,6 +306,44 @@ app.post('/submitTrainerData', async (req, res) => {
     }
 });
 
+// Route to handle adminuserspcific data submission
+app.post('/submitAllAdminUserData', async (req, res) => {
+    try {
+        // Extract trainer data from the request body
+        const { userId, Name, email, gender, specializations, doj, state, experience, trainingName, trainerName, optimizedDuration, trainingStatus, assessment_percentage_done, assessment_completion_time_in_hours, scoreAchievedInQuiz, quizPassedOrFailed, ratingGivenByTrainer } = req.body;
+
+        // Create a new Trainer document
+        const newData = new AdminUserView({
+            userId,
+            Name,
+            email,
+            gender,
+            specializations,
+            doj,
+            state,
+            experience,
+            trainingName,
+            trainerName,
+            optimizedDuration,
+            trainingStatus,
+            assessment_percentage_done,
+            assessment_completion_time_in_hours,
+            scoreAchievedInQuiz,
+            quizPassedOrFailed,
+            ratingGivenByTrainer
+        });
+
+        // Save the new trainer data to the database
+        await newData.save();
+
+        // Respond with a success message
+        res.status(201).json({ message: 'Trainer data submitted successfully' });
+    } catch (error) {
+        // Handle errors if saving trainer data fails
+        res.status(500).json({ message: 'Failed to submit trainer data', error: error.message });
+    }
+});
+
 // Route to handle training data submission
 app.post('/submitTrainingData', async (req, res) => {
     try {
@@ -367,8 +405,8 @@ app.post('/submitQuizData', async (req, res) => {
 // Endpoint to execute the SSMS Python script
 app.post('/execute-python-script', (req, res) => {
     // Execute the Python script
-    const pythonProcess = spawn('python', ['C:/Users/KaustubhGupta/Desktop/KG/Main Project/MainProject/ConversionAndRetrieval/Retrieval.py']);
-    // const pythonProcess = spawn('python', ['D:/JMAN/MainProject/ConversionAndRetrieval/Retrieval.py']);   /* home */
+    // const pythonProcess = spawn('python', ['C:/Users/KaustubhGupta/Desktop/KG/Main Project/MainProject/ConversionAndRetrieval/Retrieval.py']);
+    const pythonProcess = spawn('python', ['D:/JMAN/MainProject/ConversionAndRetrieval/Retrieval.py']);   /* home */
   
     // Handle script output
     pythonProcess.stdout.on('data', (data) => {
@@ -386,8 +424,8 @@ app.post('/execute-python-script', (req, res) => {
 // Endpoint to execute the SnowFlake Python script
 app.post('/execute-snow-python-script', (req, res) => {
     // Execute the Python script
-    const pythonProcess = spawn('python', ['C:/Users/KaustubhGupta/Desktop/KG/Main Project/MainProject/ConversionAndRetrieval/ingestion-mongo-snowflake.py']);
-    // const pythonProcess = spawn('python', ['D:/JMAN/MainProject/ConversionAndRetrieval/ingestion-mongo-snowflake.py']);   /* home */
+    // const pythonProcess = spawn('python', ['C:/Users/KaustubhGupta/Desktop/KG/Main Project/MainProject/ConversionAndRetrieval/ingestion-mongo-snowflake.py']);
+    const pythonProcess = spawn('python', ['D:/JMAN/MainProject/ConversionAndRetrieval/ingestion-mongo-snowflake.py']);   /* home */
   
     // Handle script output
     pythonProcess.stdout.on('data', (data) => {

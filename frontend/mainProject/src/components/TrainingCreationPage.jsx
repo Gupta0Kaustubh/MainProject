@@ -170,7 +170,7 @@ function TrainingCreationPage({setIsLoggedIn}) {
                     <MDBInput id='timingOfTraining' type='text' wrapperClass='mb-4' name='timingOfTraining' onChange={handleInputChange} value={trainingData.timingOfTraining}  />
                     </MDBCol>
                     <MDBCol col='6'>
-                    <label htmlFor='trainerId' className='form-label mb-1'>Trainer Id</label><span className='ms-1' style={{ color: 'red' }}>*</span>
+                    <label htmlFor='trainerId' className='form-label mb-1'>Trainer Name</label><span className='ms-1' style={{ color: 'red' }}>*</span>
                     <MDBInput id='trainerId' type='text' wrapperClass='mb-4' name='trainerId' onChange={handleInputChange} value={trainingData.trainerId}  />
                   </MDBCol>
                                   

@@ -1,7 +1,6 @@
 _id,userId,firstName,middleName,lastName,email,phoneNumber,gender,doj,specializations,dob,city,state,experience,userType,subscribeNewsletter,passwords
 66125d506116598e0dae9e2a,Emp_0,Kaustubh,,Gupta,kaustubhgupta9860@gmail.com,8979630137,Male,09-03-2023,"['Microservices', 'Test-Driven Development', '.NET', 'Data Visualization']",07-04-2015,Bryanstad,Arizona,5,Admin,False,12345678
 66125d506116598e0dae9e2b,Emp_1,Cathy,Robert,Mata,johnbaker@example.com,(375)527-9939,Male,09-03-2023,"['Kubernetes', 'MySQL', 'C#', 'NoSQL']",07-04-2015,Bryanstad,Arizona,5,User,False,12345678
-66125d506116598e0dae9e2c,Emp_2,David,Robert,Sanford,corymiller@example.com,248.611.9083,Male,16-06-2022,"['C#', 'DevOps', 'MongoDB', 'Objective-C']",16-08-1993,East Alexamouth,South Dakota,11,User,True,G)15(NdX
 66125d506116598e0dae9e2d,Emp_3,Kendra,Lauren,Sanchez,boothpatrick@example.com,001-853-345-0172x1681,Female,02-10-2022,"['HTML', 'Test-Driven Development', 'Google Cloud Platform', 'GraphQL']",30-07-1970,Christyburgh,Virginia,6,User,False,$rP2BHvI
 66125d506116598e0dae9e2e,Emp_4,Lauren,Tracy,Vargas,emorales@example.net,+1-932-448-8082x0694,Male,19-02-2024,"['NoSQL', 'Objective-C', 'Continuous Deployment', 'Continuous Integration']",07-07-1954,Robertstad,Colorado,20,User,True,h)4kTZYp
 66125d506116598e0dae9e2f,Emp_5,Kathryn,Bryan,Davis,autumnramirez@example.com,-6308,Male,05-09-2020,"['Flask', 'Angular', 'JavaScript', 'PostgreSQL']",21-05-1953,West Timothy,Montana,4,User,True,(Q)0Ws2y
@@ -197,4 +196,3 @@ _id,userId,firstName,middleName,lastName,email,phoneNumber,gender,doj,specializa
 66125d506116598e0dae9eef,Emp_195,William,Kimberly,Johnson,daniellebowman@example.com,+1-563-427-4742x72095,Male,14-06-2023,"['PHP', 'React', 'Angular', 'RESTful API']",23-07-1952,Lake Garybury,South Carolina,20,User,True,O+1jKOsR
 66125d506116598e0dae9ef0,Emp_196,John,Dorothy,Vaughn,gregory36@example.com,216-817-5154,Male,27-06-2020,"['GraphQL', '.NET', 'Cybersecurity', 'Information Security']",21-04-2013,East Gabriellashire,Massachusetts,11,User,False,e#2pHXhn
 66125d506116598e0dae9ef1,Emp_197,Alexandria,James,Martinez,sarah02@example.org,780.747.4095x109,Female,11-09-2020,"['Behavior-Driven Development', 'SQL', 'Information Security', 'Cryptography']",27-07-1934,New Douglas,Idaho,15,User,False,_5QyswoC
-66125d506116598e0dae9ef2,Emp_198,Mark,Beth,Arnold,franciscobishop@example.net,521.994.1324,Male,20-12-2022,"['.NET', 'HTML', 'Continuous Deployment', 'React']",25-11-2014,Wendyview,New Mexico,3,User,False,$54ULQoy

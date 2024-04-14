@@ -64,8 +64,8 @@ const UserSpecificDetails = ({ matchedUsers }) => {
                 </MDBRow>
                 <h2 className='pb-2'>Training Details</h2>
                 <MDBRow>
-                                    <MDBCol col='1'>
-                                        <label htmlFor='trainingName' className='form-label mb-1'>Training Name</label>
+                                    <MDBCol col='2'>
+                                        <label htmlFor='trainingName' className='form-label mb-1 ps-2'>Training Name</label>
                                         
                                     </MDBCol>
                                     <MDBCol col='1'>
@@ -91,18 +91,14 @@ const UserSpecificDetails = ({ matchedUsers }) => {
                                       
                                     </MDBCol>
                                     <MDBCol col='1'>
-                                        <label htmlFor='scoreAchievedInQuiz' className='form-label mb-1'>Score Achieved in Quiz</label>
+                                        <label htmlFor='scoreAchievedInQuiz' className='form-label mb-1 pe-3'>Score Achieved in Quiz</label>
                                       
-                                    </MDBCol>
-                                    <MDBCol col='1'>
-                                        <label htmlFor='quizPassedOrFailed' className='form-label mb-1'>Quiz Passed    or Failed</label>
-                                       
                                     </MDBCol>
                 </MDBRow>
                 <MDBRow>
                 {matchedUsers.map(users => (
         <MDBRow col='1' key={users.userId}>
-                                    <MDBCol col='1'>
+                                    <MDBCol col='2'>
                                         <MDBInput id='trainingName' type='text' wrapperClass='mb-4' name='trainingName' value={users ? users.trainingName : ''} />
                                     </MDBCol>
                                     <MDBCol col='1'>
@@ -131,10 +127,7 @@ const UserSpecificDetails = ({ matchedUsers }) => {
                                         
                                         <MDBInput id='scoreAchievedInQuiz' type='text' wrapperClass='mb-4' name='scoreAchievedInQuiz' value={users ? users.scoreAchievedInQuiz : ''} />
                                     </MDBCol>
-                                    <MDBCol col='1'>
-                                        
-                                        <MDBInput id='quizPassedOrFailed' type='text' wrapperClass='mb-4' name='quizPassedOrFailed' value={users ? users.quizPassedOrFailed : ''} />
-                                    </MDBCol>
+                                    
                                     </MDBRow>
     ))}
                 </MDBRow>
