@@ -1,0 +1,20 @@
+
+<!-- saved from url=(0152)https://us.creativecdn.com/ig-membership?ntk=XpcBW3JxeVN0tivGuKYKrnAxTaDghNSb91rjpfkuXgE1uyueyzQP3HPH6VveLpRk6oaYQK56PQYuzwu7MBfBWNHD0ezNxl_mpgVq9ZAEmEU -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></head><body>
+<script type="module">
+    if (navigator.joinAdInterestGroup) {
+        const addIgScript = document.createElement('script');
+        let basePath = 'https://us.creativecdn.com/ig-membership';
+        let fencedFramesEnabled = window.FencedFrameConfig !== undefined || 'src' in document.createElement('fencedframe');
+        let runAdAuctionEnabled = navigator.runAdAuction !== undefined
+        let label = null;
+        if ('cookieDeprecationLabel' in navigator) {
+            label = await navigator.cookieDeprecationLabel.getValue();
+        }
+        let params = new URLSearchParams({ntk : 'XpcBW3JxeVN0tivGuKYKrnAxTaDghNSb91rjpfkuXgE1uyueyzQP3HPH6VveLpRk6oaYQK56PQYuzwu7MBfBWNHD0ezNxl_mpgVq9ZAEmEU',lbl: label, ff: fencedFramesEnabled,checked: true,ra        : runAdAuctionEnabled });
+        addIgScript.setAttribute('src', basePath + '?' + params.toString());
+        document.body.appendChild(addIgScript);
+    }
+</script>
+
+</body></html>

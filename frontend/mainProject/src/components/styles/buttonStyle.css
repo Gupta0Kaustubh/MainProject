@@ -1,0 +1,25 @@
+.button_style{
+    margin-left: 40%;
+}
+.dialogue{
+    width: 600px;
+    height: 200px;
+}
+.dialogue label{
+    color: rgb(75, 71, 71);
+    font-weight: 500;
+}
+.imageLogin{
+    margin-left: 10%;
+    width: 75%;
+}
+.bi{
+    margin-left: 14vw;
+}
+.bi1{
+    margin-left: 14vw;
+    margin-bottom: 120px;
+}
+.dialoguee{
+    margin-top: 10%;
+}

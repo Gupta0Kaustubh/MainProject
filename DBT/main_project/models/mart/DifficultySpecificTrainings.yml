@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: DifficultySpecificTrainings
+    description: DifficultySpecificTrainings table
+    columns:
+      - name: difficultyLevel
+        description: Difficulty level of the training
+        test:
+          - not_null
+      - name: trainingId
+        description: Identifier for the training
+        test:
+          - not_null
+      - name: trainingName
+        description: Name of the training
+        test:
+          - not_null
+      - name: TotalUsers
+        description: Total number of users
+        test:
+          - not_null
+      - name: PassedUsers
+        description: Number of users who passed
+        test:
+          - not_null
+      - name: FailedUsers
+        description: Number of users who failed
+        test:
+          - not_null
+      - name: UsersWithOngoingTraining
+        description: Number of users with ongoing training
+        test:
+          - not_null

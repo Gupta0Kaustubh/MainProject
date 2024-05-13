@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: Main_Project
+    database: Main_Project
+    schema: Main_Project_Schema
+    tables:
+      - name: userdatas
+      - name: trainers
+      - name: trainings
+      - name: quizdatas
+      - name: trackers

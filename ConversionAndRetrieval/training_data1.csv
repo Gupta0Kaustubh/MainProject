@@ -1,0 +1,100 @@
+trainingId,trainingName,trainingDescription,trainerId,trainerName,startDate,endDate,optimizedDuration,timingOfTraining,createdAt
+Training_1,Introduction to JavaScript,Green study feel agree parent.,Emp_11,Hannah,2024-12-10,2024-12-19,34,2024-12-10 00:00:00 - 2024-12-19 00:00:00,2024-01-12 09:14:21
+Training_2,Frontend Development with React,Amount hard conference among happy create.,Emp_176,Bruce,2023-10-08,2023-10-15,35,2023-10-08 00:00:00 - 2023-10-15 00:00:00,2024-04-06 07:15:34
+Training_3,Frontend Development with React,Organization memory television brother need team south course.,Emp_107,Stephen,2024-12-15,2024-12-21,28,2024-12-15 00:00:00 - 2024-12-21 00:00:00,2024-03-19 02:08:15
+Training_4,Introduction to JavaScript,With social unit account too.,Emp_158,Sandra,2023-06-14,2023-06-21,14,2023-06-14 00:00:00 - 2023-06-21 00:00:00,2024-02-19 03:01:05
+Training_5,Frontend Development with React,Develop fish raise.,Emp_137,Eric,2023-09-15,2023-09-21,6,2023-09-15 00:00:00 - 2023-09-21 00:00:00,2024-01-31 05:42:07
+Training_6,Web Development Fundamentals,Often I share road good will certainly.,Emp_21,Eric,2023-06-22,2023-06-27,25,2023-06-22 00:00:00 - 2023-06-27 00:00:00,2024-01-31 19:48:56
+Training_7,Cloud Computing Fundamentals,War law less ago single pass.,Emp_3,Tracy,2023-12-20,2023-12-26,27,2023-12-20 00:00:00 - 2023-12-26 00:00:00,2024-02-27 00:47:46
+Training_8,Database Management with MongoDB,Tax chance there traditional entire.,Emp_144,Michael,2024-04-08,2024-04-14,7,2024-04-08 00:00:00 - 2024-04-14 00:00:00,2024-03-09 15:18:24
+Training_9,Data Science Essentials,Catch herself and person different necessary particular.,Emp_71,Troy,2023-09-11,2023-09-18,2,2023-09-11 00:00:00 - 2023-09-18 00:00:00,2024-01-31 16:24:08
+Training_10,Machine Learning Basics,Appear to certain wind student.,Emp_79,Patricia,2024-11-01,2024-11-10,24,2024-11-01 00:00:00 - 2024-11-10 00:00:00,2024-03-26 22:27:53
+Training_11,Data Science Essentials,Network determine between lose food.,Emp_114,Kathleen,2023-07-27,2023-08-04,3,2023-07-27 00:00:00 - 2023-08-04 00:00:00,2024-03-14 16:08:17
+Training_12,Data Science Essentials,Success form church reason wonder order.,Emp_19,Allen,2024-02-28,2024-03-04,3,2024-02-28 00:00:00 - 2024-03-04 00:00:00,2024-03-05 00:52:12
+Training_13,Introduction to JavaScript,Use off deal which ask.,Emp_45,Mark,2023-11-07,2023-11-15,9,2023-11-07 00:00:00 - 2023-11-15 00:00:00,2024-01-30 14:14:53
+Training_14,Web Development Fundamentals,Include rather close plant.,Emp_114,Sally,2024-01-26,2024-02-03,8,2024-01-26 00:00:00 - 2024-02-03 00:00:00,2024-02-02 17:34:40
+Training_15,Backend Development with Node.js,Phone sound half conference great interesting.,Emp_91,Jeffrey,2024-07-24,2024-08-01,11,2024-07-24 00:00:00 - 2024-08-01 00:00:00,2024-03-04 14:38:17
+Training_16,Database Management with MongoDB,Really memory lawyer specific.,Emp_75,Richard,2023-09-18,2023-09-23,3,2023-09-18 00:00:00 - 2023-09-23 00:00:00,2024-01-08 08:59:44
+Training_17,Frontend Development with React,Subject morning PM garden.,Emp_113,Sierra,2024-04-19,2024-04-29,11,2024-04-19 00:00:00 - 2024-04-29 00:00:00,2024-02-09 22:15:07
+Training_18,Introduction to Python Programming,Art claim work prevent.,Emp_88,Rebekah,2024-05-31,2024-06-07,27,2024-05-31 00:00:00 - 2024-06-07 00:00:00,2024-01-12 06:22:06
+Training_19,Web Development Fundamentals,Foot recently upon property light clear young.,Emp_31,David,2024-09-27,2024-10-05,29,2024-09-27 00:00:00 - 2024-10-05 00:00:00,2024-03-01 22:53:26
+Training_20,Cybersecurity Essentials,Training want care maintain.,Emp_77,Craig,2024-10-01,2024-10-09,32,2024-10-01 00:00:00 - 2024-10-09 00:00:00,2024-03-16 12:37:40
+Training_21,Introduction to JavaScript,Avoid sign kid tough important make partner force.,Emp_4,Jeremy,2023-12-06,2023-12-15,16,2023-12-06 00:00:00 - 2023-12-15 00:00:00,2024-03-06 17:27:37
+Training_22,Web Development Fundamentals,Heart sometimes conference church hit.,Emp_88,Andrew,2024-02-15,2024-02-20,29,2024-02-15 00:00:00 - 2024-02-20 00:00:00,2024-02-23 20:42:22
+Training_23,Database Management with MongoDB,Image though give stock dog onto.,Emp_109,Brandy,2024-05-27,2024-06-02,22,2024-05-27 00:00:00 - 2024-06-02 00:00:00,2024-01-16 18:34:18
+Training_24,Cybersecurity Essentials,Them onto movement writer everyone above tax matter.,Emp_104,Stephen,2023-09-29,2023-10-07,10,2023-09-29 00:00:00 - 2023-10-07 00:00:00,2024-01-25 05:35:06
+Training_25,Machine Learning Basics,Begin remember third right than.,Emp_6,Susan,2023-07-23,2023-08-02,14,2023-07-23 00:00:00 - 2023-08-02 00:00:00,2024-04-01 08:25:21
+Training_26,Machine Learning Basics,Travel maintain that few.,Emp_178,Darren,2023-09-14,2023-09-23,37,2023-09-14 00:00:00 - 2023-09-23 00:00:00,2024-01-02 08:13:13
+Training_27,Backend Development with Node.js,Oil star four bank cultural.,Emp_2,Jeremiah,2024-10-01,2024-10-09,18,2024-10-01 00:00:00 - 2024-10-09 00:00:00,2024-02-22 20:54:15
+Training_28,Machine Learning Basics,Bed including tax.,Emp_16,Kurt,2023-09-05,2023-09-15,32,2023-09-05 00:00:00 - 2023-09-15 00:00:00,2024-04-02 05:54:45
+Training_29,Machine Learning Basics,Shake join ask difficult sense.,Emp_128,Brent,2024-06-14,2024-06-19,16,2024-06-14 00:00:00 - 2024-06-19 00:00:00,2024-01-27 13:29:01
+Training_30,Introduction to JavaScript,Recently left conference brother affect smile.,Emp_92,James,2023-10-14,2023-10-24,23,2023-10-14 00:00:00 - 2023-10-24 00:00:00,2024-02-20 02:46:02
+Training_31,Data Science Essentials,Marriage standard when.,Emp_61,Steven,2024-04-04,2024-04-14,31,2024-04-04 00:00:00 - 2024-04-14 00:00:00,2024-03-04 10:00:48
+Training_32,Data Science Essentials,Why such involve indicate development specific.,Emp_15,Laura,2023-12-18,2023-12-25,36,2023-12-18 00:00:00 - 2023-12-25 00:00:00,2024-03-27 10:13:57
+Training_33,Machine Learning Basics,Into fact military help girl tough use many.,Emp_120,Susan,2024-08-03,2024-08-12,26,2024-08-03 00:00:00 - 2024-08-12 00:00:00,2024-01-05 09:44:37
+Training_34,Web Development Fundamentals,Without wind measure decision.,Emp_8,Danny,2023-08-03,2023-08-12,3,2023-08-03 00:00:00 - 2023-08-12 00:00:00,2024-03-13 07:46:09
+Training_35,Introduction to JavaScript,Rock chair watch impact firm today.,Emp_66,Jason,2023-11-15,2023-11-22,34,2023-11-15 00:00:00 - 2023-11-22 00:00:00,2024-02-05 06:11:50
+Training_36,Web Development Fundamentals,Mrs project star.,Emp_168,Brendan,2023-09-17,2023-09-27,31,2023-09-17 00:00:00 - 2023-09-27 00:00:00,2024-03-28 23:37:29
+Training_37,Cybersecurity Essentials,Concern goal test difficult.,Emp_91,Kayla,2023-06-04,2023-06-10,20,2023-06-04 00:00:00 - 2023-06-10 00:00:00,2024-04-07 13:54:57
+Training_38,Introduction to Python Programming,Last adult couple job discuss job professional.,Emp_151,Leslie,2024-04-09,2024-04-16,7,2024-04-09 00:00:00 - 2024-04-16 00:00:00,2024-02-03 12:14:05
+Training_39,Introduction to JavaScript,Any meet husband east position.,Emp_20,Adrian,2024-04-06,2024-04-14,9,2024-04-06 00:00:00 - 2024-04-14 00:00:00,2024-03-05 21:49:28
+Training_40,Web Development Fundamentals,Middle before his walk.,Emp_23,Steven,2024-07-13,2024-07-23,21,2024-07-13 00:00:00 - 2024-07-23 00:00:00,2024-03-25 02:13:25
+Training_41,Backend Development with Node.js,Account outside must lot discussion bring whom bed.,Emp_117,Aaron,2024-06-15,2024-06-24,38,2024-06-15 00:00:00 - 2024-06-24 00:00:00,2024-03-09 03:36:37
+Training_42,Frontend Development with React,Miss house couple population majority executive.,Emp_158,Kevin,2023-09-08,2023-09-15,16,2023-09-08 00:00:00 - 2023-09-15 00:00:00,2024-01-30 00:01:27
+Training_43,Web Development Fundamentals,Far thus about administration.,Emp_195,Lori,2023-09-11,2023-09-20,13,2023-09-11 00:00:00 - 2023-09-20 00:00:00,2024-01-25 12:29:57
+Training_44,Web Development Fundamentals,Shoulder open source together religious information worker discussion.,Emp_8,Larry,2024-10-30,2024-11-05,18,2024-10-30 00:00:00 - 2024-11-05 00:00:00,2024-01-20 15:24:06
+Training_45,Introduction to JavaScript,Name us thousand current.,Emp_164,Joshua,2024-03-22,2024-03-31,31,2024-03-22 00:00:00 - 2024-03-31 00:00:00,2024-02-16 10:30:01
+Training_46,Data Science Essentials,Bit me instead administration.,Emp_92,Brenda,2023-12-29,2024-01-05,32,2023-12-29 00:00:00 - 2024-01-05 00:00:00,2024-02-16 06:24:08
+Training_47,Database Management with MongoDB,Visit despite next phone difficult respond.,Emp_50,Derek,2023-09-26,2023-10-02,10,2023-09-26 00:00:00 - 2023-10-02 00:00:00,2024-01-04 04:19:29
+Training_48,Data Science Essentials,Assume leg style.,Emp_55,Robert,2024-10-24,2024-11-03,24,2024-10-24 00:00:00 - 2024-11-03 00:00:00,2024-03-05 08:47:33
+Training_49,Frontend Development with React,Thousand bit of dinner.,Emp_138,Phillip,2024-08-15,2024-08-24,2,2024-08-15 00:00:00 - 2024-08-24 00:00:00,2024-03-21 11:46:08
+Training_50,Database Management with MongoDB,Site when write least final free short.,Emp_22,Jasmine,2024-04-05,2024-04-14,32,2024-04-05 00:00:00 - 2024-04-14 00:00:00,2024-01-03 11:18:53
+Training_51,Introduction to JavaScript,Laugh position minute somebody remain present various born.,Emp_197,Jason,2023-09-08,2023-09-18,20,2023-09-08 00:00:00 - 2023-09-18 00:00:00,2024-01-02 16:25:23
+Training_52,Cybersecurity Essentials,Include light admit water raise ability majority light.,Emp_139,Michael,2023-08-11,2023-08-17,23,2023-08-11 00:00:00 - 2023-08-17 00:00:00,2024-01-12 19:17:24
+Training_53,Database Management with MongoDB,Soon response blood partner until develop.,Emp_10,Nicole,2024-09-10,2024-09-18,8,2024-09-10 00:00:00 - 2024-09-18 00:00:00,2024-02-11 05:14:05
+Training_54,Introduction to Python Programming,Foreign low day huge yourself respond lawyer.,Emp_50,Paul,2024-07-03,2024-07-08,25,2024-07-03 00:00:00 - 2024-07-08 00:00:00,2024-02-04 09:03:59
+Training_55,Cybersecurity Essentials,Turn seat lawyer.,Emp_133,Dakota,2024-11-11,2024-11-20,7,2024-11-11 00:00:00 - 2024-11-20 00:00:00,2024-03-18 15:35:56
+Training_56,Database Management with MongoDB,End sister career minute member.,Emp_162,Matthew,2024-05-07,2024-05-14,20,2024-05-07 00:00:00 - 2024-05-14 00:00:00,2024-03-12 10:12:47
+Training_57,Data Science Essentials,Board east again international arm plan by.,Emp_112,Brian,2024-01-16,2024-01-25,27,2024-01-16 00:00:00 - 2024-01-25 00:00:00,2024-03-20 07:53:45
+Training_58,Data Science Essentials,Laugh support her article one feel.,Emp_162,Jennifer,2024-12-27,2025-01-05,3,2024-12-27 00:00:00 - 2025-01-05 00:00:00,2024-01-27 05:09:48
+Training_59,Cloud Computing Fundamentals,With real participant fear.,Emp_169,Cassandra,2023-12-09,2023-12-15,24,2023-12-09 00:00:00 - 2023-12-15 00:00:00,2024-03-18 20:37:13
+Training_60,Web Development Fundamentals,Establish whole bank return society whom.,Emp_136,Deanna,2024-04-26,2024-05-06,1,2024-04-26 00:00:00 - 2024-05-06 00:00:00,2024-01-23 22:04:01
+Training_61,Web Development Fundamentals,Pick approach area however available.,Emp_174,Jonathan,2024-02-22,2024-03-02,1,2024-02-22 00:00:00 - 2024-03-02 00:00:00,2024-03-09 12:19:53
+Training_62,Machine Learning Basics,Wait painting treat stop relate.,Emp_89,Chelsea,2024-12-19,2024-12-26,27,2024-12-19 00:00:00 - 2024-12-26 00:00:00,2024-03-23 07:32:24
+Training_63,Backend Development with Node.js,Firm join hear three many summer wear.,Emp_24,Jared,2024-04-13,2024-04-21,7,2024-04-13 00:00:00 - 2024-04-21 00:00:00,2024-03-28 21:53:30
+Training_64,Machine Learning Basics,Economy wrong sell tend less provide he team.,Emp_49,Stephanie,2024-03-07,2024-03-14,16,2024-03-07 00:00:00 - 2024-03-14 00:00:00,2024-03-25 10:08:54
+Training_65,Cloud Computing Fundamentals,Close use fall glass either offer least yard.,Emp_191,Megan,2024-01-19,2024-01-27,26,2024-01-19 00:00:00 - 2024-01-27 00:00:00,2024-03-30 09:27:03
+Training_66,Frontend Development with React,Argue surface cut region.,Emp_182,Sarah,2024-10-17,2024-10-24,19,2024-10-17 00:00:00 - 2024-10-24 00:00:00,2024-01-18 17:57:50
+Training_67,Cloud Computing Fundamentals,Seat the show rate.,Emp_121,Heidi,2024-01-25,2024-02-03,29,2024-01-25 00:00:00 - 2024-02-03 00:00:00,2024-01-28 09:39:42
+Training_68,Machine Learning Basics,Either full rule see box.,Emp_172,Philip,2024-06-29,2024-07-04,31,2024-06-29 00:00:00 - 2024-07-04 00:00:00,2024-03-14 15:51:03
+Training_69,Frontend Development with React,Win benefit he environment man decade.,Emp_34,Raymond,2024-08-02,2024-08-11,8,2024-08-02 00:00:00 - 2024-08-11 00:00:00,2024-03-17 21:35:20
+Training_70,Machine Learning Basics,Religious cultural rise role.,Emp_9,Mikayla,2023-07-13,2023-07-18,10,2023-07-13 00:00:00 - 2023-07-18 00:00:00,2024-01-25 14:42:34
+Training_71,Data Science Essentials,High note both.,Emp_60,Antonio,2024-04-12,2024-04-17,3,2024-04-12 00:00:00 - 2024-04-17 00:00:00,2024-03-09 06:12:30
+Training_72,Introduction to Python Programming,Score factor hospital candidate drug factor defense.,Emp_158,James,2023-09-19,2023-09-27,9,2023-09-19 00:00:00 - 2023-09-27 00:00:00,2024-02-15 21:19:44
+Training_73,Cybersecurity Essentials,Activity pull everything stuff short.,Emp_73,Larry,2024-02-01,2024-02-07,24,2024-02-01 00:00:00 - 2024-02-07 00:00:00,2024-01-15 08:43:51
+Training_74,Frontend Development with React,Interest strong son.,Emp_183,Terri,2023-07-19,2023-07-29,2,2023-07-19 00:00:00 - 2023-07-29 00:00:00,2024-02-26 17:51:56
+Training_75,Frontend Development with React,Ground bank owner have ago.,Emp_78,Sean,2024-11-18,2024-11-26,2,2024-11-18 00:00:00 - 2024-11-26 00:00:00,2024-03-17 11:09:15
+Training_76,Introduction to JavaScript,Sure item stay early bill.,Emp_2,Autumn,2024-02-09,2024-02-19,18,2024-02-09 00:00:00 - 2024-02-19 00:00:00,2024-02-07 11:52:31
+Training_77,Machine Learning Basics,Process plant tax choice sense hard.,Emp_194,Raymond,2023-06-16,2023-06-22,38,2023-06-16 00:00:00 - 2023-06-22 00:00:00,2024-03-29 01:03:44
+Training_78,Web Development Fundamentals,How during authority well good.,Emp_164,Philip,2024-03-18,2024-03-26,3,2024-03-18 00:00:00 - 2024-03-26 00:00:00,2024-04-08 06:20:35
+Training_79,Cloud Computing Fundamentals,Glass ball hospital fear our sign.,Emp_176,Brian,2023-09-19,2023-09-26,35,2023-09-19 00:00:00 - 2023-09-26 00:00:00,2024-02-15 09:57:52
+Training_80,Cloud Computing Fundamentals,Let avoid to back consumer.,Emp_134,Craig,2023-08-04,2023-08-14,39,2023-08-04 00:00:00 - 2023-08-14 00:00:00,2024-01-12 01:47:47
+Training_81,Machine Learning Basics,Character focus fine view office among especially senior.,Emp_36,Bernard,2024-12-23,2024-12-31,30,2024-12-23 00:00:00 - 2024-12-31 00:00:00,2024-02-28 17:46:14
+Training_82,Frontend Development with React,Wrong another center reflect figure return election.,Emp_122,Erik,2024-07-15,2024-07-20,9,2024-07-15 00:00:00 - 2024-07-20 00:00:00,2024-01-22 20:38:33
+Training_83,Web Development Fundamentals,Consumer which personal yeah free me course join.,Emp_91,Kelly,2024-03-25,2024-03-31,35,2024-03-25 00:00:00 - 2024-03-31 00:00:00,2024-02-10 04:48:51
+Training_84,Data Science Essentials,Maybe network suggest person cold themselves two.,Emp_105,Miranda,2024-07-01,2024-07-11,23,2024-07-01 00:00:00 - 2024-07-11 00:00:00,2024-03-22 06:47:28
+Training_85,Frontend Development with React,Best onto road recognize.,Emp_128,Bobby,2024-08-02,2024-08-11,11,2024-08-02 00:00:00 - 2024-08-11 00:00:00,2024-02-14 20:29:05
+Training_86,Cybersecurity Essentials,Cost hot pull fill.,Emp_73,Mackenzie,2023-06-11,2023-06-20,24,2023-06-11 00:00:00 - 2023-06-20 00:00:00,2024-01-14 18:40:58
+Training_87,Introduction to Python Programming,Score indicate training article bar air.,Emp_189,Darrell,2024-12-06,2024-12-11,20,2024-12-06 00:00:00 - 2024-12-11 00:00:00,2024-03-31 12:23:53
+Training_88,Introduction to Python Programming,Turn company myself staff.,Emp_47,Caroline,2023-11-22,2023-12-01,1,2023-11-22 00:00:00 - 2023-12-01 00:00:00,2024-02-27 04:35:23
+Training_89,Frontend Development with React,Woman class bit full positive throw.,Emp_42,William,2024-10-18,2024-10-23,18,2024-10-18 00:00:00 - 2024-10-23 00:00:00,2024-04-08 10:59:03
+Training_90,Introduction to Python Programming,Ground easy energy green.,Emp_56,Joshua,2024-04-07,2024-04-12,9,2024-04-07 00:00:00 - 2024-04-12 00:00:00,2024-01-23 22:46:09
+Training_91,Frontend Development with React,Training against visit bring.,Emp_9,Vanessa,2023-09-02,2023-09-09,28,2023-09-02 00:00:00 - 2023-09-09 00:00:00,2024-02-14 07:01:58
+Training_92,Data Science Essentials,Open picture trouble let pretty consider.,Emp_32,Megan,2024-12-16,2024-12-24,19,2024-12-16 00:00:00 - 2024-12-24 00:00:00,2024-02-16 21:32:43
+Training_93,Cloud Computing Fundamentals,South general relationship rule.,Emp_134,Steven,2024-10-13,2024-10-23,25,2024-10-13 00:00:00 - 2024-10-23 00:00:00,2024-04-07 01:52:33
+Training_94,Machine Learning Basics,Opportunity third feel administration.,Emp_117,Thomas,2024-08-29,2024-09-07,32,2024-08-29 00:00:00 - 2024-09-07 00:00:00,2024-03-17 23:45:11
+Training_95,Machine Learning Basics,Else major friend reason civil ready control.,Emp_188,Jared,2024-05-24,2024-06-03,30,2024-05-24 00:00:00 - 2024-06-03 00:00:00,2024-03-11 18:27:42
+Training_96,Data Science Essentials,Woman enter kitchen parent city exactly race include.,Emp_168,Joel,2023-08-26,2023-09-05,28,2023-08-26 00:00:00 - 2023-09-05 00:00:00,2024-01-03 02:00:34
+Training_97,Cybersecurity Essentials,World note our spend put watch score nothing.,Emp_99,Matthew,2024-02-21,2024-02-28,19,2024-02-21 00:00:00 - 2024-02-28 00:00:00,2024-01-04 13:38:55
+Training_98,Backend Development with Node.js,Service so keep body compare piece page.,Emp_117,Charles,2023-11-15,2023-11-22,31,2023-11-15 00:00:00 - 2023-11-22 00:00:00,2024-03-24 22:04:54
+Training_99,Data Science Essentials,Culture inside power.,Emp_177,John,2024-02-18,2024-02-28,30,2024-02-18 00:00:00 - 2024-02-28 00:00:00,2024-04-03 23:19:25
